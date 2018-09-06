@@ -1,64 +1,51 @@
 package telekingdom;
 
-import java.io.File;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-public class World extends BasicGameState {
+import app.AppWorld;
 
-	public static int ID=2;
-	public static String GAME_NAME = "TeleKingdom";
+public class World extends AppWorld {
 
-	
-	public void init(GameContainer container, StateBasedGame arg1) throws SlickException {
-		//Ici ne mettre que des initialisations de variables 
-		
-		//Il faudra voir s'il faut bouger ces inits dans enter(...) si ca prend trop de temps
-		
+	private int width;
+	private int height;
 
+	public World (int ID) {
+		super (ID);
 	}
 
-	public void enter(GameContainer container, StateBasedGame game) throws SlickException{
-		//Ici mettre tous les chargement d'image, creation de perso/decor et autre truc qui mettent du temps
-
+	@Override
+	public void init (GameContainer container, StateBasedGame game) {
+		/* Méthode exécutée une unique fois au chargement du programme */
+		this.width = container.getWidth ();
+		this.height = container.getHeight ();
 	}
 
-
-	public void startGame(){
+	@Override
+	public void play (GameContainer container, StateBasedGame game) {
+		/* Méthode exécutée une unique fois au lancement du jeu */
 	}
 
-	public void startAgain() throws SlickException{
+	@Override
+	public void pause (GameContainer container, StateBasedGame game) {
+		/* Méthode exécutée lors de la mise en pause du jeu */
 	}
 
-	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		g.drawString("oui", 200, 200);
-
-
+	@Override
+	public void resume (GameContainer container, StateBasedGame game) {
+		/* Méthode exécutée lors de la reprise du jeu */
 	}
 
-	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-		
+	@Override
+	public void update (GameContainer container, StateBasedGame game, int delta) {
+		/* Méthode exécutée environ 60 fois par seconde */
+		super.update (container, game, delta);
 	}
 
-	public void keyReleased(int key, char c) {
-	}
-
-
-	public void keyPressed(int key, char c) {
-		if(key==Input.KEY_SPACE)
-			System.exit(0);
-	}
-
-	public int getID() {
-		return ID;
-	}
-
-	public static void reset() {
-		// TODO Auto-generated method stub
+	@Override
+	public void render (GameContainer container, StateBasedGame game, Graphics context) {
+		/* Méthode exécutée environ 60 fois par seconde */
 	}
 
 }

@@ -1,4 +1,4 @@
-package general.ui;
+package app.ui;
 
 import java.awt.Font;
 import org.newdawn.slick.Color;
@@ -8,21 +8,20 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.TrueTypeFont;
 import org.newdawn.slick.state.StateBasedGame;
 
-import general.utils.FontUtils;
-
+import app.utils.FontUtils;
 
 @SuppressWarnings("serial")
 public class Button extends TGDComponent{
 
 	private String text;
-	
+
 	private Color textColor;
 	private Color textColorEntered;
 	private Color textColorPressed;
 
 	private TrueTypeFont textFont;
 	private int textSize;
-	
+
 	private boolean upperCaseLock;
 
 	public Button(GameContainer container,float x,float y,float width,float height){
@@ -37,37 +36,37 @@ public class Button extends TGDComponent{
 	@Override
 	protected void initDefaultUI() {
 		super.initDefaultUI();
-		
+
 		setText("");
 		setTextSize(14);
 		setTextColor(new Color(255,255,255));
 		setTextColorPressed(new Color(255,255,255));
 		setTextColorEntered(new Color(0,0,0));
 		setTextFont(FontUtils.loadSystemFont("Verdana", Font.BOLD, textSize));
-		
+
 		setPaddingTop(5);
 		setPaddingBottom(5);
 		setPaddingLeft(10);
 		setPaddingRight(10);
-		
+
 		setBorderWidth(1);
 		setBorderColor(Color.white);
 		setCornerRadius(0);
-		
+
 		setBackgroundColor(new Color(255,255,255,0));
 		setBackgroundColorEntered(new Color(255,255,255));
 		setBackgroundColorPressed(new Color(125,5,5));
-		
+
 		setUpperCaseLock(false);
 	}
-	
+
 	//SLICK METHOD
 
 	public void update(GameContainer container,StateBasedGame game, int delta) throws SlickException{
 		super.update(container, game, delta);
 		if(mouseEntered) hasFocus=true;
 	}
-	
+
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		super.render(container, game, g);
@@ -78,11 +77,10 @@ public class Button extends TGDComponent{
 
 		g.setFont(textFont);
 		g.drawString(text, x+paddingLeft+(getWidth()-paddingLeft-paddingRight)/2-textFont.getWidth(text)/2, y+paddingTop+(getHeight()-paddingTop-paddingBottom)/2-textFont.getHeight(text)/2);
-	
-	}
-	
-	//GETTERS AND SETTERS
 
+	}
+
+	//GETTERS AND SETTERS
 
 	@Override
 	public float getAutomaticWidth(){
@@ -100,7 +98,6 @@ public class Button extends TGDComponent{
 		this.text = text;
 	}
 
-
 	public Color getTextColor() {
 		return textColor;
 	}
@@ -117,7 +114,6 @@ public class Button extends TGDComponent{
 		this.textFont = textFont;
 	}
 
-	
 	public int getTextSize() {
 		return textSize;
 	}
@@ -134,7 +130,6 @@ public class Button extends TGDComponent{
 		this.upperCaseLock = upperCaseLock;
 	}
 
-	
 	public Color getTextColorEntered() {
 		return textColorEntered;
 	}
@@ -142,7 +137,7 @@ public class Button extends TGDComponent{
 	public void setTextColorEntered(Color textColorEntered) {
 		this.textColorEntered = textColorEntered;
 	}
-	
+
 	public Color getTextColorPressed() {
 		return textColorPressed;
 	}
@@ -150,8 +145,5 @@ public class Button extends TGDComponent{
 	public void setTextColorPressed(Color textColorPressed) {
 		this.textColorPressed = textColorPressed;
 	}
-
-	
-	
 
 }
