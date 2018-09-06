@@ -75,8 +75,8 @@ public class Welcome extends AppPage {
 		} else if (appInput.isKeyDown (AppInput.KEY_ENTER)) {
 			Pause pause = (Pause) game.getState (AppGame.PAGES_PAUSE);
 			pause.setPreviousID (AppGame.PAGES_WELCOME);
-			pause.setNextID (AppGame.TELEKINGDOM);
-			appGame.enterState (AppGame.TELEKINGDOM, new FadeOutTransition (), new FadeInTransition ());
+			pause.setNextID (AppGame.TELEKINGDOM_WORLD);
+			appGame.enterState (AppGame.TELEKINGDOM_WORLD, new FadeOutTransition (), new FadeInTransition ());
 		}
 	}
 
