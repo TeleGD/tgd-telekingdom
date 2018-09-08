@@ -1,5 +1,7 @@
 package telekingdom;
 
+import telekingdom.hud.Interface;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
@@ -10,6 +12,8 @@ public class World extends AppWorld {
 
 	private int width;
 	private int height;
+	
+	private Interface interf;
 
 	public World (int ID) {
 		super (ID);
@@ -20,6 +24,9 @@ public class World extends AppWorld {
 		/* Méthode exécutée une unique fois au chargement du programme */
 		this.width = container.getWidth ();
 		this.height = container.getHeight ();
+		
+		this.interf = new Interface(this);
+		
 	}
 
 	@Override
@@ -41,11 +48,26 @@ public class World extends AppWorld {
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		/* Méthode exécutée environ 60 fois par seconde */
 		super.update (container, game, delta);
+		
+		interf.update(container, game, delta);
+		
+		//interf.addToArgent(-1); //debug
+		//interf.addToReputation(1); //debug
 	}
 
 	@Override
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		/* Méthode exécutée environ 60 fois par seconde */
+		interf.render(container, game, context);
+	}
+	
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 
 }
