@@ -7,8 +7,9 @@ public final class Main {
 
 	public static final void main (String [] arguments) throws SlickException {
 		AppGame appGame = new AppGame ("TeleKingdom");
-		AppContainer container = new AppContainer (appGame, 1280, 720, false);
+		AppContainer container = new AppContainer (appGame, 1920, 1080, false);
 		container.setTargetFrameRate (60);
+		container.setFullscreen(true);
 		container.setVSync (true);
 		container.setShowFPS (false);
 		container.start ();
