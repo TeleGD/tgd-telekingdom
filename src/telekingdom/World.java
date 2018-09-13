@@ -1,8 +1,5 @@
 package telekingdom;
 
-import telekingdom.hud.Card;
-import telekingdom.hud.Interface;
-
 import java.io.File;
 import java.util.ArrayList;
 
@@ -21,28 +18,31 @@ import app.AppInput;
 import app.AppWorld;
 import app.utils.FontUtils;
 
+import telekingdom.hud.Card;
+import telekingdom.hud.Interface;
+
 public class World extends AppWorld {
-	
+
 	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 18, true);
 	public final static String GAME_FOLDER_NAME="telekingdom";
 	public final static String DIRECTORY_MUSICS="musics"+File.separator;
 
-	
+
 	private int width;
 	private int height;
 
 	private Interface interf;
 	private Player player;
-	
+
 	private static Music music;
-	
+
 	private ArrayList<Card> deck;
 	private int nbCards;
-	
+
 	public World (int ID) {
 		super (ID);
 	}
-	
+
 	static {
 		try {
 			music = new Music(DIRECTORY_MUSICS+"main_theme.ogg");
@@ -60,11 +60,6 @@ public class World extends AppWorld {
 		this.player = new Player(this);
 		this.interf = new Interface(this,player);
 
-	}
-	
-	@Override
-	public void enter(GameContainer container, StateBasedGame game) {
-		//Ici mettre tous les chargement d'image, creation de perso/decor et autre truc qui mettent du temps
 	}
 
 	@Override
@@ -93,7 +88,7 @@ public class World extends AppWorld {
 		interf.update(container, game, delta);
 		//interf.addToArgent(-1); //debug
 		//interf.addToReputation(1); //debug
-		
+
 		AppInput appInput = (AppInput) container.getInput ();
 		AppGame appGame = (AppGame) game;
 	}

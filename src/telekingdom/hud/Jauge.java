@@ -10,28 +10,29 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import app.utils.FontUtils;
+
 import telekingdom.Player;
 import telekingdom.World;
 
 public class Jauge {
-	
+
 	/* Déclaration des variables & constantes de toutes les jauges*/
-	
+
 	/* Position d'affichage sur l'écran*/
 	private float x;
 	private float y;
 
 	/* Nom */
 	private String name;
-	
-	/* Référence vers le World principal pour en récupérer les variables. 
+
+	/* Référence vers le World principal pour en récupérer les variables.
 	 * Il se donne lui même en argument lors de la création des jauges */
 	private World world;
-	
+
 	/* Taille de l'image de la jauge */
 	private int width;
 	private int height;
-	
+
 	/* Valeur de la jauge */
 	private int valeur;
 
@@ -44,8 +45,8 @@ public class Jauge {
 	private String endMessageFull;
 
 	public Jauge(String name, String endMessageFull, String endMessageEmpty, World w, Player player) {
-		
-		
+
+
 		this.x = 0;
 
 		this.name = name;
@@ -66,7 +67,7 @@ public class Jauge {
 		this.setSize();
 	}
 
-	private void setSize() { 
+	private void setSize() {
 		/* met la taille et la position en y de l'image en fonction de la taille de l'ecran */
 		float scale = 75/1280f;
 		width = (int) (scale*world.getWidth());

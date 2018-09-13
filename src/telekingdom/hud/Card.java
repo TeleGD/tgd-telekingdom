@@ -1,8 +1,5 @@
 package telekingdom.hud;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,12 +7,13 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import telekingdom.World;
+
 public class Card {
-	//image de la carte
-	private Image image;
+	//template de la carte
+	private CardTemplate cardTemplate;
 
 	//dimensions
 	private int x;
@@ -24,27 +22,14 @@ public class Card {
 
 	//etat de la carte : 0 au milieu, 1 à droite et -1 à gauche
 	private int state;
-	private Input input;
-
-	private int id;
 
 	//a recuperer dans la base des cartes
-	private String texte;
 	private List<Integer> effet;
 	private List<Integer> pool;
 
-	//pour manipulation de fichiers
-	private Path cardPath;
 
-	public Card(Interface i, int id) {
-		this.id = id;
-		texte = "carte de base";
-
-		try {
-			image = new Image("images"+File.separator+"cards"+File.separator+"card"+id+".png");
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+	public Card (World world, CardTemplate cardTemplate) {
+		this.cardTemplate = cardTemplate;
 
 		state = 0; //on commence carte au milieu
 
@@ -53,16 +38,21 @@ public class Card {
 		effet.add(20);
 
 		length = 300;
-		x = i.world.getWidth()/2 - length/2;
-		y = i.world.getHeight()/2;
-	}
-
-	public void init(GameContainer container, StateBasedGame game) {
-		cardPath = Paths.get("data"+File.separator+"cards.csv");
+		x = world.getWidth()/2 - length/2;
+		y = world.getHeight()/2;
+		System.out.println (this.cardTemplate.getType ());
+		System.out.println (this.cardTemplate.getCharacter ().getName ());
+		System.out.println (this.cardTemplate.getRequest ());
+		System.out.println (this.cardTemplate.getResponse (0));
+		System.out.println (this.cardTemplate.getResponse (1));
+		System.out.println (this.cardTemplate.getEffect (0, 0));
+		System.out.println (this.cardTemplate.getEffect (0, 1));
+		System.out.println (this.cardTemplate.getEffect (1, 0));
+		System.out.println (this.cardTemplate.getEffect (1, 1));
 	}
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
-		input = container.getInput();
+		Input input = container.getInput();
 		if (input.isKeyPressed(Input.KEY_LEFT) && state != -1) { //si on appuie sur gauche et qu'on est pas à gauche
 			shiftLeft();
 		}
@@ -72,6 +62,7 @@ public class Card {
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
+		Image image = this.cardTemplate.getCharacter ().getImage ();
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
 	}
 

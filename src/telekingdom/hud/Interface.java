@@ -1,7 +1,7 @@
 package telekingdom.hud;
 
 import java.io.File;
-import java.util.*;
+import java.util.List;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -36,12 +36,12 @@ public class Interface {
 	}
 
 
-	public Interface(World w, Player player) {
-		this.world = w;
+	public Interface (World world, Player player) {
+		this.world = world;
 		this.player = player;
 		this.jauges = player.getJauges();
 
-		card = new Card(this,1);
+		card = new Card (world, CardTemplate.getCardTemplate (0));
 
 		boxColor = new Color(72,56,56);
 		textColor = new Color(189,176,130);
