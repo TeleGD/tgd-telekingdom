@@ -2,14 +2,18 @@ package telekingdom;
 
 import telekingdom.hud.Interface;
 
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 
 import app.AppWorld;
+import app.utils.FontUtils;
 
 public class World extends AppWorld {
-
+	
+	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 18, true);
+	
 	private int width;
 	private int height;
 

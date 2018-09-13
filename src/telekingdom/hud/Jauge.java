@@ -2,34 +2,49 @@ package telekingdom.hud;
 
 import java.io.File;
 
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import app.utils.FontUtils;
 import telekingdom.World;
 
 public class Jauge {
+	
+	/* Déclaration des variables & constantes de toutes les jauges*/
+	
+	/* Position d'affichage sur l'écran*/
 	private float x;
 	private float y;
 
+	/* Nom */
 	private String name;
-
+	
+	/* Référence vers le World principal pour en récupérer les variables. 
+	 * Il se donne lui même en argument lors de la création des jauges */
 	private World world;
-
+	
+	/* Taille de l'image de la jauge */
 	private int width;
 	private int height;
-
+	
+	/* Valeur de la jauge */
 	private int valeur;
 
+	/* Image (format Slick) de la jauge (vide et pleine pour en gérer le remplissage) */
 	private Image emptySprite;
 	private Image fullSprite;
 
+	/* Messages de défaite selon la valeur de la jauge */
 	private String endMessageEmpty;
 	private String endMessageFull;
 
 	public Jauge(String name, String endMessageFull, String endMessageEmpty, World w) {
+		
+		
 		this.x = 0;
 
 		this.name = name;
@@ -44,14 +59,14 @@ public class Jauge {
 			emptySprite = new Image("images"+File.separator+name+"_empty.png");
 			fullSprite = new Image("images"+File.separator+name+".png");
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		setSize();
+		this.setSize();
 	}
 
-	public void setSize() { //met la taille et la position en y de l'image en fonction de la taille de l'ecran
+	private void setSize() { 
+		/* met la taille et la position en y de l'image en fonction de la taille de l'ecran */
 		float scale = 75/1280f;
 		width = (int) (scale*world.getWidth());
 		height = width;
@@ -71,7 +86,7 @@ public class Jauge {
 		context.drawImage(fullSprite, x, y+Math.abs((float)valeur-100)/100*height, x+width, y+height, 0, Math.abs((float)valeur-100)/100*(emptySprite.getHeight()-1), emptySprite.getWidth()-1, emptySprite.getHeight()-1);
 
 		//puis on draw le nom de la jauge
-		context.drawString(name, x, y+height + 2/1280f*world.getWidth());
+		context.drawString(name, x+width/2-World.Font.getWidth(name)/2, y+height+2/1280f*world.getWidth());
 	}
 
 
