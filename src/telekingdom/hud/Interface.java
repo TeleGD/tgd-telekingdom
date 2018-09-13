@@ -14,7 +14,7 @@ import telekingdom.World;
 
 public class Interface {
 	public World world;
-
+	/* Commentaire */
 	private static Image background;
 
 	private List<Jauge> jauges;
