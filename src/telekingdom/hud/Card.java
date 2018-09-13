@@ -7,6 +7,7 @@ import java.util.List;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -18,6 +19,10 @@ public class Card {
 	private int x;
 	private int y;
 	private int length;
+	
+	//etat de la carte : 0 au milieu, 1 à droite et -1 à gauche
+	private int state;
+	private Input input;
 	
 	private int id;
 	
@@ -36,6 +41,8 @@ public class Card {
 			e.printStackTrace();
 		}
 		
+		state = 0;
+		
 		effet = new ArrayList<Integer>();
 		effet.add(-20);
 		effet.add(20);
@@ -46,11 +53,29 @@ public class Card {
 	}
 	
 	public void update (GameContainer container, StateBasedGame game, int delta) {
-		
+		input = container.getInput();
+		if (input.isKeyPressed(Input.KEY_LEFT) && state != -1) {
+			shiftLeft();
+		}
+		if (input.isKeyPressed(Input.KEY_RIGHT) && state != 1) {
+			shiftRight();
+		}
 	}
 	
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
+	}
+	
+	
+	
+	private void shiftRight() {
+		state += 1;
+		x += 100;
+	}
+	
+	private void shiftLeft() {
+		state -= 1;
+		x-=100;
 	}
 
 }
