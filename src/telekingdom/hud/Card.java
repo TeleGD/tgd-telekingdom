@@ -41,7 +41,7 @@ public class Card {
 			e.printStackTrace();
 		}
 		
-		state = 0;
+		state = 0; //on commence carte au milieu
 		
 		effet = new ArrayList<Integer>();
 		effet.add(-20);
@@ -54,10 +54,10 @@ public class Card {
 	
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		input = container.getInput();
-		if (input.isKeyPressed(Input.KEY_LEFT) && state != -1) {
+		if (input.isKeyPressed(Input.KEY_LEFT) && state != -1) { //si on appuie sur gauche et qu'on est pas à gauche
 			shiftLeft();
 		}
-		if (input.isKeyPressed(Input.KEY_RIGHT) && state != 1) {
+		if (input.isKeyPressed(Input.KEY_RIGHT) && state != 1) { //si on appuie sur droite et qu'on est pas à droite
 			shiftRight();
 		}
 	}
@@ -68,12 +68,12 @@ public class Card {
 	
 	
 	
-	private void shiftRight() {
+	private void shiftRight() { //on décale la carte à droite
 		state += 1;
 		x += 100;
 	}
 	
-	private void shiftLeft() {
+	private void shiftLeft() { // on décale la carte à gauche
 		state -= 1;
 		x-=100;
 	}
