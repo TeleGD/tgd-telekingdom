@@ -1,6 +1,8 @@
 package telekingdom.hud;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,9 @@ public class Card {
 	private List<Integer> effet;
 	private List<Integer> pool;
 	
+	//pour manipulation de fichiers
+	private Path cardPath;
+	
 	public Card(Interface i, int id) {
 		this.id = id;
 		texte = "carte de base";
@@ -50,6 +55,10 @@ public class Card {
 		length = 300;
 		x = i.world.getWidth()/2 - length/2;
 		y = i.world.getHeight()/2;
+	}
+	
+	public void init(GameContainer container, StateBasedGame game) {
+		cardPath = Paths.get("data"+File.separator+"cards.csv");
 	}
 	
 	public void update (GameContainer container, StateBasedGame game, int delta) {
