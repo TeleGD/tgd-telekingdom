@@ -13,11 +13,15 @@ import org.newdawn.slick.state.StateBasedGame;
 import telekingdom.World;
 
 public class Interface {
-	protected World world;
+	public World world;
 	
 	private static Image background;
 	
 	private List<Jauge> jauges;
+	
+	private Card card;
+	private List<Integer> drawn;
+	private int nbCards;
 	
 	private Color boxColor;
 	private Color textColor;
@@ -38,6 +42,10 @@ public class Interface {
 		this.jauges = new ArrayList<Jauge>();
 		addJauge(new Jauge("Argent", "a", "b", world));
 		addJauge(new Jauge("Reputation", "c ", "d", world));
+		
+		drawn = new ArrayList<Integer>();
+		nbCards = 1;
+		card = new Card(this,1);
 		
 		boxColor = new Color(72,56,56);
 		textColor = new Color(189,176,130);
@@ -60,6 +68,8 @@ public class Interface {
 				//System.out.println(j.getEndingMessage()); //debug
 			}
 		}
+		
+		card.update(container, game, delta);
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -78,6 +88,9 @@ public class Interface {
 			j.render(container, game, context);
 		}
 		
+		//on draw la carte
+		card.render(container, game, context);
+		
 		//on remet l'ancienne couleur
 		context.setColor(previousColor);
 	}
@@ -93,4 +106,6 @@ public class Interface {
 			if(j.getName() == "Reputation")  j.addValeur(v);
 		}
 	}
+	
+
 }
