@@ -65,23 +65,24 @@ public class World extends AppWorld {
 	@Override
 	public void enter(GameContainer container, StateBasedGame game) {
 		//Ici mettre tous les chargement d'image, creation de perso/decor et autre truc qui mettent du temps
-		music.loop(1, (float) 0.3);
 	}
 
 	@Override
 	public void play (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée une unique fois au lancement du jeu */
+		music.loop (1, .3f);
 	}
 
 	@Override
 	public void pause (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée lors de la mise en pause du jeu */
-		music.stop();
+		music.pause ();
 	}
 
 	@Override
 	public void resume (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée lors de la reprise du jeu */
+		music.resume ();
 	}
 
 	@Override

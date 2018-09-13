@@ -12,6 +12,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import app.AppGame;
 import app.AppInput;
 import app.AppPage;
+import app.AppWorld;
 
 public class Welcome extends AppPage {
 
@@ -76,6 +77,7 @@ public class Welcome extends AppPage {
 			Pause pause = (Pause) game.getState (AppGame.PAGES_PAUSE);
 			pause.setPreviousID (AppGame.PAGES_WELCOME);
 			pause.setNextID (AppGame.TELEKINGDOM_WORLD);
+			((AppWorld) appGame.getState (AppGame.TELEKINGDOM_WORLD)).play (container, appGame);
 			appGame.enterState (AppGame.TELEKINGDOM_WORLD, new FadeOutTransition (), new FadeInTransition ());
 		}
 	}
