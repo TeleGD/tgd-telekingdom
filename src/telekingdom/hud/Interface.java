@@ -20,8 +20,6 @@ public class Interface {
 	private List<Jauge> jauges;
 
 	private Card card;
-	private List<Integer> drawn;
-	private int nbCards;
 
 	private Color boxColor;
 	private Color textColor;
@@ -43,8 +41,6 @@ public class Interface {
 		addJauge(new Jauge("Argent", "a", "b", world));
 		addJauge(new Jauge("Reputation", "c ", "d", world));
 
-		drawn = new ArrayList<Integer>();
-		nbCards = 1;
 		card = new Card(this,1);
 
 		boxColor = new Color(72,56,56);

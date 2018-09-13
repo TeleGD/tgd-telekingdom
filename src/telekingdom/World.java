@@ -1,8 +1,10 @@
 package telekingdom;
 
+import telekingdom.hud.Card;
 import telekingdom.hud.Interface;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
@@ -32,7 +34,10 @@ public class World extends AppWorld {
 	private Interface interf;
 	
 	private static Music music;
-
+	
+	private ArrayList<Card> deck;
+	private int nbCards;
+	
 	public World (int ID) {
 		super (ID);
 	}
