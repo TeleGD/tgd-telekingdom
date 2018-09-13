@@ -2,25 +2,47 @@ package telekingdom;
 
 import telekingdom.hud.Interface;
 
+import java.io.File;
+
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Music;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
+import app.AppGame;
+import app.AppInput;
 import app.AppWorld;
 import app.utils.FontUtils;
 
 public class World extends AppWorld {
 	
 	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 18, true);
+	public final static String GAME_FOLDER_NAME="telekingdom";
+	public final static String DIRECTORY_MUSICS="musics"+File.separator;
+
 	
 	private int width;
 	private int height;
 
 	private Interface interf;
+	
+	private static Music music;
 
 	public World (int ID) {
 		super (ID);
+	}
+	
+	static {
+		try {
+			music = new Music(DIRECTORY_MUSICS+"10667.ogg");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -31,6 +53,12 @@ public class World extends AppWorld {
 
 		this.interf = new Interface(this);
 
+	}
+	
+	@Override
+	public void enter(GameContainer container, StateBasedGame game) {
+		//Ici mettre tous les chargement d'image, creation de perso/decor et autre truc qui mettent du temps
+		music.loop();
 	}
 
 	@Override
@@ -54,9 +82,11 @@ public class World extends AppWorld {
 		super.update (container, game, delta);
 
 		interf.update(container, game, delta);
-
 		//interf.addToArgent(-1); //debug
 		//interf.addToReputation(1); //debug
+		
+		AppInput appInput = (AppInput) container.getInput ();
+		AppGame appGame = (AppGame) game;
 	}
 
 	@Override
