@@ -10,6 +10,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 import app.utils.FontUtils;
+import telekingdom.Player;
 import telekingdom.World;
 
 public class Jauge {
@@ -42,7 +43,7 @@ public class Jauge {
 	private String endMessageEmpty;
 	private String endMessageFull;
 
-	public Jauge(String name, String endMessageFull, String endMessageEmpty, World w) {
+	public Jauge(String name, String endMessageFull, String endMessageEmpty, World w, Player player) {
 		
 		
 		this.x = 0;

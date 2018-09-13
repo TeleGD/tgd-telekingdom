@@ -32,6 +32,7 @@ public class World extends AppWorld {
 	private int height;
 
 	private Interface interf;
+	private Player player;
 	
 	private static Music music;
 	
@@ -56,7 +57,8 @@ public class World extends AppWorld {
 		this.width = container.getWidth ();
 		this.height = container.getHeight ();
 
-		this.interf = new Interface(this);
+		this.player = new Player(this);
+		this.interf = new Interface(this,player);
 
 	}
 	

@@ -10,6 +10,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import telekingdom.Player;
 import telekingdom.World;
 
 public class Interface {
@@ -18,6 +19,7 @@ public class Interface {
 	private static Image background;
 
 	private List<Jauge> jauges;
+	private Player player;
 
 	private Card card;
 
@@ -34,28 +36,22 @@ public class Interface {
 	}
 
 
-	public Interface(World w) {
+	public Interface(World w, Player player) {
 		this.world = w;
-
-		this.jauges = new ArrayList<Jauge>();
-		addJauge(new Jauge("Argent", "a", "b", world));
-		addJauge(new Jauge("Reputation", "c ", "d", world));
+		this.player = player;
+		this.jauges = player.getJauges();
 
 		card = new Card(this,1);
 
 		boxColor = new Color(72,56,56);
 		textColor = new Color(189,176,130);
 	}
-
-	private void addJauge(Jauge j) {
-		jauges.add(j);
-
-		//on place directement les jauges centrees et separees de 25px
-		int n = jauges.size();
-		for (int i=0; i<n; i++) {
-			jauges.get(i).setX(world.getWidth()/2 - jauges.get(i).getWidth()*n/2 - 25/1280f*world.getWidth()*(n-1)/2 + i*(jauges.get(i).getWidth()+25/1280f*world.getWidth()));
-		}
-	}
+//
+//	private void addJauge(Jauge j) {
+//		jauges.add(j);
+//
+//		
+//	}
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		for (Jauge j : jauges) {
@@ -90,18 +86,4 @@ public class Interface {
 		//on remet l'ancienne couleur
 		context.setColor(previousColor);
 	}
-
-	public void addToArgent(int v) {
-		for (Jauge j : jauges) {
-			if(j.getName() == "Argent")  j.addValeur(v);
-		}
-	}
-
-	public void addToReputation(int v) {
-		for (Jauge j : jauges) {
-			if(j.getName() == "Reputation")  j.addValeur(v);
-		}
-	}
-
-
 }
