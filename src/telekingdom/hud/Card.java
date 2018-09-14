@@ -208,6 +208,6 @@ public class Card {
 	
 	public void setPiocheeTrue() {
 		piochee = true;
-		initGetIn(y,(int) (0.65*w.getHeight()));
+		initGetIn(y,(int) (312*w.getHeight())/720);
 	}
 }
