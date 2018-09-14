@@ -12,10 +12,15 @@ import org.newdawn.slick.state.StateBasedGame;
 import telekingdom.World;
 
 public class Card {
+	
+	private World w;
+	
 	//template de la carte
 	private CardTemplate cardTemplate;
 	
-	private boolean anim;
+	private boolean animGo;
+	private boolean animGetOut;
+	private boolean animGetIn;
 	
 	private double speed;
 	private boolean speedPos;
@@ -34,11 +39,12 @@ public class Card {
 
 	//a recuperer dans la base des cartes
 	private List<Integer> effet;
-	private List<Integer> pool;
 
 
 	public Card (World world, CardTemplate cardTemplate) {
 		this.cardTemplate = cardTemplate;
+		
+		w = world;
 
 		state = 0; //on commence carte au milieu
 
@@ -46,10 +52,10 @@ public class Card {
 		effet.add(-20);
 		effet.add(20);
 		
-		anim = false;
-		tmax = 400;
-		decalage = world.getWidth()/10;
-
+		animGo = false;
+		animGetOut = false;
+		animGetIn = false;
+		
 		length = 300;
 		x = world.getWidth()/2 - length/2;
 		y = world.getHeight()/2;
@@ -66,23 +72,27 @@ public class Card {
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
-		if (!anim) {
-			if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et qu'on est pas à gauche
-				if (state==-1) {
-					confirmLeft();
-				} else {
-					shiftLeft();
-				}
-			}
-			if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et qu'on est pas à droite
-				if (state==1) {
-					confirmRight();
-				} else {
-					shiftRight();
-				}
-			}
-		} else {
+		if (animGo) {
 			go(delta);
+		} else {
+			if (animGetOut) {
+				getOut(delta);
+			} else {
+				if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et pas droite
+					if (state==-1) {
+						confirmLeft();
+					} else {
+						shiftLeft();
+					}
+				}
+				if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et pas gauche
+					if (state==1) {
+						confirmRight();
+					} else {
+						shiftRight();
+					}
+				}
+			}
 		}
 	}
 
@@ -94,18 +104,23 @@ public class Card {
 	
 	private void shiftRight() { //on décale la carte à droite
 		state += 1;
+		decalage = w.getWidth()/10;
 		initGo(x,x+decalage);
 	}
 	
 	private void shiftLeft() { // on décale la carte à gauche
 		state -= 1;
+		decalage = w.getWidth()/10;
 		initGo(x,x-decalage);
 	}
 	
+	//initGo et go : pour les etats -1, 0 et 1
+	
 	public void initGo(int dep, int fin) {
+		tmax = 400;
 		speed = 2*(fin-dep)/tmax;
 		acc = -speed/tmax;
-		anim = true;
+		animGo = true;
 		speedPos = (speed >= 0);
 		goal = fin;
 	}
@@ -116,16 +131,42 @@ public class Card {
 			speed += d*acc;
 		} else {
 			x=goal;
-			anim = false;
+			animGo = false;
+		}
+		
+	}
+	
+	//initGetOut et getOut :pour confirmer un choix
+	
+	public void initGetOut(int dep, int fin) {
+		tmax = 500;
+		speed = 2*(fin-dep)/tmax;
+		acc = -speed/tmax;
+		animGetOut = true;
+		speedPos = (speed >= 0);
+		goal = fin;
+	}
+	
+	public void getOut(int d) {
+		if (speedPos == (speed>0) && y*(speedPos ? 1 : -1) < goal*(speedPos ? 1 : -1)) {
+			y+=d*speed;
+			speed += d*acc;
+		} else {
+			y=goal;
+			animGetOut = false;
 		}
 		
 	}
 	
 	public void confirmLeft() {
-		
+		state -= 1;
+		decalage = w.getHeight()/2;
+		initGetOut(y,y+decalage);
 	}
 	
 	public void confirmRight() {
-		
+		state += 1;
+		decalage = w.getHeight()/2;
+		initGetOut(y,y+decalage);
 	}
 }
