@@ -14,6 +14,14 @@ import telekingdom.World;
 public class Card {
 	//template de la carte
 	private CardTemplate cardTemplate;
+	
+	private boolean anim;
+	
+	private double speed;
+	private boolean speedPos;
+	private double acc;
+	private int goal;
+	private float tmax;
 
 	//dimensions
 	private int x;
@@ -36,6 +44,9 @@ public class Card {
 		effet = new ArrayList<Integer>();
 		effet.add(-20);
 		effet.add(20);
+		
+		anim = false;
+		tmax = 200;
 
 		length = 300;
 		x = world.getWidth()/2 - length/2;
@@ -53,11 +64,15 @@ public class Card {
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
-		if (input.isKeyPressed(Input.KEY_LEFT) && state != -1) { //si on appuie sur gauche et qu'on est pas à gauche
-			shiftLeft();
-		}
-		if (input.isKeyPressed(Input.KEY_RIGHT) && state != 1) { //si on appuie sur droite et qu'on est pas à droite
-			shiftRight();
+		if (!anim) {
+			if (input.isKeyPressed(Input.KEY_LEFT) && state != -1) { //si on appuie sur gauche et qu'on est pas à gauche
+				shiftLeft();
+			}
+			if (input.isKeyPressed(Input.KEY_RIGHT) && state != 1 && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et qu'on est pas à droite
+				shiftRight();
+			}
+		} else {
+			go(delta);
 		}
 	}
 
@@ -66,16 +81,34 @@ public class Card {
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
 	}
 
-
-
+	
 	private void shiftRight() { //on décale la carte à droite
 		state += 1;
-		x += 100;
+		initGo(x,x+100);
 	}
-
+	
 	private void shiftLeft() { // on décale la carte à gauche
 		state -= 1;
-		x-=100;
+		initGo(x,x-100);
+	}
+	
+	public void initGo(int dep, int fin) {
+		speed = 2*(fin-dep)/tmax;
+		acc = -speed/tmax;
+		anim = true;
+		speedPos = (speed >= 0);
+		goal = fin;
+	}
+	
+	public void go(int d) {
+		if (speedPos == (speed>0) && x*(speedPos ? 1 : -1) < goal*(speedPos ? 1 : -1)) {
+			x+=d*speed;
+			speed += d*acc;
+		} else {
+			x=goal;
+			anim = false;
+		}
+		
 	}
 
 }
