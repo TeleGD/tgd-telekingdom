@@ -122,4 +122,8 @@ public class Jauge {
 		if(valeur>100) valeur = 100;
 		else if(valeur<0) valeur = 0;
 	}
+	
+	public void init() {
+		this.valeur = 50;
+	}
 }

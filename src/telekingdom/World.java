@@ -65,6 +65,7 @@ public class World extends AppWorld {
 	@Override
 	public void play (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée une unique fois au lancement du jeu */
+		player.init();
 		music.loop (1, .3f);
 	}
 
@@ -122,5 +123,4 @@ public class World extends AppWorld {
 			appGame.enterState (AppGame.PAGES_DEFEAT, new FadeOutTransition (), new FadeInTransition ());
 		}
 	}
-
 }

@@ -180,18 +180,16 @@ public class Card {
 	}
 
 	public void confirmLeft() {
-		state -= 1;
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
 	public void confirmRight() {
-		state += 1;
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
-
-	public void initGetIn(int dep, int fin) {
+	
+	public void initGetIn(int dep, int fin, int max) {
 		tmax = 700;
-		speed = 2*(fin-dep)/tmax;
+		speed = 2*(max-dep)/tmax;
 		acc = -speed/tmax;
 		animGetIn = true;
 		speedPos = (speed >= 0);
@@ -199,7 +197,7 @@ public class Card {
 	}
 
 	public void getIn(int d) {
-		if (speedPos == (speed>0) && y*(speedPos ? 1 : -1) < goal*(speedPos ? 1 : -1)) {
+		if (speed>0 || y>goal) {
 			y+=d*speed;
 			speed += d*acc;
 		} else {
@@ -211,6 +209,6 @@ public class Card {
 
 	public void setPiocheeTrue() {
 		piochee = true;
-		initGetIn(y,(int) (312*w.getHeight())/720);
+		initGetIn(y,(int) (312*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);
 	}
 }
