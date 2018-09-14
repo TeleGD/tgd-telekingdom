@@ -41,7 +41,7 @@ public class Request {
 		
 		/* Calcul de la hauteur totale
 		 */
-		totalHeight=(int) (1.25*height*length);
+		totalHeight=(int) (1.1*height*length);
 		
 		x = (int) w.getWidth()/2;
 		y = new float[length];
@@ -71,7 +71,7 @@ public class Request {
 			}
 			
 			
-			y[i] = 121*w.getHeight()/720f + topVoid + height*1.25f*i;
+			y[i] = 121*w.getHeight()/720f + topVoid + height*1.1f*i;
 			
 		}
 		
@@ -80,8 +80,9 @@ public class Request {
 	
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		context.setColor(Color.black);
+		context.setFont(World.Font);
 		for (int i=0 ; i<lines.length ; i++) {
-			context.drawString(lines[i], x-width[i]/2, y[i]);
+			context.drawString(lines[i], x-(width[i]/2), y[i]);
 		}
 
 	}

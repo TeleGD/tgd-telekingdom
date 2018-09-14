@@ -1,6 +1,6 @@
 [
 	{
-		"request": "Le dépouillement des votes touche presque à sa fin.\nRien n'est encore gagné pour vous qui détournez avec inquiétude votre regard du tableau\noù s'allongent interminablement deux rangées de traits verticaux que plus personne ne parvient à comptabiliser.\nA la recherche d'un soutien psychologique, vous posez finalement vos yeux sur la fenêtre où se reflète Nestor,\ncandidat à la direction de TeleKingdom. C'est bien votre image que vous contemplez,\n mais celle-ci vous donne l'impression indescriptible de vous remettre en question :\nêtes-vous prêt à diriger cette école ?",
+		"request": "Le dépouillement des votes touche presque\nà sa fin.\nRien n'est encore gagné pour vous\nqui détournez avec inquiétude votre regard du tableau\noù s'allongent interminablement deux rangées de\ntraits verticaux que plus personne ne parvient à comptabiliser.\nA la recherche d'un soutien psychologique,\nvous posez finalement vos yeux sur la fenêtre où se reflète Nestor,\ncandidat à la direction de TeleKingdom.\nC'est bien votre image que vous contemplez,\nmais celle-ci vous donne l'impression indescriptible\nde vous remettre en question :\nêtes-vous prêt à diriger cette école ?",
 		"effect" : [[0, -2], [0, 1]]
 	},
 	{
