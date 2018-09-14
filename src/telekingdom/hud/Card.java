@@ -70,10 +70,10 @@ public class Card {
 		System.out.println (this.cardTemplate.getRequest ());
 		System.out.println (this.cardTemplate.getResponse (0));
 		System.out.println (this.cardTemplate.getResponse (1));
-		System.out.println (this.cardTemplate.getEffect (0, 0));
-		System.out.println (this.cardTemplate.getEffect (0, 1));
-		System.out.println (this.cardTemplate.getEffect (1, 0));
-		System.out.println (this.cardTemplate.getEffect (1, 1));
+		System.out.println (this.cardTemplate.getEffect (0) [0]);
+		System.out.println (this.cardTemplate.getEffect (0) [1]);
+		System.out.println (this.cardTemplate.getEffect (1) [0]);
+		System.out.println (this.cardTemplate.getEffect (1) [1]);
 		System.out.println (this.type);
 		
 		this.request = new Request(this.cardTemplate.getRequest(),world);
@@ -175,6 +175,7 @@ public class Card {
 		} else {
 			y=goal;
 			animGetOut = false;
+			w.getPlayer().addNextCards();
 		}
 
 	}
@@ -210,5 +211,13 @@ public class Card {
 	public void setPiocheeTrue() {
 		piochee = true;
 		initGetIn(y,(int) (312*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public CardTemplate getCardTemplate() {
+		return cardTemplate;
 	}
 }

@@ -8,10 +8,10 @@ public class CardParams {
 	private int type;
 
 	public CardParams (CardTemplate cardTemplate, int type, int zone, int quantity) {
-		this.cardTemplate = cardTemplate;
-		this.type = type;
-		this.zone = zone;
-		this.quantity = quantity;
+		this.cardTemplate = cardTemplate; // Le modèle de carte
+		this.type = type; // Le type de carte
+		this.zone = zone; // le pourcentage donnant la taille de la zone de la pioche où insérer les cartes
+		this.quantity = quantity; // le nombre de cartes à insérer
 	}
 
 	public CardTemplate getCardTemplate () {

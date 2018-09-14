@@ -10,6 +10,7 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import app.AppInput;
 import telekingdom.hud.Card;
+import telekingdom.hud.CardParams;
 import telekingdom.hud.CardTemplate;
 import telekingdom.hud.Jauge;
 
@@ -78,6 +79,21 @@ public class Player{
 	
 	public Boolean isDead() {
 		return dead;
+	}
+	
+	public void addNextCards() {
+		//TODO : Ajouter les prochaines cartes (grâce au choix "state" fait à la carte active)
+//		CardParams[] nextCards = activeCard.getCardTemplate().getNext(); //TODO : à décommenter après le commit changeant la signature de getNext
+		CardParams[] nextCards = new CardParams[0];
+		
+		Card cardToAdd;
+		for (int i = 0 ; i < nextCards.length ; i++) {	// Parcours des différentes cartes à ajouter
+			for (int j = 0 ; j < nextCards[i].getQuantity() ; j ++) {	// Création du nombre de carte du même template
+				cardToAdd = new Card(world, nextCards[i].getCardTemplate(), nextCards[i].getType());
+				deck.add(cardToAdd);	//TODO : Ajouter la carte à une place aléatoire en fonction de son type
+			}
+		}
+		drawCard();
 	}
 
 	public void drawCard() {

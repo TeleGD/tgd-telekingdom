@@ -123,4 +123,8 @@ public class World extends AppWorld {
 			appGame.enterState (AppGame.PAGES_DEFEAT, new FadeOutTransition (), new FadeInTransition ());
 		}
 	}
+
+	public Player getPlayer() {
+		return player;
+	}
 }
