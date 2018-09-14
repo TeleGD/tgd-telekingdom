@@ -36,6 +36,7 @@ public class Card {
 
 	//etat de la carte : 0 au milieu, 1 à droite et -1 à gauche
 	private int state;
+	private boolean piochee;
 
 	//a recuperer dans la base des cartes
 	private List<Integer> effet;
@@ -52,13 +53,14 @@ public class Card {
 		effet.add(-20);
 		effet.add(20);
 		
+		piochee = false;
 		animGo = false;
 		animGetOut = false;
 		animGetIn = false;
 		
-		length = 300;
+		length = (int) (0.22*world.getWidth());
 		x = world.getWidth()/2 - length/2;
-		y = world.getHeight()/2;
+		y = -length;
 		System.out.println (this.cardTemplate.getType ());
 		System.out.println (this.cardTemplate.getCharacter ().getName ());
 		System.out.println (this.cardTemplate.getRequest ());
@@ -68,28 +70,35 @@ public class Card {
 		System.out.println (this.cardTemplate.getEffect (0, 1));
 		System.out.println (this.cardTemplate.getEffect (1, 0));
 		System.out.println (this.cardTemplate.getEffect (1, 1));
+		
+		//test
+		//setPiocheeTrue();
 	}
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
-		if (animGo) {
-			go(delta);
+		if(animGetIn) {
+			getIn(delta);
 		} else {
-			if (animGetOut) {
-				getOut(delta);
+			if (animGo) {
+				go(delta);
 			} else {
-				if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et pas droite
-					if (state==-1) {
-						confirmLeft();
-					} else {
-						shiftLeft();
+				if (animGetOut) {
+					getOut(delta);
+				} else {
+					if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et pas droite
+						if (state==-1) {
+							confirmLeft();
+						} else {
+							shiftLeft();
+						}
 					}
-				}
-				if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et pas gauche
-					if (state==1) {
-						confirmRight();
-					} else {
-						shiftRight();
+					if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et pas gauche
+						if (state==1) {
+							confirmRight();
+						} else {
+							shiftRight();
+						}
 					}
 				}
 			}
@@ -104,13 +113,13 @@ public class Card {
 	
 	private void shiftRight() { //on décale la carte à droite
 		state += 1;
-		decalage = w.getWidth()/10;
+		decalage = w.getWidth()/8;
 		initGo(x,x+decalage);
 	}
 	
 	private void shiftLeft() { // on décale la carte à gauche
 		state -= 1;
-		decalage = w.getWidth()/10;
+		decalage = w.getWidth()/8;
 		initGo(x,x-decalage);
 	}
 	
@@ -168,5 +177,30 @@ public class Card {
 		state += 1;
 		decalage = w.getHeight()/2;
 		initGetOut(y,y+decalage);
+	}
+	
+	public void initGetIn(int dep, int fin) {
+		tmax = 700;
+		speed = 2*(fin-dep)/tmax;
+		acc = -speed/tmax;
+		animGetIn = true;
+		speedPos = (speed >= 0);
+		goal = fin;
+	}
+	
+	public void getIn(int d) {
+		if (speedPos == (speed>0) && y*(speedPos ? 1 : -1) < goal*(speedPos ? 1 : -1)) {
+			y+=d*speed;
+			speed += d*acc;
+		} else {
+			y=goal;
+			animGetIn = false;
+		}
+		
+	}
+	
+	public void setPiocheeTrue() {
+		piochee = true;
+		initGetIn(y,w.getHeight()/2);
 	}
 }
