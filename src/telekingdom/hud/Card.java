@@ -17,6 +17,7 @@ public class Card {
 
 	//template de la carte
 	private CardTemplate cardTemplate;
+	private int type;
 
 	private boolean animGo;
 	private boolean animGetOut;
@@ -42,8 +43,9 @@ public class Card {
 	private List<Integer> effet;
 
 
-	public Card (World world, CardTemplate cardTemplate) {
+	public Card (World world, CardTemplate cardTemplate, int type) {
 		this.cardTemplate = cardTemplate;
+		this.type = type;
 
 		w = world;
 
@@ -52,18 +54,17 @@ public class Card {
 		effet = new ArrayList<Integer>();
 		effet.add(-20);
 		effet.add(20);
-		
+
 		piochee = false;
 
 		animGo = false;
 		animGetOut = false;
 		animGetIn = false;
-		
+
 		length = (int) (0.22*world.getWidth());
-		
+
 		x = world.getWidth()/2 - length/2;
 		y = -length;
-		System.out.println (this.cardTemplate.getType ());
 		System.out.println (this.cardTemplate.getCharacter ().getName ());
 		System.out.println (this.cardTemplate.getRequest ());
 		System.out.println (this.cardTemplate.getResponse (0));
@@ -72,7 +73,8 @@ public class Card {
 		System.out.println (this.cardTemplate.getEffect (0, 1));
 		System.out.println (this.cardTemplate.getEffect (1, 0));
 		System.out.println (this.cardTemplate.getEffect (1, 1));
-		
+		System.out.println (this.type);
+
 		//test
 		//setPiocheeTrue();
 	}
@@ -80,7 +82,7 @@ public class Card {
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
 		if (piochee) {
-			
+
 			if(animGetIn) {
 				getIn(delta);
 			} else {
@@ -107,9 +109,9 @@ public class Card {
 					}
 				}
 			}
-			
+
 		}
-		
+
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -176,16 +178,14 @@ public class Card {
 
 	public void confirmLeft() {
 		state -= 1;
-		decalage = w.getHeight()/2;
-		initGetOut(y,y+decalage);
+		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
 	public void confirmRight() {
 		state += 1;
-		decalage = w.getHeight()/2;
-		initGetOut(y,y+decalage);
+		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
-	
+
 	public void initGetIn(int dep, int fin) {
 		tmax = 700;
 		speed = 2*(fin-dep)/tmax;
@@ -194,7 +194,7 @@ public class Card {
 		speedPos = (speed >= 0);
 		goal = fin;
 	}
-	
+
 	public void getIn(int d) {
 		if (speedPos == (speed>0) && y*(speedPos ? 1 : -1) < goal*(speedPos ? 1 : -1)) {
 			y+=d*speed;
@@ -203,11 +203,11 @@ public class Card {
 			y=goal;
 			animGetIn = false;
 		}
-		
+
 	}
-	
+
 	public void setPiocheeTrue() {
 		piochee = true;
-		initGetIn(y,(int) (0.65*w.getHeight()));
+		initGetIn(y,(int) (312*w.getHeight())/720);
 	}
 }
