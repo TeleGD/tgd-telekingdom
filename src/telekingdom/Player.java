@@ -44,6 +44,7 @@ public class Player{
 	}
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
+		
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -67,6 +68,10 @@ public class Player{
 
 	public Card getActiveCard() {
 		return activeCard;
+	}
+	
+	public void drawCard() {
+		activeCard = deck.remove(0); //Pioche la carte du haut du deck		
 	}
 
 }

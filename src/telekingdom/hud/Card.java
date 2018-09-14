@@ -178,14 +178,12 @@ public class Card {
 
 	public void confirmLeft() {
 		state -= 1;
-		decalage = w.getHeight()/2;
-		initGetOut(y,y+decalage);
+		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
 	public void confirmRight() {
 		state += 1;
-		decalage = w.getHeight()/2;
-		initGetOut(y,y+decalage);
+		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
 	public void initGetIn(int dep, int fin) {
@@ -210,6 +208,6 @@ public class Card {
 
 	public void setPiocheeTrue() {
 		piochee = true;
-		initGetIn(y,(int) (0.65*w.getHeight()));
+		initGetIn(y,(int) (312*w.getHeight())/720);
 	}
 }
