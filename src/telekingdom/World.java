@@ -36,9 +36,6 @@ public class World extends AppWorld {
 
 	private static Music music;
 
-	private ArrayList<Card> deck;
-	private int nbCards;
-
 	public World (int ID) {
 		super (ID);
 	}

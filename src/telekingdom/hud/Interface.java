@@ -21,8 +21,6 @@ public class Interface {
 	private List<Jauge> jauges;
 	private Player player;
 
-	private Card card;
-
 	private Color boxColor;
 	private Color textColor;
 
@@ -41,7 +39,6 @@ public class Interface {
 		this.player = player;
 		this.jauges = player.getJauges();
 
-		card = new Card (world, CardTemplate.getCardTemplate (0));
 
 		boxColor = new Color(72,56,56);
 		textColor = new Color(189,176,130);
@@ -61,7 +58,7 @@ public class Interface {
 			}
 		}
 
-		card.update(container, game, delta);
+		player.getActiveCard().update(container, game, delta);
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -81,7 +78,7 @@ public class Interface {
 		}
 
 		//on draw la carte
-		card.render(container, game, context);
+		player.getActiveCard().render(container, game, context);
 
 		//on remet l'ancienne couleur
 		context.setColor(previousColor);
