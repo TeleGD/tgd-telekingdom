@@ -88,7 +88,7 @@ public class Jauge {
 		context.drawImage(fullSprite, x, y+Math.abs((float)valeur-100)/100*height, x+width, y+height, 0, Math.abs((float)valeur-100)/100*(emptySprite.getHeight()-1), emptySprite.getWidth()-1, emptySprite.getHeight()-1);
 
 		//puis on draw le nom de la jauge
-		context.drawString(name, x+width/2-World.Font.getWidth(name)/2, y+height+2/1280f*world.getWidth());
+		context.drawString(name, x+width/2-World.FontJauges.getWidth(name)/2, y+height+2/1280f*world.getWidth());
 	}
 
 
@@ -121,5 +121,9 @@ public class Jauge {
 		this.valeur += v;
 		if(valeur>100) valeur = 100;
 		else if(valeur<0) valeur = 0;
+	}
+	
+	public void init() {
+		this.valeur = 50;
 	}
 }

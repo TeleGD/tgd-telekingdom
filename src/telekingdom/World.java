@@ -15,6 +15,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import app.AppGame;
 import app.AppInput;
+import app.AppPage;
 import app.AppWorld;
 import app.utils.FontUtils;
 import pages.Defeat;
@@ -23,7 +24,8 @@ import telekingdom.hud.Interface;
 
 public class World extends AppWorld {
 
-	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 18, true);
+	public static final Font FontJauges = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 18, true);
+	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 12, true);
 	public final static String GAME_FOLDER_NAME="telekingdom";
 	public final static String DIRECTORY_MUSICS="musics"+File.separator;
 
@@ -63,6 +65,7 @@ public class World extends AppWorld {
 	@Override
 	public void play (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée une unique fois au lancement du jeu */
+		player.init();
 		music.loop (1, .3f);
 	}
 
@@ -85,18 +88,10 @@ public class World extends AppWorld {
 
 		interf.update(container, game, delta);
 		//interf.addToArgent(-1); //debug
-		//interf.addToReputation(1); //debug
+		//player.addToReputation(1); //debug
 
 		AppInput appInput = (AppInput) container.getInput ();
-		AppGame appGame = (AppGame) game;
-		if (state == 0) { // Si le roi est mort
-			//AppInput appInput = (AppInput) container.getInput ();
-			//AppGame appGame = (AppGame) game;
-			//if (appInput.isKeyPressed (AppInput.KEY_ESCAPE)) {
-			appGame.enterState (AppGame.PAGES_DEFEAT, new FadeOutTransition (), new FadeInTransition ());
-			//}
-		}
-
+		
 	}
 
 	@Override
@@ -114,5 +109,18 @@ public class World extends AppWorld {
 	public int getHeight() {
 		return height;
 	}
-
+	
+	public void endGame(StateBasedGame game, String deathMessage) {
+		this.state = 0;
+		
+		AppGame appGame = (AppGame) game;
+		
+		if (state == 0) { // Si le roi est mort
+			//AppInput appInput = (AppInput) container.getInput ();
+			//AppGame appGame = (AppGame) game;
+			//if (appInput.isKeyPressed (AppInput.KEY_ESCAPE)) {
+			((AppPage) appGame.getState(AppGame.PAGES_DEFEAT)).setSubtitle(deathMessage);
+			appGame.enterState (AppGame.PAGES_DEFEAT, new FadeOutTransition (), new FadeInTransition ());
+		}
+	}
 }
