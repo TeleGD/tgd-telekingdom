@@ -21,7 +21,7 @@ public class Player{
 
 	public Player(World world) {
 
-//		Initialisation des jauges : 
+//		Initialisation des jauges :
 		jauges = new ArrayList<Jauge>();	// L'ArrayList des jauges, sera passé à l'interface pour l'affichage
 
 		/*Création et ajout des différentes jauges */
@@ -33,12 +33,12 @@ public class Player{
 		for (int i=0; i<n; i++) {
 			jauges.get(i).setX(world.getWidth()/2 - jauges.get(i).getWidth()*n/2 - 25/1280f*world.getWidth()*(n-1)/2 + i*(jauges.get(i).getWidth()+25/1280f*world.getWidth()));
 		}
-		
+
 //		Initialisation du deck :
 		deck = new ArrayList<Card>();	// Création du deck des cartes
-		activeCard = new Card (world, CardTemplate.getCardTemplate (0));
+		activeCard = new Card (world, CardTemplate.getCardTemplate (0), 0);
 		deck.add(activeCard);	// Ajout de la première carte
-		
+
 		activeCard.setPiocheeTrue(); // On pioche la première carte
 		//TODO : Mettre cet appel dans une gestion du déroulement du jeu
 	}
