@@ -79,32 +79,37 @@ public class Card {
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
-		if(animGetIn) {
-			getIn(delta);
-		} else {
-			if (animGo) {
-				go(delta);
+		if (piochee) {
+			
+			if(animGetIn) {
+				getIn(delta);
 			} else {
-				if (animGetOut) {
-					getOut(delta);
+				if (animGo) {
+					go(delta);
 				} else {
-					if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et pas droite
-						if (state==-1) {
-							confirmLeft();
-						} else {
-							shiftLeft();
+					if (animGetOut) {
+						getOut(delta);
+					} else {
+						if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et pas droite
+							if (state==-1) {
+								confirmLeft();
+							} else {
+								shiftLeft();
+							}
 						}
-					}
-					if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et pas gauche
-						if (state==1) {
-							confirmRight();
-						} else {
-							shiftRight();
+						if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et pas gauche
+							if (state==1) {
+								confirmRight();
+							} else {
+								shiftRight();
+							}
 						}
 					}
 				}
 			}
+			
 		}
+		
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -203,6 +208,6 @@ public class Card {
 	
 	public void setPiocheeTrue() {
 		piochee = true;
-		initGetIn(y,w.getHeight()/2);
+		initGetIn(y,(int) (0.65*w.getHeight()));
 	}
 }
