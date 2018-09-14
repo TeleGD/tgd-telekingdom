@@ -15,6 +15,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import app.AppGame;
 import app.AppInput;
+import app.AppPage;
 import app.AppWorld;
 import app.utils.FontUtils;
 import pages.Defeat;
@@ -85,18 +86,10 @@ public class World extends AppWorld {
 
 		interf.update(container, game, delta);
 		//interf.addToArgent(-1); //debug
-		//interf.addToReputation(1); //debug
+		//player.addToReputation(1); //debug
 
 		AppInput appInput = (AppInput) container.getInput ();
-		AppGame appGame = (AppGame) game;
-		if (state == 0) { // Si le roi est mort
-			//AppInput appInput = (AppInput) container.getInput ();
-			//AppGame appGame = (AppGame) game;
-			//if (appInput.isKeyPressed (AppInput.KEY_ESCAPE)) {
-			appGame.enterState (AppGame.PAGES_DEFEAT, new FadeOutTransition (), new FadeInTransition ());
-			//}
-		}
-
+		
 	}
 
 	@Override
@@ -113,6 +106,20 @@ public class World extends AppWorld {
 
 	public int getHeight() {
 		return height;
+	}
+	
+	public void endGame(StateBasedGame game, String deathMessage) {
+		this.state = 0;
+		
+		AppGame appGame = (AppGame) game;
+		
+		if (state == 0) { // Si le roi est mort
+			//AppInput appInput = (AppInput) container.getInput ();
+			//AppGame appGame = (AppGame) game;
+			//if (appInput.isKeyPressed (AppInput.KEY_ESCAPE)) {
+			((AppPage) appGame.getState(AppGame.PAGES_DEFEAT)).setSubtitle(deathMessage);
+			appGame.enterState (AppGame.PAGES_DEFEAT, new FadeOutTransition (), new FadeInTransition ());
+		}
 	}
 
 }

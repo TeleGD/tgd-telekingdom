@@ -18,15 +18,21 @@ public class Player{
 	private List<Jauge> jauges;
 	private ArrayList<Card> deck;
 	private Card activeCard;	// Carte tirée et affiché
+	
+	private Boolean dead;
+	
+	private World world;
 
 	public Player(World world) {
+		this.world = world;
 
 //		Initialisation des jauges : 
 		jauges = new ArrayList<Jauge>();	// L'ArrayList des jauges, sera passé à l'interface pour l'affichage
+		dead = false;
 
 		/*Création et ajout des différentes jauges */
-		jauges.add(new Jauge("Argent", "a", "b", world,this));
-		jauges.add(new Jauge("Reputation", "c ", "d", world,this));
+		jauges.add(new Jauge("Argent", "Trop d'argent", "Plus d'argent", world,this));
+		jauges.add(new Jauge("Reputation", "Trop de réputation", "Plus de réputation", world,this));
 
 		//on place directement les jauges centrees et separees de 25px
 		int n = jauges.size();
@@ -44,6 +50,12 @@ public class Player{
 	}
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
+		for (Jauge j : jauges) {
+			if (j.isEmptyOrFull()) {
+				dead = true;
+				world.endGame(game, j.getEndingMessage());
+			}
+		}
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -68,5 +80,8 @@ public class Player{
 	public Card getActiveCard() {
 		return activeCard;
 	}
-
+	
+	public Boolean isDead() {
+		return dead;
+	}
 }
