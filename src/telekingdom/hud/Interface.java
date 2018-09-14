@@ -15,7 +15,7 @@ import telekingdom.World;
 
 public class Interface {
 	public World world;
-	/* Commentaire modifié*/
+
 	private static Image background;
 
 	private List<Jauge> jauges;
@@ -43,22 +43,14 @@ public class Interface {
 		boxColor = new Color(72,56,56);
 		textColor = new Color(189,176,130);
 	}
-//
-//	private void addJauge(Jauge j) {
-//		jauges.add(j);
-//
-//		
-//	}
+	
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
-		for (Jauge j : jauges) {
-			if (j.isEmptyOrFull()) {
-				//World.endGame(j.getEndingMessage());
-				//System.out.println(j.getEndingMessage()); //debug
-			}
+		if(!player.isDead()) {
+			player.update(container, game, delta);
+			player.getActiveCard().update(container, game, delta);
+			
 		}
-
-		player.getActiveCard().update(container, game, delta);
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -69,7 +61,7 @@ public class Interface {
 
 		//on draw la box en haut de l'ecran
 		context.setColor(boxColor);
-		context.fillRect(world.getWidth()/3, 0, world.getWidth()/3, 110/1280f*world.getWidth());
+		context.fillRect(world.getWidth()/3, 0, world.getWidth()/3, 110/720f*world.getHeight());
 
 		//on draw les jauges et leurs noms dans la box
 		context.setColor(textColor);

@@ -17,6 +17,7 @@ public class Card {
 
 	//template de la carte
 	private CardTemplate cardTemplate;
+	private int type;
 
 	private boolean animGo;
 	private boolean animGetOut;
@@ -42,8 +43,9 @@ public class Card {
 	private List<Integer> effet;
 
 
-	public Card (World world, CardTemplate cardTemplate) {
+	public Card (World world, CardTemplate cardTemplate, int type) {
 		this.cardTemplate = cardTemplate;
+		this.type = type;
 
 		w = world;
 
@@ -52,18 +54,17 @@ public class Card {
 		effet = new ArrayList<Integer>();
 		effet.add(-20);
 		effet.add(20);
-		
+
 		piochee = false;
 
 		animGo = false;
 		animGetOut = false;
 		animGetIn = false;
-		
+
 		length = (int) (0.22*world.getWidth());
-		
+
 		x = world.getWidth()/2 - length/2;
 		y = -length;
-		System.out.println (this.cardTemplate.getType ());
 		System.out.println (this.cardTemplate.getCharacter ().getName ());
 		System.out.println (this.cardTemplate.getRequest ());
 		System.out.println (this.cardTemplate.getResponse (0));
@@ -72,7 +73,8 @@ public class Card {
 		System.out.println (this.cardTemplate.getEffect (0, 1));
 		System.out.println (this.cardTemplate.getEffect (1, 0));
 		System.out.println (this.cardTemplate.getEffect (1, 1));
-		
+		System.out.println (this.type);
+
 		//test
 		//setPiocheeTrue();
 	}
@@ -80,7 +82,7 @@ public class Card {
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
 		if (piochee) {
-			
+
 			if(animGetIn) {
 				getIn(delta);
 			} else {
@@ -107,9 +109,9 @@ public class Card {
 					}
 				}
 			}
-			
+
 		}
-		
+
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -190,7 +192,7 @@ public class Card {
 		speedPos = (speed >= 0);
 		goal = fin;
 	}
-	
+
 	public void getIn(int d) {
 		if (speed>0 || y>goal) {
 			y+=d*speed;
@@ -199,9 +201,9 @@ public class Card {
 			y=goal;
 			animGetIn = false;
 		}
-		
+
 	}
-	
+
 	public void setPiocheeTrue() {
 		piochee = true;
 		initGetIn(y,(int) (312*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);

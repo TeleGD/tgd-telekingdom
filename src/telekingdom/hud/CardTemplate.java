@@ -38,7 +38,7 @@ public class CardTemplate {
 						} catch (JSONException error) {}
 						try {
 							JSONArray response = object.getJSONArray ("response");
-							for (int j = 0, l = response.length (); j < l && j < 2; j++) {
+							for (int j = 0, lj = response.length (); j < lj && j < 2; j++) {
 								try {
 									cardTemplate.response [j] = response.getString (j);
 								} catch (JSONException error) {}
@@ -68,14 +68,31 @@ public class CardTemplate {
 							for (int j = 0, lj = next.length (); j < lj && j < 2; j++) {
 								try {
 									JSONArray option = next.getJSONArray (j);
-									List <CardTemplate> cardTemplates = new ArrayList <CardTemplate> ();
+									List <CardParams> cardParams = new ArrayList <CardParams> ();
 									for (int k = 0, lk = option.length (); k < lk; k++) {
+										CardTemplate nextCardTemplate = CardTemplate.getCardTemplate (0);
+										int type = 0;
+										int zone = 0;
+										int quantity = 1;
 										try {
-											cardTemplates.add (CardTemplate.getCardTemplate (option.getInt (k)));
+											JSONArray params = option.getJSONArray (k);
+											try {
+												nextCardTemplate = CardTemplate.getCardTemplate (params.getInt (0));
+											} catch (JSONException error) {}
+											try {
+												type = params.getInt (1);
+											} catch (JSONException error) {}
+											try {
+												zone = params.getInt (2);
+											} catch (JSONException error) {}
+											try {
+												quantity = params.getInt (3);
+											} catch (JSONException error) {}
 										} catch (JSONException error) {}
+										cardParams.add (new CardParams (nextCardTemplate, type, zone, quantity));
 									}
-									if (cardTemplates.size () != 0) {
-										cardTemplate.next [j] = (CardTemplate []) cardTemplates.toArray ();
+									if (cardParams.size () != 0) {
+										cardTemplate.next [j] = (CardParams []) cardParams.toArray ();
 									}
 								} catch (JSONException error) {}
 							}
@@ -93,16 +110,14 @@ public class CardTemplate {
 		return CardTemplate.instances.get (ID >= 0 && ID < CardTemplate.instances.size () ? ID : 0);
 	}
 
-	private int type;
 	private Character character;
 	private String request;
 	private String [] response;
 	private int [] [] effect;
-	private CardTemplate [] [] next;
+	private CardParams [] [] next;
 
 	public CardTemplate () {
 		CardTemplate.instances.add (this);
-		this.type = 0;
 		this.character = Character.getCharacter (0);
 		this.request = "Hmm...";
 		this.response = new String [] {
@@ -119,18 +134,14 @@ public class CardTemplate {
 				0
 			}
 		};
-		this.next = new CardTemplate [] [] {
-			new CardTemplate [] {
-				CardTemplate.getCardTemplate (0)
+		this.next = new CardParams [] [] {
+			new CardParams [] {
+				new CardParams (CardTemplate.getCardTemplate (0), 0, 0, 1)
 			},
-			new CardTemplate [] {
-				CardTemplate.getCardTemplate (0)
+			new CardParams [] {
+				new CardParams (CardTemplate.getCardTemplate (0), 0, 0, 1)
 			}
 		};
-	}
-
-	public int getType () {
-		return this.type;
 	}
 
 	public Character getCharacter () {
@@ -149,7 +160,7 @@ public class CardTemplate {
 		return this.effect [option] [gauge];
 	}
 
-	public CardTemplate getNext (int option, int index) {
+	public CardParams getNext (int option, int index) {
 		return this.next [option] [index];
 	}
 
