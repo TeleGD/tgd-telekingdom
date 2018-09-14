@@ -70,10 +70,10 @@ public class Card {
 		System.out.println (this.cardTemplate.getRequest ());
 		System.out.println (this.cardTemplate.getResponse (0));
 		System.out.println (this.cardTemplate.getResponse (1));
-		System.out.println (this.cardTemplate.getEffect (0, 0));
-		System.out.println (this.cardTemplate.getEffect (0, 1));
-		System.out.println (this.cardTemplate.getEffect (1, 0));
-		System.out.println (this.cardTemplate.getEffect (1, 1));
+		System.out.println (this.cardTemplate.getEffect (0) [0]);
+		System.out.println (this.cardTemplate.getEffect (0) [1]);
+		System.out.println (this.cardTemplate.getEffect (1) [0]);
+		System.out.println (this.cardTemplate.getEffect (1) [1]);
 		System.out.println (this.type);
 		
 		this.request = new Request(this.cardTemplate.getRequest(),world);

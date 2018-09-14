@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,28 +119,28 @@ public class CardTemplate {
 
 	public CardTemplate () {
 		CardTemplate.instances.add (this);
-		this.character = Character.getCharacter (0);
-		this.request = "Hmm...";
+		this.character = Character.getCharacter (0); // le personnage effectuant la requête
+		this.request = "Hmm..."; // la requête en question
 		this.response = new String [] {
-			"Non",
-			"Oui"
+			"Non", // la réponse négative à la requête
+			"Oui" // la réponse positive à la requête
 		};
 		this.effect = new int [] [] {
 			new int [] {
-				0,
-				0
+				0, // l'effet sur la première jauge en cas de réponse négative
+				0 // l'effet sur la seconde jauge en cas de réponse négative
 			},
 			new int [] {
-				0,
-				0
+				0, // l'effet sur la première jauge en cas de réponse positive
+				0 // l'effet sur la seconde jauge en cas de réponse positive
 			}
 		};
 		this.next = new CardParams [] [] {
 			new CardParams [] {
-				new CardParams (CardTemplate.getCardTemplate (0), 0, 0, 1)
+				new CardParams (CardTemplate.getCardTemplate (0), 0, 0, 1) // les paramètres d'un modèle de carte à ajouter à la pioche en cas de réponse négatives
 			},
 			new CardParams [] {
-				new CardParams (CardTemplate.getCardTemplate (0), 0, 0, 1)
+				new CardParams (CardTemplate.getCardTemplate (0), 0, 0, 1) // les paramètres d'un modèle de carte à ajouter à la pioche en cas de réponse positive
 			}
 		};
 	}
@@ -156,12 +157,12 @@ public class CardTemplate {
 		return this.response [option];
 	}
 
-	public int getEffect (int option, int gauge) {
-		return this.effect [option] [gauge];
+	public int [] getEffect (int option) {
+		return Arrays.copyOf (this.effect [option], this.effect [option].length);
 	}
 
-	public CardParams getNext (int option, int index) {
-		return this.next [option] [index];
+	public CardParams [] getNext (int option, int index) {
+		return Arrays.copyOf (this.next [option], this.next [option].length);
 	}
 
 }
