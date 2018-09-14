@@ -17,7 +17,7 @@ import app.AppGame;
 import app.AppInput;
 import app.AppWorld;
 import app.utils.FontUtils;
-
+import pages.Defeat;
 import telekingdom.hud.Card;
 import telekingdom.hud.Interface;
 
@@ -34,7 +34,10 @@ public class World extends AppWorld {
 	private Interface interf;
 	private Player player;
 
-	private static Music music;
+	private static Music music1;
+	private static Music music2;
+	
+	public static int state = 1;
 
 	private ArrayList<Card> deck;
 	private int nbCards;
@@ -45,7 +48,8 @@ public class World extends AppWorld {
 
 	static {
 		try {
-			music = new Music(DIRECTORY_MUSICS+"main_theme.ogg");
+			music1 = new Music(DIRECTORY_MUSICS+"main_theme.ogg");
+			music2 = new Music(DIRECTORY_MUSICS+"defeat.ogg");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -65,19 +69,19 @@ public class World extends AppWorld {
 	@Override
 	public void play (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée une unique fois au lancement du jeu */
-		music.loop (1, .3f);
+		music1.loop (1, .3f);
 	}
 
 	@Override
 	public void pause (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée lors de la mise en pause du jeu */
-		music.pause ();
+		music1.pause ();
 	}
 
 	@Override
 	public void resume (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée lors de la reprise du jeu */
-		music.resume ();
+		music1.resume ();
 	}
 
 	@Override
@@ -91,12 +95,22 @@ public class World extends AppWorld {
 
 		AppInput appInput = (AppInput) container.getInput ();
 		AppGame appGame = (AppGame) game;
+		if (state == 0) { // Si le roi est mort
+			//AppInput appInput = (AppInput) container.getInput ();
+			//AppGame appGame = (AppGame) game;
+			//if (appInput.isKeyPressed (AppInput.KEY_ESCAPE)) {
+			music2.loop(1, (float) 0.3);
+			appGame.enterState (AppGame.PAGES_DEFEAT, new FadeOutTransition (), new FadeInTransition ());
+			//}
+		}
+
 	}
 
 	@Override
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		/* Méthode exécutée environ 60 fois par seconde */
 		interf.render(container, game, context);
+		
 	}
 
 
