@@ -22,6 +22,7 @@ public class Card {
 	private double acc;
 	private int goal;
 	private float tmax;
+	private int decalage;
 
 	//dimensions
 	private int x;
@@ -46,7 +47,8 @@ public class Card {
 		effet.add(20);
 		
 		anim = false;
-		tmax = 200;
+		tmax = 400;
+		decalage = world.getWidth()/10;
 
 		length = 300;
 		x = world.getWidth()/2 - length/2;
@@ -65,11 +67,19 @@ public class Card {
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
 		if (!anim) {
-			if (input.isKeyPressed(Input.KEY_LEFT) && state != -1) { //si on appuie sur gauche et qu'on est pas à gauche
-				shiftLeft();
+			if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et qu'on est pas à gauche
+				if (state==-1) {
+					confirmLeft();
+				} else {
+					shiftLeft();
+				}
 			}
-			if (input.isKeyPressed(Input.KEY_RIGHT) && state != 1 && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et qu'on est pas à droite
-				shiftRight();
+			if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et qu'on est pas à droite
+				if (state==1) {
+					confirmRight();
+				} else {
+					shiftRight();
+				}
 			}
 		} else {
 			go(delta);
@@ -84,12 +94,12 @@ public class Card {
 	
 	private void shiftRight() { //on décale la carte à droite
 		state += 1;
-		initGo(x,x+100);
+		initGo(x,x+decalage);
 	}
 	
 	private void shiftLeft() { // on décale la carte à gauche
 		state -= 1;
-		initGo(x,x-100);
+		initGo(x,x-decalage);
 	}
 	
 	public void initGo(int dep, int fin) {
@@ -110,5 +120,12 @@ public class Card {
 		}
 		
 	}
-
+	
+	public void confirmLeft() {
+		
+	}
+	
+	public void confirmRight() {
+		
+	}
 }
