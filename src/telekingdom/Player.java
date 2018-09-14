@@ -38,6 +38,9 @@ public class Player{
 		deck = new ArrayList<Card>();	// Création du deck des cartes
 		activeCard = new Card (world, CardTemplate.getCardTemplate (0));
 		deck.add(activeCard);	// Ajout de la première carte
+		
+		activeCard.setPiocheeTrue(); // On pioche la première carte
+		//TODO : Mettre cet appel dans une gestion du déroulement du jeu
 	}
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {

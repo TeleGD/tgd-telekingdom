@@ -17,7 +17,7 @@ import app.AppGame;
 import app.AppInput;
 import app.AppWorld;
 import app.utils.FontUtils;
-
+import pages.Defeat;
 import telekingdom.hud.Card;
 import telekingdom.hud.Interface;
 
@@ -35,6 +35,7 @@ public class World extends AppWorld {
 	private Player player;
 
 	private static Music music;
+	public static int state = 1;
 
 	public World (int ID) {
 		super (ID);
@@ -88,12 +89,21 @@ public class World extends AppWorld {
 
 		AppInput appInput = (AppInput) container.getInput ();
 		AppGame appGame = (AppGame) game;
+		if (state == 0) { // Si le roi est mort
+			//AppInput appInput = (AppInput) container.getInput ();
+			//AppGame appGame = (AppGame) game;
+			//if (appInput.isKeyPressed (AppInput.KEY_ESCAPE)) {
+			appGame.enterState (AppGame.PAGES_DEFEAT, new FadeOutTransition (), new FadeInTransition ());
+			//}
+		}
+
 	}
 
 	@Override
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		/* Méthode exécutée environ 60 fois par seconde */
 		interf.render(container, game, context);
+
 	}
 
 
