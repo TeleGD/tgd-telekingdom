@@ -122,4 +122,8 @@ public class World extends AppWorld {
 		}
 	}
 
+	public Player getPlayer() {
+		return player;
+	}
+
 }

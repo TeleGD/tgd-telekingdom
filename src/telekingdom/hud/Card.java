@@ -172,6 +172,7 @@ public class Card {
 		} else {
 			y=goal;
 			animGetOut = false;
+			w.getPlayer().addNextCards();
 		}
 
 	}
@@ -209,5 +210,13 @@ public class Card {
 	public void setPiocheeTrue() {
 		piochee = true;
 		initGetIn(y,(int) (312*w.getHeight())/720);
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public CardTemplate getCardTemplate() {
+		return cardTemplate;
 	}
 }
