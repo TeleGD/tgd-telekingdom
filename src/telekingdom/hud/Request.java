@@ -1,5 +1,6 @@
 package telekingdom.hud;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
@@ -22,11 +23,10 @@ public class Request {
 	/* Longueur maximale des lignes */
 	private int widthLimit;
 	
-	/* Hauteur maxiamel de la box */
-	private int heightLimit = (int) 170/720;
-	
 	/* Hauteur totale */
 	private int totalHeight;
+	private int heightLimit;
+	
 	
 	public Request(String description, World w) {
 		/* Décomposition de la chaine de caractères en un tableau 
@@ -34,12 +34,17 @@ public class Request {
 		 */
 		lines = description.split("\n");
 		int length = lines.length;
+		System.out.println("l = "+length);
+		
+		/* Hauteur maxiamel de la box */
+		heightLimit = (int) (170*w.getHeight()/720f);
 		
 		/* Calcul de la hauteur totale
 		 */
 		totalHeight=(int) (1.25*height*length);
 		
 		x = (int) w.getWidth()/2;
+		y = new float[length];
 		widthLimit = (int) (280*w.getWidth()/1280);
 		
 		width = new int [length];
@@ -62,11 +67,11 @@ public class Request {
 			 * pour qu'elle ne dépasse pas du cadre
 			 */
 			if (width[i] > widthLimit) {
-				System.out.println("erreur : ligne trop longue ("+description+")");
+				System.out.println("erreur : ligne trop longue ("+lines[i]+")");
 			}
 			
 			
-			y[i] = (121/720f + topVoid + height*1.25f*i);
+			y[i] = 121*w.getHeight()/720f + topVoid + height*1.25f*i;
 			
 		}
 		
@@ -74,6 +79,7 @@ public class Request {
 	}
 	
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
+		context.setColor(Color.black);
 		for (int i=0 ; i<lines.length ; i++) {
 			context.drawString(lines[i], x-width[i]/2, y[i]);
 		}

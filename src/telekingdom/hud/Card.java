@@ -41,7 +41,8 @@ public class Card {
 
 	//a recuperer dans la base des cartes
 	private List<Integer> effet;
-
+	
+	private Request request;
 
 	public Card (World world, CardTemplate cardTemplate, int type) {
 		this.cardTemplate = cardTemplate;
@@ -74,7 +75,9 @@ public class Card {
 		System.out.println (this.cardTemplate.getEffect (1, 0));
 		System.out.println (this.cardTemplate.getEffect (1, 1));
 		System.out.println (this.type);
-
+		
+		this.request = new Request(this.cardTemplate.getRequest(),world);
+		
 		//test
 		//setPiocheeTrue();
 	}
@@ -117,6 +120,7 @@ public class Card {
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		Image image = this.cardTemplate.getCharacter ().getImage ();
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
+		request.render(container, game, context);
 	}
 
 
@@ -151,7 +155,6 @@ public class Card {
 			x=goal;
 			animGo = false;
 		}
-
 	}
 
 	//initGetOut et getOut :pour confirmer un choix
