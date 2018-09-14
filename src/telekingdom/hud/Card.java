@@ -41,7 +41,8 @@ public class Card {
 
 	//a recuperer dans la base des cartes
 	private List<Integer> effet;
-
+	
+	private Request request;
 
 	public Card (World world, CardTemplate cardTemplate, int type) {
 		this.cardTemplate = cardTemplate;
@@ -74,7 +75,9 @@ public class Card {
 		System.out.println (this.cardTemplate.getEffect (1, 0));
 		System.out.println (this.cardTemplate.getEffect (1, 1));
 		System.out.println (this.type);
-
+		
+		this.request = new Request(this.cardTemplate.getRequest(),world);
+		
 		//test
 		//setPiocheeTrue();
 	}
@@ -117,6 +120,7 @@ public class Card {
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		Image image = this.cardTemplate.getCharacter ().getImage ();
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
+		request.render(container, game, context);
 	}
 
 
@@ -151,7 +155,6 @@ public class Card {
 			x=goal;
 			animGo = false;
 		}
-
 	}
 
 	//initGetOut et getOut :pour confirmer un choix
@@ -178,18 +181,16 @@ public class Card {
 	}
 
 	public void confirmLeft() {
-		state -= 1;
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
 	public void confirmRight() {
-		state += 1;
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
-
-	public void initGetIn(int dep, int fin) {
+	
+	public void initGetIn(int dep, int fin, int max) {
 		tmax = 700;
-		speed = 2*(fin-dep)/tmax;
+		speed = 2*(max-dep)/tmax;
 		acc = -speed/tmax;
 		animGetIn = true;
 		speedPos = (speed >= 0);
@@ -197,7 +198,7 @@ public class Card {
 	}
 
 	public void getIn(int d) {
-		if (speedPos == (speed>0) && y*(speedPos ? 1 : -1) < goal*(speedPos ? 1 : -1)) {
+		if (speed>0 || y>goal) {
 			y+=d*speed;
 			speed += d*acc;
 		} else {
@@ -209,7 +210,7 @@ public class Card {
 
 	public void setPiocheeTrue() {
 		piochee = true;
-		initGetIn(y,(int) (312*w.getHeight())/720);
+		initGetIn(y,(int) (312*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);
 	}
 
 	public int getState() {

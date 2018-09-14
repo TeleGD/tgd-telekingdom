@@ -24,7 +24,8 @@ import telekingdom.hud.Interface;
 
 public class World extends AppWorld {
 
-	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 18, true);
+	public static final Font FontJauges = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 18, true);
+	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 12, true);
 	public final static String GAME_FOLDER_NAME="telekingdom";
 	public final static String DIRECTORY_MUSICS="musics"+File.separator;
 
@@ -64,6 +65,7 @@ public class World extends AppWorld {
 	@Override
 	public void play (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée une unique fois au lancement du jeu */
+		player.init();
 		music.loop (1, .3f);
 	}
 
@@ -125,5 +127,4 @@ public class World extends AppWorld {
 	public Player getPlayer() {
 		return player;
 	}
-
 }
