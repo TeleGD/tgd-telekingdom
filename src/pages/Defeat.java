@@ -21,14 +21,14 @@ public class Defeat extends AppMenu {
 
 	private int previousID;
 	private int nextID;
-	
+
 	public final static String DIRECTORY_MUSICS="musics"+File.separator;
 
-	private static Music music2;
-	
+	private static Music music;
+
 	static {
 		try {
-			music2 = new Music(DIRECTORY_MUSICS+"defeat.ogg");
+			music = new Music(DIRECTORY_MUSICS+"defeat.ogg");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -50,12 +50,21 @@ public class Defeat extends AppMenu {
 				public void itemSelected () {
 					// ((AppWorld) game.getState (Pause.this.previousID)).stop (container, game);
 					defeat.setNextID (AppGame.PAGES_WELCOME);
-					music2.stop();
 					game.enterState (Defeat.this.nextID, new FadeOutTransition (), new FadeInTransition ());
 				}
 			}
 		}));
 		//this.setHint ("HAVE A SNACK");
+	}
+
+	@Override
+	public void enter (GameContainer container, StateBasedGame game) {
+		music.loop(1, (float) 0.3);
+	}
+
+	@Override
+	public void leave (GameContainer container, StateBasedGame game) {
+		music.stop();
 	}
 
 	public void setPreviousID (int ID) {
