@@ -68,7 +68,7 @@ public class World extends BasicGameState {
 		container.getInput ().clearKeyPressedRecord ();
 		if (this.state == 0) {
 			/* Exécuté une unique fois au lancement du jeu */
-			player.init();
+//			player.init();
 			music.loop (1, .3f);
 		} else if (this.state == 2) {
 			/* Exécuté lors de la reprise du jeu */

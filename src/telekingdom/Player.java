@@ -87,8 +87,8 @@ public class Player{
 
 	public void addNextCards() {
 		//TODO : Ajouter les prochaines cartes (grâce au choix "state" fait à la carte active)
-//		CardParams[] nextCards = activeCard.getCardTemplate().getNext(); //TODO : à décommenter après le commit changeant la signature de getNext
-		CardParams[] nextCards = new CardParams[0];
+		CardParams[] nextCards = activeCard.getCardTemplate().getNext((activeCard.getState() > 0) ? 1 : 0); // En paramètre : on caste le booleen en entier pour passer du choix -1 ou 1 à 0 ou 1
+//		CardParams[] nextCards = new CardParams[0];
 
 		Card cardToAdd;
 		for (int i = 0 ; i < nextCards.length ; i++) {	// Parcours des différentes cartes à ajouter
@@ -102,6 +102,7 @@ public class Player{
 
 	public void drawCard() {
 		activeCard = deck.remove(0); //Pioche la carte du haut du deck
+		activeCard.setPiocheeTrue();
 	}
 
 	public void init() {
@@ -114,7 +115,7 @@ public class Player{
 		//Initialisation du deck :
 		deck = new ArrayList<Card>();	// Création du deck des cartes
 		activeCard = new Card (world, CardTemplate.getCardTemplate (0), 0);
-		deck.add(activeCard);	// Ajout de la première carte
+//		deck.add(activeCard);	// Ajout de la première carte
 
 		activeCard.setPiocheeTrue(); // On pioche la première carte
 	}

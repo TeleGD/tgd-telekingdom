@@ -161,7 +161,7 @@ public class CardTemplate {
 		return Arrays.copyOf (this.effect [option], this.effect [option].length);
 	}
 
-	public CardParams [] getNext (int option, int index) {
+	public CardParams [] getNext (int option) {	//option : gauche = 0, droite = 1
 		return Arrays.copyOf (this.next [option], this.next [option].length);
 	}
 
