@@ -8,13 +8,11 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import app.AppMenu;
-import app.AppWorld;
 import app.elements.MenuItem;
 
-public class Pause extends AppMenu {
+import telekingdom.World;
 
-	private int previousID;
-	private int nextID;
+public class Pause extends AppMenu {
 
 	public Pause (int ID) {
 		super (ID);
@@ -29,34 +27,18 @@ public class Pause extends AppMenu {
 		this.setMenu (Arrays.asList (new MenuItem [] {
 			new MenuItem ("Retour") {
 				public void itemSelected () {
-					((AppWorld) game.getState (Pause.this.nextID)).resume (container, game);
-					game.enterState (Pause.this.nextID, new FadeOutTransition (), new FadeInTransition ());
+					((World) game.getState (3)).setState (2);
+					game.enterState (3, new FadeOutTransition (), new FadeInTransition ());
 				}
 			},
 			new MenuItem ("Abandon") {
 				public void itemSelected () {
-					// ((AppWorld) game.getState (Pause.this.previousID)).stop (container, game);
-					game.enterState (Pause.this.previousID, new FadeOutTransition (), new FadeInTransition ());
+					// ((World) game.getState (3)).init (container, game);
+					game.enterState (0, new FadeOutTransition (), new FadeInTransition ());
 				}
 			}
 		}));
 		this.setHint ("HAVE A SNACK");
-	}
-
-	public void setPreviousID (int ID) {
-		this.previousID = ID;
-	}
-
-	public int getPreviousID () {
-		return this.previousID;
-	}
-
-	public void setNextID (int ID) {
-		this.nextID = ID;
-	}
-
-	public int getNextID () {
-		return this.nextID;
 	}
 
 }

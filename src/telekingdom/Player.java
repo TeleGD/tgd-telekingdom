@@ -3,12 +3,14 @@ package telekingdom;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import app.AppInput;
+import pages.Defeat;
+
 import telekingdom.hud.Card;
 import telekingdom.hud.CardParams;
 import telekingdom.hud.CardTemplate;
@@ -19,9 +21,9 @@ public class Player{
 	private List<Jauge> jauges;
 	private ArrayList<Card> deck;
 	private Card activeCard;	// Carte tirée et affiché
-	
+
 	private Boolean dead;
-	
+
 	private World world;
 
 	public Player(World world) {
@@ -47,9 +49,11 @@ public class Player{
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		for (Jauge j : jauges) {
-			if (j.isEmptyOrFull()) {
+			if (j.isEmptyOrFull()) { // Si le roi est mort
 				dead = true;
-				world.endGame(game, j.getEndingMessage());
+				((Defeat) game.getState (2)).setSubtitle (j.getEndingMessage());
+				world.setState (3);
+				game.enterState (2, new FadeOutTransition (), new FadeInTransition ());
 			}
 		}
 	}
@@ -76,16 +80,16 @@ public class Player{
 	public Card getActiveCard() {
 		return activeCard;
 	}
-	
+
 	public Boolean isDead() {
 		return dead;
 	}
-	
+
 	public void addNextCards() {
 		//TODO : Ajouter les prochaines cartes (grâce au choix "state" fait à la carte active)
 //		CardParams[] nextCards = activeCard.getCardTemplate().getNext(); //TODO : à décommenter après le commit changeant la signature de getNext
 		CardParams[] nextCards = new CardParams[0];
-		
+
 		Card cardToAdd;
 		for (int i = 0 ; i < nextCards.length ; i++) {	// Parcours des différentes cartes à ajouter
 			for (int j = 0 ; j < nextCards[i].getQuantity() ; j ++) {	// Création du nombre de carte du même template
@@ -97,16 +101,16 @@ public class Player{
 	}
 
 	public void drawCard() {
-		activeCard = deck.remove(0); //Pioche la carte du haut du deck		
+		activeCard = deck.remove(0); //Pioche la carte du haut du deck
 	}
-	
+
 	public void init() {
 		dead = false;
-		
+
 		for (Jauge j : jauges) {
 			j.init();
 		}
-		
+
 		//Initialisation du deck :
 		deck = new ArrayList<Card>();	// Création du deck des cartes
 		activeCard = new Card (world, CardTemplate.getCardTemplate (0), 0);

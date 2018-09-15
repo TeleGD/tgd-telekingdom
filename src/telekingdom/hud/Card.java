@@ -41,7 +41,7 @@ public class Card {
 
 	//a recuperer dans la base des cartes
 	private List<Integer> effet;
-	
+
 	private Request request;
 
 	public Card (World world, CardTemplate cardTemplate, int type) {
@@ -75,9 +75,9 @@ public class Card {
 		System.out.println (this.cardTemplate.getEffect (1) [0]);
 		System.out.println (this.cardTemplate.getEffect (1) [1]);
 		System.out.println (this.type);
-		
+
 		this.request = new Request(this.cardTemplate.getRequest(),world);
-		
+
 		//test
 		//setPiocheeTrue();
 	}
@@ -187,7 +187,7 @@ public class Card {
 	public void confirmRight() {
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
-	
+
 	public void initGetIn(int dep, int fin, int max) {
 		tmax = 700;
 		speed = 2*(max-dep)/tmax;

@@ -37,7 +37,7 @@
 	  "response": ["S'y rendre !", "Rester à Nancy"],
 	  "character": 6,
 	  "effect": [[-5, -15, 10], [0, 15, 0]],
-	  "next": [[[7, 0, 0, 1], [] ]]
+	  "$$next": [[[7, 0, 0, 1], [] ]]
 	},
 	{
 	  "request": "A l'aéroport vous remarquez un hotspot wifi eduroam. Que faites-vous ?",
@@ -52,7 +52,7 @@
 	  "effect": [[-15, 5, 0], [5, -5, 0]]
 	},
 	{
-	  "request": "Vous proposez 50 euros a chaque élève de l'école durant une conférence.", 
+	  "request": "Vous proposez 50 euros a chaque élève de l'école durant une conférence.",
 	  "response": ["ctrl + Z", "ctrl + Y"],
 	  "effect": [[-15, 0, 15], [10 , 0 , 0]],
 	  "character": 0

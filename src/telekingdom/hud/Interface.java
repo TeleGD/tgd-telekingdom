@@ -43,13 +43,13 @@ public class Interface {
 		boxColor = new Color(72,56,56);
 		textColor = new Color(189,176,130);
 	}
-	
+
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		if(!player.isDead()) {
 			player.update(container, game, delta);
 			player.getActiveCard().update(container, game, delta);
-			
+
 		}
 	}
 

@@ -6,9 +6,9 @@ import java.util.List;
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Input;
 import org.newdawn.slick.state.StateBasedGame;
 
-import app.AppInput;
 import app.elements.MenuItem;
 import app.utils.FontUtils;
 
@@ -72,11 +72,11 @@ public abstract class AppMenu extends AppPage {
 	@Override
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		super.update (container, game, delta);
-		AppInput appInput = (AppInput) container.getInput ();
-		boolean BUTTON_A = appInput.isKeyDown (AppInput.KEY_ENTER);
-		boolean BUTTON_B = appInput.isKeyDown (AppInput.KEY_ESCAPE);
-		boolean KEY_UP = appInput.isKeyDown (AppInput.KEY_UP);
-		boolean KEY_DOWN = appInput.isKeyDown (AppInput.KEY_DOWN);
+		Input input = container.getInput ();
+		boolean BUTTON_A = input.isKeyPressed (Input.KEY_ENTER);
+		boolean BUTTON_B = input.isKeyPressed (Input.KEY_ESCAPE);
+		boolean KEY_UP = input.isKeyPressed (Input.KEY_UP);
+		boolean KEY_DOWN = input.isKeyPressed (Input.KEY_DOWN);
 		boolean BUTTON_UP = KEY_UP && !KEY_DOWN;
 		boolean BUTTON_DOWN = KEY_DOWN && !KEY_UP;
 		if (BUTTON_A) {
