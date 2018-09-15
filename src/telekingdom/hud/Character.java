@@ -1,8 +1,8 @@
 package telekingdom.hud;
 
-import java.io.File;
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.File;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ public class Character {
 
 	static {
 		try {
-			BufferedReader streamFilter = new BufferedReader (new FileReader ("data" + File.separator + "characters.json"));
+			BufferedReader streamFilter = new BufferedReader (new InputStreamReader (System.class.getResourceAsStream ("/data" + File.separator + "characters.json")));
 			String json = "";
 			String line;
 			while ((line = streamFilter.readLine ()) != null) {
