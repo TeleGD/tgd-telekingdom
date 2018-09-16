@@ -61,43 +61,38 @@ public class CardTemplate {
 					} catch (JSONException error) {}
 				}
 				for (int i = 0, li = array.length (); i < li; i++) {
-					CardTemplate cardTemplate = CardTemplate.getCardTemplate (i);
 					try {
-						JSONObject object = array.getJSONObject (i);
-						try {
-							JSONArray next = object.getJSONArray ("next");
-							for (int j = 0, lj = next.length (); j < lj && j < 2; j++) {
-								try {
-									JSONArray option = next.getJSONArray (j);
-									List <CardParams> cardParams = new ArrayList <CardParams> ();
-									for (int k = 0, lk = option.length (); k < lk; k++) {
-										CardTemplate nextCardTemplate = CardTemplate.getCardTemplate (0);
-										int type = 0;
-										int zone = 0;
-										int quantity = 1;
+						JSONArray next = array.getJSONObject (i).getJSONArray ("next");
+						CardTemplate cardTemplate = CardTemplate.getCardTemplate (i);
+						for (int j = 0, lj = next.length (); j < lj && j < 2; j++) {
+							try {
+								JSONArray option = next.getJSONArray (j);
+								CardParams [] cardParams = new CardParams [option.length ()];
+								for (int k = 0, lk = option.length (); k < lk; k++) {
+									CardTemplate nextCardTemplate = CardTemplate.getCardTemplate (0);
+									int type = 0;
+									int zone = 0;
+									int quantity = 1;
+									try {
+										JSONArray params = option.getJSONArray (k);
 										try {
-											JSONArray params = option.getJSONArray (k);
-											try {
-												nextCardTemplate = CardTemplate.getCardTemplate (params.getInt (0));
-											} catch (JSONException error) {}
-											try {
-												type = params.getInt (1);
-											} catch (JSONException error) {}
-											try {
-												zone = params.getInt (2);
-											} catch (JSONException error) {}
-											try {
-												quantity = params.getInt (3);
-											} catch (JSONException error) {}
+											nextCardTemplate = CardTemplate.getCardTemplate (params.getInt (0));
 										} catch (JSONException error) {}
-										cardParams.add (new CardParams (nextCardTemplate, type, zone, quantity));
-									}
-									if (cardParams.size () != 0) {
-										cardTemplate.next [j] = (CardParams []) cardParams.toArray ();
-									}
-								} catch (JSONException error) {}
-							}
-						} catch (JSONException error) {}
+										try {
+											type = params.getInt (1);
+										} catch (JSONException error) {}
+										try {
+											zone = params.getInt (2);
+										} catch (JSONException error) {}
+										try {
+											quantity = params.getInt (3);
+										} catch (JSONException error) {}
+									} catch (JSONException error) {}
+									cardParams [k] = new CardParams (nextCardTemplate, type, zone, quantity);
+								}
+								cardTemplate.next [j] = cardParams;
+							} catch (JSONException error) {}
+						}
 					} catch (JSONException error) {}
 				}
 			} catch (JSONException error) {}
@@ -136,12 +131,8 @@ public class CardTemplate {
 			}
 		};
 		this.next = new CardParams [] [] {
-			new CardParams [] {
-				new CardParams (CardTemplate.getCardTemplate (0), 0, 0, 1) // les paramètres d'un modèle de carte à ajouter à la pioche en cas de réponse négatives
-			},
-			new CardParams [] {
-				new CardParams (CardTemplate.getCardTemplate (0), 0, 0, 1) // les paramètres d'un modèle de carte à ajouter à la pioche en cas de réponse positive
-			}
+			new CardParams [] {}, // les paramètres des modèles de carte à ajouter à la pioche en cas de réponse négative
+			new CardParams [] {} // les paramètres des modèles de carte à ajouter à la pioche en cas de réponse positive
 		};
 	}
 

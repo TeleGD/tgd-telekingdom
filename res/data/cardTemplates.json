@@ -1,60 +1,64 @@
 [
 	{
+		"character": 0,
 		"request": "Le dépouillement des votes touche\npresque à sa fin.\nRien n'est encore gagné pour vous\nqui détournez avec inquiétude votre regard du tableau\noù s'allongent interminablement deux rangées de\ntraits verticaux que plus personne ne parvient à comptabiliser.\nA la recherche d'un soutien psychologique,\nvous posez finalement vos yeux sur la fenêtre où se reflète Nestor,\ncandidat à la direction de TeleKingdom.\nC'est bien votre image que vous contemplez,\nmais celle-ci vous donne l'impression indescriptible\nde vous remettre en question :\nêtes-vous prêt à diriger cette école ?",
-		"effect" : [[0, -2], [0, 1]]
+		"response": ["Pourquoi", "L'avenir du monde dépend de nous !"],
+		"effect": [[0, -20, 0], [0, 10, 0]],
+		"next": [[[6]], [[1], [2], [3], [4], [5], [8], [9]]]
 	},
 	{
-	  "request": "Des 1A jurent s'être fait voler leur goutés par des pharmas à la sortie de l'école et viennent se plaindre devant vous. Ils demandent votre aide pour obtenir réparation. Les aidez-vous ?",
-	  "character" : 1,
-	  "effect" : [[0, -10], [-2, -2]]
+		"character": 1,
+		"request": "Des 1A jurent s'être fait voler leur gouter par des pharmas à la sortie de l'école et viennent se plaindre devant vous. Ils demandent votre aide pour obtenir réparation. Les aidez-vous ?",
+		"response": ["La bonne blague !", "Les envoyer aux objets trouvés"],
+		"effect": [[0, -20, -10], [0, -10, 0]]
 	},
 	{
-	  "request": "Un élève éssouflé vous indique que le projecteur de l'amphi nord est en feu pendant le cours de gestion. Que voulez-vous faire ?",
-	  "character": 2,
-	  "response": ["Appeler les pompiers" , "Ne rien faire" ],
-	  "effect": [[-10, 10, 0] , [10, -20, -10]]
+		"character": 2,
+		"request": "Un élève essoufflé vous indique que le projecteur de l'amphi nord est en feu pendant le cours de gestion. Que voulez-vous faire ?",
+		"response": ["Oh ! on comptait les changer", "Appeler les pompiers"],
+		"effect": [[10, -20, -10], [-10, 10, 0]]
 	},
 	{
-	  "request": "Pendant votre sommeil votre téléphone portable sonne. Apparement un élève serait coincé dans l'école après 23h. Que voulez-vous faire ?",
-	  "character": 3,
-	  "response": ["Aller lui ouvrir" , "Vous rendormir"],
-	  "effect": [[0, 10, 10], [0, -10, -10]]
+		"character": 3,
+		"request": "Pendant votre sommeil votre téléphone portable sonne. Apparement un élève serait coincé dans l'école après 23h. Que voulez-vous faire ?",
+		"response": ["Vous rendormir", "Aller lui ouvrir" ],
+		"effect": [[0, -10, -10], [0, 10, 10]]
 	},
 	{
-	  "request": "Un démarcheur vous propose d'aménager une salle entière en un studio avec des capteurs. Acceptez vous ?",
-	  "response": [ "Oui", "Pourquoi faire ?"],
-	  "character": 4,
-	  "effect": [[-20, 10, 0 ], [10, 0, 0 ]]
+		"character": 4,
+		"request": "Un démarcheur vous propose d'aménager une salle entière en un studio avec des capteurs. Acceptez vous ?",
+		"response": ["Pourquoi faire ?",  "Toujours à la pointe de la technologie !"],
+		"effect": [[10, 0, 0], [-20, 10, 0]]
 	},
 	{
-	  "request": "Vous allez commencer votre conférence en amphi. Que voulez-vous faire ?",
-	  "response": ["Mettre du rock", "Commencer votre discours"],
-	  "character": 5,
-	  "effect": [[10, 10, 10 ], [-10, -10, -10 ]]
+		"character": 5,
+		"request": "Vous allez commencer votre conférence en amphi. Que voulez-vous faire ?",
+		"response": ["Mettre du rock", "Commencer votre discours"],
+		"effect": [[10, 10, 10], [-10, -10, -10]]
 	},
 	{
-	  "request": "Lundi soir, veille des soutenances que vous faites passer, votre ami de L.A. vous invite à un apéro surprise. Un airbus part dans 5min de l'aéroport. Que faites-vous ?",
-	  "response": ["S'y rendre !", "Rester à Nancy"],
-	  "character": 6,
-	  "effect": [[-5, -15, 10], [0, 15, 0]],
-	  "$$next": [[[7, 0, 0, 1], [] ]]
+		"character": 6,
+		"request": "Lundi soir, veille des soutenances que vous faites passer, votre ami de L.A. vous invite à un apéro surprise. Un airbus part dans 5min de l'aéroport. Que faites-vous ?",
+		"response": ["Rester à Nancy", "S'y rendre !"],
+		"effect": [[0, 15, 0], [-5, -15, 10]],
+		"next": [[[7]]]
 	},
 	{
-	  "request": "A l'aéroport vous remarquez un hotspot wifi eduroam. Que faites-vous ?",
-	  "response": ["S'empresser de se connecter" , "Aller dans votre avion"],
-	  "character": 6,
-	  "effect": [[0, 0, 5], [0, 0, -5]]
+		"character": 6,
+		"request": "A l'aéroport vous remarquez un hotspot wifi eduroam. Que faites-vous ?",
+		"response": ["Aller dans votre avion", "S'empresser de se connecter"],
+		"effect": [[0, 0, -5], [0, 0, 5]]
 	},
 	{
-	  "request": "Le professeur de (P)rogramme (F)ormel (S)ans (I)ntérêt vous demande une augmentation.",
-	  "response": ["Accepter", "Refuser"],
-	  "character": 7,
-	  "effect": [[-15, 5, 0], [5, -5, 0]]
+		"character": 7,
+		"request": "Le professeur de (P)rogramme (F)ormel (S)ans (I)ntérêt vous demande une augmentation.",
+		"response": ["Refuser", "Accepter"],
+		"effect": [[5, -5, 0], [-15, 5, 0]]
 	},
 	{
-	  "request": "Vous proposez 50 euros a chaque élève de l'école durant une conférence.",
-	  "response": ["ctrl + Z", "ctrl + Y"],
-	  "effect": [[-15, 0, 15], [10 , 0 , 0]],
-	  "character": 0
+		"character": 0,
+		"request": "Vous proposez 50 euros à chaque élève de l'école durant une conférence.",
+		"response": ["Ctrl + Z", "Ctrl + Y"],
+		"effect": [[-15, 0, 15], [10 , 0 , 0]]
 	}
 ]

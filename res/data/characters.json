@@ -4,25 +4,25 @@
 		"image": "mirror.png"
 	},
 	{
-	  "name": "1As",
-	  "image" : "lesunsa.jpg"
+		"name": "1As",
+		"image": "lesunsa.jpg"
 	},
 	{
-	  "name": "Elève"
+		"name": "Elève"
 	},
 	{
-	  "name": "Téléphone"
+		"name": "Téléphone"
 	},
 	{
-	  "name": "Démarcheur"
+		"name": "Démarcheur"
 	},
 	{
-	  "name": "Amphi"
+		"name": "Amphi"
 	},
 	{
-	  "name": "Avion"
+		"name": "Avion"
 	},
 	{
-	  "name": "professeur"
+		"name": "professeur"
 	}
 ]
