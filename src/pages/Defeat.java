@@ -13,6 +13,8 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import app.AppMenu;
 import app.elements.MenuItem;
 
+import telekingdom.World;
+
 public class Defeat extends AppMenu {
 
 	public final static String DIRECTORY_MUSICS="musics"+File.separator;
@@ -40,7 +42,7 @@ public class Defeat extends AppMenu {
 		this.setMenu (Arrays.asList (new MenuItem [] {
 			new MenuItem ("Quitter") {
 				public void itemSelected () {
-					// ((World) game.getState (3)).init (container, game);
+					((World) game.getState (3)).setState (0);
 					game.enterState (0, new FadeOutTransition (), new FadeInTransition ());
 				}
 			}

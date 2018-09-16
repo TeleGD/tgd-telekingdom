@@ -41,10 +41,6 @@ public class Player{
 		for (int i=0; i<n; i++) {
 			jauges.get(i).setX(world.getWidth()/2 - jauges.get(i).getWidth()*n/2 - 25/1280f*world.getWidth()*(n-1)/2 + i*(jauges.get(i).getWidth()+25/1280f*world.getWidth()));
 		}
-
-		//initialisation du deck et des jauges
-		init();
-		//TODO : Mettre cet appel dans une gestion du déroulement du jeu
 	}
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
@@ -105,7 +101,7 @@ public class Player{
 		activeCard.setPiocheeTrue();
 	}
 
-	public void init() {
+	public void init() { //initialisation du deck et des jauges
 		dead = false;
 
 		for (Jauge j : jauges) {

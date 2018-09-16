@@ -41,7 +41,7 @@
 		"request": "Lundi soir, veille des soutenances que vous faites passer, votre ami de L.A. vous invite à un apéro surprise. Un airbus part dans 5min de l'aéroport. Que faites-vous ?",
 		"response": ["Rester à Nancy", "S'y rendre !"],
 		"effect": [[0, 15, 0], [-5, -15, 10]],
-		"next": [[[7]]]
+		"next": [[], [[7]]]
 	},
 	{
 		"character": 6,
