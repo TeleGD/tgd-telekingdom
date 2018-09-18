@@ -70,7 +70,6 @@ public class CardTemplate {
 								CardParams [] cardParams = new CardParams [option.length ()];
 								for (int k = 0, lk = option.length (); k < lk; k++) {
 									CardTemplate nextCardTemplate = CardTemplate.getCardTemplate (0);
-									int type = 0;
 									int zone = 0;
 									int quantity = 1;
 									try {
@@ -79,16 +78,13 @@ public class CardTemplate {
 											nextCardTemplate = CardTemplate.getCardTemplate (params.getInt (0));
 										} catch (JSONException error) {}
 										try {
-											type = params.getInt (1);
+											zone = params.getInt (1);
 										} catch (JSONException error) {}
 										try {
-											zone = params.getInt (2);
-										} catch (JSONException error) {}
-										try {
-											quantity = params.getInt (3);
+											quantity = params.getInt (2);
 										} catch (JSONException error) {}
 									} catch (JSONException error) {}
-									cardParams [k] = new CardParams (nextCardTemplate, type, zone, quantity);
+									cardParams [k] = new CardParams (nextCardTemplate, zone, quantity);
 								}
 								cardTemplate.next [j] = cardParams;
 							} catch (JSONException error) {}

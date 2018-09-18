@@ -89,7 +89,7 @@ public class Player{
 		Card cardToAdd;
 		for (int i = 0 ; i < nextCards.length ; i++) {	// Parcours des différentes cartes à ajouter
 			for (int j = 0 ; j < nextCards[i].getQuantity() ; j ++) {	// Création du nombre de carte du même template
-				cardToAdd = new Card(world, nextCards[i].getCardTemplate(), nextCards[i].getType());
+				cardToAdd = new Card(world, nextCards[i].getCardTemplate());
 				deck.add(cardToAdd);	//TODO : Ajouter la carte à une place aléatoire en fonction de son type
 			}
 		}
@@ -110,7 +110,7 @@ public class Player{
 
 		//Initialisation du deck :
 		deck = new ArrayList<Card>();	// Création du deck des cartes
-		activeCard = new Card (world, CardTemplate.getCardTemplate (0), 0);
+		activeCard = new Card (world, CardTemplate.getCardTemplate (0));
 //		deck.add(activeCard);	// Ajout de la première carte
 
 		activeCard.setPiocheeTrue(); // On pioche la première carte

@@ -17,7 +17,6 @@ public class Card {
 
 	//template de la carte
 	private CardTemplate cardTemplate;
-	private int type;
 
 	private boolean animGo;
 	private boolean animGetOut;
@@ -44,9 +43,8 @@ public class Card {
 
 	private Request request;
 
-	public Card (World world, CardTemplate cardTemplate, int type) {
+	public Card (World world, CardTemplate cardTemplate) {
 		this.cardTemplate = cardTemplate;
-		this.type = type;
 
 		w = world;
 
@@ -74,7 +72,6 @@ public class Card {
 		System.out.println (this.cardTemplate.getEffect (0) [1]);
 		System.out.println (this.cardTemplate.getEffect (1) [0]);
 		System.out.println (this.cardTemplate.getEffect (1) [1]);
-		System.out.println (this.type);
 
 		this.request = new Request(this.cardTemplate.getRequest(),world);
 
