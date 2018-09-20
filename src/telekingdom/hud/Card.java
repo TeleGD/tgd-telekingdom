@@ -3,6 +3,7 @@ package telekingdom.hud;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -107,13 +108,21 @@ public class Card {
 			}
 
 		}
-		System.out.println(y);
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		Image image = this.cardTemplate.getCharacter ().getImage ();
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
 		request.render(container, game, context);
+		context.setColor(Color.black);
+		context.setFont(World.Font);
+		if (!animGetIn && !animGo && !animGetOut) {
+			if (state==-1) {
+				context.drawString(this.cardTemplate.getResponse (0), x+4, y+4);
+			} else if (state==1) {
+				context.drawString(this.cardTemplate.getResponse (1), x+length-w.Font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
+			}
+		}
 	}
 
 
