@@ -18,7 +18,7 @@ import telekingdom.hud.Interface;
 
 public class World extends BasicGameState {
 
-	public static final Font FontJauges = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 18, true);
+	public static final Font FontJauges = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 16, true);
 	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 12, true);
 	public final static String GAME_FOLDER_NAME="telekingdom";
 	public final static String DIRECTORY_MUSICS="musics"+File.separator;

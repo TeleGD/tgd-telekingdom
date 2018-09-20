@@ -56,7 +56,7 @@ public class Card {
 		animGetOut = false;
 		animGetIn = false;
 
-		length = (int) (0.22*world.getWidth());
+		length = (int) (426/1920f*world.getWidth());
 
 		x = world.getWidth()/2 - length/2;
 		y = -length;
@@ -107,7 +107,7 @@ public class Card {
 			}
 
 		}
-
+		System.out.println(y);
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
@@ -206,7 +206,7 @@ public class Card {
 
 	public void setPiocheeTrue() {
 		piochee = true;
-		initGetIn(y,(int) (312*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);
+		initGetIn(y,(int) (343*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);
 	}
 
 	public int getState() {
