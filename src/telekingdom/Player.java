@@ -2,6 +2,7 @@ package telekingdom;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -87,9 +88,14 @@ public class Player{
 //		CardParams[] nextCards = new CardParams[0];
 
 		Card cardToAdd;
+		int index = 0;
+		
 		for (int i = 0 ; i < nextCards.length ; i++) {	// Parcours des différentes cartes à ajouter
 			for (int j = 0 ; j < nextCards[i].getQuantity() ; j ++) {	// Création du nombre de carte du même template
 				cardToAdd = new Card(world, nextCards[i].getCardTemplate());
+				index = (int)(Math.random() * nextCards[i].getZone() * deck.size()/100);
+				System.out.println("\n Index d'insertion : " + index + " avec zone = " + nextCards[i].getZone() + " et taille de deck : " + deck.size() + "\n");
+				deck.add(index, cardToAdd);
 				deck.add(cardToAdd);	//TODO : Ajouter la carte à une place aléatoire en fonction de son type
 			}
 		}

@@ -4,7 +4,7 @@
 		"request": "Le dépouillement des votes touche\npresque à sa fin.\nRien n'est encore gagné pour vous\nqui détournez avec inquiétude votre regard du tableau\noù s'allongent interminablement deux rangées de\ntraits verticaux que plus personne ne parvient à comptabiliser.\nA la recherche d'un soutien psychologique,\nvous posez finalement vos yeux sur la fenêtre où se reflète Nestor,\ncandidat à la direction de TeleKingdom.\nC'est bien votre image que vous contemplez,\nmais celle-ci vous donne l'impression indescriptible\nde vous remettre en question :\nêtes-vous prêt à diriger cette école ?",
 		"response": ["Pourquoi", "L'avenir du monde dépend de nous !"],
 		"effect": [[0, -20, 0], [0, 10, 0]],
-		"next": [[[6]], [[1], [2], [3], [4], [5], [8], [9]]]
+		"next": [[[6]], [[1], [2], [3], [4, 50], [5,30], [8,10], [9,40]]]
 	},
 	{
 		"character": 1,
