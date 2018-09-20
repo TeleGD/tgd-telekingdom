@@ -27,7 +27,7 @@ public class Interface {
 
 	static {
 		try {
-			background = new Image("images"+File.separator+"background.png");
+			background = new Image("images"+File.separator+"tk_background.png");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -70,7 +70,7 @@ public class Interface {
 		}
 
 		//on draw la carte
-		player.getActiveCard().render(container, game, context);
+		(player.getActiveCard()).render(container, game, context);
 
 		//on remet l'ancienne couleur
 		context.setColor(previousColor);
