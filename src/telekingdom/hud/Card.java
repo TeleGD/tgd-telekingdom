@@ -39,7 +39,7 @@ public class Card {
 	private boolean piochee;
 
 	//a recuperer dans la base des cartes
-	private List<Integer> effet;
+	private int[] effet;
 
 	private Request request;
 
@@ -49,10 +49,6 @@ public class Card {
 		w = world;
 
 		state = 0; //on commence carte au milieu
-
-		effet = new ArrayList<Integer>();
-		effet.add(-20);
-		effet.add(20);
 
 		piochee = false;
 
@@ -172,16 +168,19 @@ public class Card {
 		} else {
 			y=goal;
 			animGetOut = false;
+			w.getPlayer().applyEffects(effet);
 			w.getPlayer().addNextCards();
 		}
 
 	}
 
 	public void confirmLeft() {
+		effet = cardTemplate.getEffect(0);
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
 	public void confirmRight() {
+		effet = cardTemplate.getEffect(1);
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
