@@ -4,13 +4,14 @@
 		"request": "Le dépouillement des votes touche\npresque à sa fin.\nRien n'est encore gagné pour vous\nqui détournez avec inquiétude votre regard du tableau\noù s'allongent interminablement deux rangées de\ntraits verticaux que plus personne ne parvient à comptabiliser.\nA la recherche d'un soutien psychologique,\nvous posez finalement vos yeux sur la fenêtre où se reflète Nestor,\ncandidat à la direction de TeleKingdom.\nC'est bien votre image que vous contemplez,\nmais celle-ci vous donne l'impression indescriptible\nde vous remettre en question :\nêtes-vous prêt à diriger cette école ?",
 		"response": ["Pourquoi", "L'avenir du monde dépend de nous !"],
 		"effect": [[0, -20, 0], [0, 10, 0]],
-		"next": [[[6]], [[1,0], [2, -20], [3, -60], [4, 50], [5,30], [8,-1], [9,70]]]
+		"next": [[[6], [1, -1]], [[1,0], [2, -20], [3, -60], [4, 50], [5,30], [8,-1], [9,70]]]
 	},
 	{
 		"character": 1,
 		"request": "Des 1A jurent s'être fait voler leur gouter par des pharmas à la sortie de l'école et viennent se plaindre devant vous. Ils demandent votre aide pour obtenir réparation. Les aidez-vous ?",
 		"response": ["La bonne blague !", "Les envoyer aux objets trouvés"],
-		"effect": [[0, -20, -10], [0, -10, 0]]
+		"effect": [[0, -20, -10], [0, -10, 0]],
+		"next": [[[1, -1]], [[1, -1]]]
 	},
 	{
 		"character": 2,
