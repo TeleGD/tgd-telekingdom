@@ -114,12 +114,17 @@ public class Card {
 		Image image = this.cardTemplate.getCharacter ().getImage ();
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
 		request.render(container, game, context);
-		context.setColor(Color.black);
-		context.setFont(World.Font);
 		if (!animGetIn && !animGo && !animGetOut) {
+			context.setColor(Color.lightGray);
 			if (state==-1) {
+				context.fillRect(x, y, w.Font.getWidth(this.cardTemplate.getResponse(0)) + 8, w.Font.getHeight(this.cardTemplate.getResponse(0)) + 8);
+				context.setColor(Color.black);
+				context.setFont(World.Font);
 				context.drawString(this.cardTemplate.getResponse (0), x+4, y+4);
 			} else if (state==1) {
+				context.fillRect(x+length-w.Font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, w.Font.getWidth(this.cardTemplate.getResponse(1)) + 8, w.Font.getHeight(this.cardTemplate.getResponse(1)) +8);
+				context.setColor(Color.black);
+				context.setFont(World.Font);
 				context.drawString(this.cardTemplate.getResponse (1), x+length-w.Font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
 			}
 		}
