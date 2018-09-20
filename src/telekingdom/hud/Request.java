@@ -9,82 +9,70 @@ import telekingdom.World;
 
 public class Request {
 
-	/* Tableaux contenant les différentes lignes à afficher */
-	private String[] lines;
+	private static float WINDOW_WIDTH = 1280f;
+	private static float WINDOW_HEIGHT = 720f;
+	private static float BOX_X = 498f;
+	private static float BOX_Y = 160f;
+	private static float BOX_WIDTH = 284f;
+	private static float BOX_HEIGHT = 168f;
+	private static float LINE_HEIGHT = .8f;
 
-	/* Position d'affichage sur l'écran*/
+	/* Position centrale de la boîte de texte sur l'écran */
 	private float x;
-	private float[] y;
+	private float y;
 
-	/* Taille du texte */
-	private int[] width;
-	private int height = World.Font.getHeight("abcdefghijklmnopqrstuvwxyz!§:/;.,?><µ*ù%£$ø€^¨=+})]°@àç\\_`è|-[({'#~é²0123456789");
+	/* Tableaux contenant les différentes lignes de texte à afficher et leur taille respective */
+	private String [] lines;
+	private float [] lineWidths;
+	private float lineHeight;
 
-	/* Longueur maximale des lignes */
-	private int widthLimit;
+	public Request (String description, World world) {
+		/* Décomposition de la chaîne de caractères `description` pour l'afficher sur plusieurs lignes */
 
-	/* Hauteur totale */
-	private int totalHeight;
-	private int heightLimit;
+		float horizontalZoom = world.getWidth () / Request.WINDOW_WIDTH;
+		float verticalZoom = world.getHeight () / Request.WINDOW_HEIGHT;
+		float width = Request.BOX_WIDTH * horizontalZoom;
+		float height = Request.BOX_HEIGHT * verticalZoom;
+		x = Request.BOX_X * horizontalZoom + width / 2f;
+		y = Request.BOX_Y * verticalZoom + height / 2f;
 
+		description = description.replaceAll ("^\\s+|\\s+$", "");
 
-	public Request(String description, World w) {
-		/* Décomposition de la chaine de caractères en un tableau
-		 * dont chaque case contient une ligne.
-		 */
-		lines = description.split("\n");
-		int length = lines.length;
-		System.out.println("l = "+length);
-
-		/* Hauteur maxiamel de la box */
-		heightLimit = (int) (170*w.getHeight()/720f);
-
-		/* Calcul de la hauteur totale
-		 */
-		totalHeight=(int) (1.1*height*length);
-
-		x = (int) w.getWidth()/2;
-		y = new float[length];
-		widthLimit = (int) (280*w.getWidth()/1280);
-
-		width = new int [length];
-
-		/* Vérification de la hauteur totale
-		 */
-		if (totalHeight > heightLimit) {
-			System.out.println("erreur : description trop longue ou trop de lignes ("+description+")");
-		}
-
-
-		int topVoid = (heightLimit - totalHeight)/2;
-
-		for (int i=0 ; i<lines.length ; i++) {
-			/* Calcul de la taille de chaque ligne
-			 */
-			width[i] = World.Font.getWidth(lines[i]);
-
-			/* Vérification de la longueur de la ligne
-			 * pour qu'elle ne dépasse pas du cadre
-			 */
-			if (width[i] > widthLimit) {
-				System.out.println("erreur : ligne trop longue ("+lines[i]+")");
+		if (description.isEmpty ()) {
+			lines = new String [0];
+			lineWidths = new float [0];
+		} else {
+			String [] words = description.split ("\\s+");
+			int length = 1;
+			for (int i = 0, j = 1, l = words.length; j < l; j++) {
+				String word = words [i] + " " + words [j];
+				if (World.Font.getWidth (word) < width) {
+					words [i] = word;
+					words [j] = null;
+				} else {
+					i = j;
+					length++;
+				}
 			}
-
-
-			y[i] = 121*w.getHeight()/720f + topVoid + height*1.1f*i;
-
+			lines = new String [length];
+			lineWidths = new float [length];
+			for (int i = 0, j = 0, l = words.length; j < l; j++) {
+				if (words [j] != null) {
+					lineWidths [i] = World.Font.getWidth (lines [i++] = words [j]);
+				}
+			}
 		}
-
-
+		lineHeight = World.Font.getHeight (description) * Request.LINE_HEIGHT;
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
-		context.setColor(Color.black);
-		context.setFont(World.Font);
-		for (int i=0 ; i<lines.length ; i++) {
-			context.drawString(lines[i], x-(width[i]/2), y[i]);
+		context.setColor (Color.black);
+		context.setFont (World.Font);
+		for (int i = 0, l = lines.length; i < l; i++) {
+			float x = (float) this.x - this.lineWidths [i] / 2f;
+			float y = (float) this.y - this.lineHeight * (((float) l - 1f + 1f / Request.LINE_HEIGHT) / 2f - (float) i);
+			context.drawString (this.lines [i], (int) x, (int) y);
 		}
-
 	}
 
 }
