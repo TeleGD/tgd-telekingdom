@@ -16,7 +16,7 @@ public class Jauge {
 	/* Déclaration des variables & constantes de toutes les jauges*/
 
 	/* Position d'affichage sur l'écran*/
-	private float x;
+	private float x = 0;
 	private float y;
 
 	/* Nom */
@@ -42,9 +42,6 @@ public class Jauge {
 	private String endMessageFull;
 
 	public Jauge(String name, String endMessageFull, String endMessageEmpty, World w, Player player) {
-
-
-		this.x = 0;
 
 		this.name = name;
 		this.endMessageEmpty = endMessageEmpty;
@@ -85,6 +82,7 @@ public class Jauge {
 		context.drawImage(fullSprite, x, y+Math.abs((float)valeur-100)/100*height, x+width, y+height, 0, Math.abs((float)valeur-100)/100*(emptySprite.getHeight()-1), emptySprite.getWidth()-1, emptySprite.getHeight()-1);
 
 		//puis on draw le nom de la jauge
+		context.setFont(World.FontJauges);
 		context.drawString(name, x+width/2-World.FontJauges.getWidth(name)/2, y+height+2/1280f*world.getWidth());
 	}
 

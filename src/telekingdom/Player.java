@@ -58,18 +58,6 @@ public class Player{
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 	}
 
-	public void addToArgent(int v) {
-		for (Jauge j : jauges) {
-			if(j.getName() == "Argent")  j.addValeur(v);
-		}
-	}
-
-	public void addToReputation(int v) {
-		for (Jauge j : jauges) {
-			if(j.getName() == "Reputation")  j.addValeur(v);
-		}
-	}
-
 	public List<Jauge> getJauges() {
 		return jauges;
 	}
@@ -125,5 +113,13 @@ public class Player{
 //		deck.add(activeCard);	// Ajout de la première carte
 
 		activeCard.setPiocheeTrue(); // On pioche la première carte
+	}
+
+	public void applyEffects(int[] effet) {
+		for (Jauge j : jauges) {
+			if(j.getName() == "Reputation")  j.addValeur(effet[1]);
+			if(j.getName() == "Argent")  j.addValeur(effet[0]);
+			
+		}
 	}
 }

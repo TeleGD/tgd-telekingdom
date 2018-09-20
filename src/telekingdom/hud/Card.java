@@ -3,6 +3,7 @@ package telekingdom.hud;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -39,7 +40,7 @@ public class Card {
 	private boolean piochee;
 
 	//a recuperer dans la base des cartes
-	private List<Integer> effet;
+	private int[] effet;
 
 	private Request request;
 
@@ -50,17 +51,13 @@ public class Card {
 
 		state = 0; //on commence carte au milieu
 
-		effet = new ArrayList<Integer>();
-		effet.add(-20);
-		effet.add(20);
-
 		piochee = false;
 
 		animGo = false;
 		animGetOut = false;
 		animGetIn = false;
 
-		length = (int) (0.22*world.getWidth());
+		length = (int) (426/1920f*world.getWidth());
 
 		x = world.getWidth()/2 - length/2;
 		y = -length;
@@ -111,13 +108,26 @@ public class Card {
 			}
 
 		}
-
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		Image image = this.cardTemplate.getCharacter ().getImage ();
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
 		request.render(container, game, context);
+		if (!animGetIn && !animGo && !animGetOut) {
+			context.setColor(Color.lightGray);
+			if (state==-1) {
+				context.fillRect(x, y, w.Font.getWidth(this.cardTemplate.getResponse(0)) + 8, w.Font.getHeight(this.cardTemplate.getResponse(0)) + 8);
+				context.setColor(Color.black);
+				context.setFont(World.Font);
+				context.drawString(this.cardTemplate.getResponse (0), x+4, y+4);
+			} else if (state==1) {
+				context.fillRect(x+length-w.Font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, w.Font.getWidth(this.cardTemplate.getResponse(1)) + 8, w.Font.getHeight(this.cardTemplate.getResponse(1)) +8);
+				context.setColor(Color.black);
+				context.setFont(World.Font);
+				context.drawString(this.cardTemplate.getResponse (1), x+length-w.Font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
+			}
+		}
 	}
 
 
@@ -172,16 +182,19 @@ public class Card {
 		} else {
 			y=goal;
 			animGetOut = false;
+			w.getPlayer().applyEffects(effet);
 			w.getPlayer().addNextCards();
 		}
 
 	}
 
 	public void confirmLeft() {
+		effet = cardTemplate.getEffect(0);
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
 	public void confirmRight() {
+		effet = cardTemplate.getEffect(1);
 		initGetOut(y,(int) (w.getHeight()*1.2));
 	}
 
@@ -207,7 +220,7 @@ public class Card {
 
 	public void setPiocheeTrue() {
 		piochee = true;
-		initGetIn(y,(int) (312*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);
+		initGetIn(y,(int) (343*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);
 	}
 
 	public int getState() {
