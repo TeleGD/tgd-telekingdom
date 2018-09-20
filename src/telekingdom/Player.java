@@ -93,10 +93,15 @@ public class Player{
 		for (int i = 0 ; i < nextCards.length ; i++) {	// Parcours des différentes cartes à ajouter
 			for (int j = 0 ; j < nextCards[i].getQuantity() ; j ++) {	// Création du nombre de carte du même template
 				cardToAdd = new Card(world, nextCards[i].getCardTemplate());
-				index = (int)(Math.random() * nextCards[i].getZone() * deck.size()/100);
+				
+				if (nextCards[i].getZone() >= 0) {	// La carte est placée à partir du début du deck (dans les "zone" premiers % du deck), zone = 0 => carte placée au début du deck (donc sera tirée immédiatement)
+					index = (int)(Math.random() *(1 + nextCards[i].getZone() * deck.size()/100));
+				} else {	// La carte est placée à partir de la fin du deck (dans les - ("zone"+1) derniers % du deck), zone = -1 => carte placée à la fin du deck
+					index = (int) (Math.random() * (nextCards[i].getZone() + 1) + 100 ) * deck.size()/100;
+				}
+				
 				System.out.println("\n Index d'insertion : " + index + " avec zone = " + nextCards[i].getZone() + " et taille de deck : " + deck.size() + "\n");
 				deck.add(index, cardToAdd);
-				deck.add(cardToAdd);	//TODO : Ajouter la carte à une place aléatoire en fonction de son type
 			}
 		}
 		drawCard();
