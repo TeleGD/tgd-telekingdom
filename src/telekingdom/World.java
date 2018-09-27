@@ -41,6 +41,8 @@ public class World extends BasicGameState {
 
 	private Interface interf;
 	private Player player;
+	
+	private boolean justLoaded = false;
 
 	public World (int ID) {
 		this.ID = ID;
@@ -68,7 +70,12 @@ public class World extends BasicGameState {
 		container.getInput ().clearKeyPressedRecord ();
 		if (this.state == 0) {
 			/* Exécuté une unique fois au lancement du jeu */
-			player.init();
+			if (!justLoaded) { 
+				player.init();
+			} else {
+				player.getActiveCard().setPiocheeTrue();
+			}
+			justLoaded=false;
 			music.loop (1, .3f);
 		} else if (this.state == 2) {
 			/* Exécuté lors de la reprise du jeu */
@@ -129,6 +136,16 @@ public class World extends BasicGameState {
 	}
 	
 	public void saveGame() {
-		Save save = new Save(this);
+		new Save(this);
 	}
+	
+	public void loadGame() {
+		justLoaded=true;
+		new Load(this);
+	}
+
+	public boolean isJustLoaded() {
+		return justLoaded;
+	}
+	
 }

@@ -54,7 +54,7 @@ public class Save {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
+
 		System.out.println(save.toString());
 		try{
 		    FileWriter writer = new FileWriter(System.class.getResource("/data/save.json").getPath());
@@ -62,7 +62,7 @@ public class Save {
 		    writer.close();
 		} catch (IOException | JSONException e) {
 			e.printStackTrace();
-		}		
+		}
 	}
 
 	private JSONObject writeJson() throws JSONException {		

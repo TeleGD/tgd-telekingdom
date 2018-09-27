@@ -27,6 +27,7 @@ public final class Main {
 				this.addState (new pages.Pause (1));
 				this.addState (new pages.Defeat (2));
 				this.addState (new telekingdom.World (3));
+				this.addState (new pages.MainMenu(4));
 			}
 
 		};

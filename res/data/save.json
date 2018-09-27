@@ -1,13 +1,12 @@
 {
-	"activeCard": 9,
+	"activeCard": 4,
 	"deck": [
-		2,
 		3,
 		1,
 		8
 	],
 	"jauges": [
-		20,
+		40,
 		60,
 		40
 	]

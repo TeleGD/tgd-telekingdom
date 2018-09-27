@@ -117,7 +117,10 @@ public class Player{
 		activeCard = new Card (world, CardTemplate.getCardTemplate (0));
 //		deck.add(activeCard);	// Ajout de la première carte
 
-		activeCard.setPiocheeTrue(); // On pioche la première carte
+		if (!world.isJustLoaded()) {
+			activeCard.setPiocheeTrue(); // On pioche la première carte
+		}
+		
 	}
 
 	public void applyEffects(int[] effet) {
@@ -127,4 +130,17 @@ public class Player{
 			if(j.getName() == "Effectif")  j.addValeur(effet[2]);
 		}
 	}
+	
+	public void setJauges(List<Jauge> jauges) {
+		this.jauges = jauges;
+	}
+
+	public void setDeck(ArrayList<Card> deck) {
+		this.deck = deck;
+	}
+
+	public void setActiveCard(Card activeCard) {
+		this.activeCard = activeCard;
+	}
+	
 }
