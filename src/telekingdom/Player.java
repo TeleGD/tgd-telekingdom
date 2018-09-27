@@ -36,6 +36,7 @@ public class Player{
 		/*Création et ajout des différentes jauges */
 		jauges.add(new Jauge("Argent", "Trop d'argent", "Plus d'argent", world,this));
 		jauges.add(new Jauge("Reputation", "Trop de réputation", "Plus de réputation", world,this));
+		jauges.add(new Jauge("Effectif", "Trop d'élèves", "Les élèves se sont enfuis, dommage !", world, this));
 
 		//on place directement les jauges centrees et separees de 25px
 		int n = jauges.size();
@@ -123,7 +124,7 @@ public class Player{
 		for (Jauge j : jauges) {
 			if(j.getName() == "Reputation")  j.addValeur(effet[1]);
 			if(j.getName() == "Argent")  j.addValeur(effet[0]);
-			
+			if(j.getName() == "Effectif")  j.addValeur(effet[2]);
 		}
 	}
 }

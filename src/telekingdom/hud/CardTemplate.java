@@ -47,10 +47,10 @@ public class CardTemplate {
 						} catch (JSONException error) {}
 						try {
 							JSONArray effect = object.getJSONArray ("effect");
-							for (int j = 0, lj = effect.length (); j < lj && j < 2; j++) {
+							for (int j = 0, lj = effect.length (); j < lj && j < 3; j++) {
 								try {
 									JSONArray option = effect.getJSONArray (j);
-									for (int k = 0, lk = option.length (); k < lk && k < 2; k++) {
+									for (int k = 0, lk = option.length (); k < lk && k < 3; k++) {
 										try {
 											cardTemplate.effect [j] [k] = option.getInt (k);
 										} catch (JSONException error) {}
@@ -128,11 +128,13 @@ public class CardTemplate {
 		this.effect = new int [] [] {
 			new int [] {
 				0, // l'effet sur la première jauge en cas de réponse négative
-				0 // l'effet sur la seconde jauge en cas de réponse négative
+				0, // l'effet sur la seconde jauge en cas de réponse négative
+				0 // l'effet sur la troisième jauge en cas de réponse négative
 			},
 			new int [] {
 				0, // l'effet sur la première jauge en cas de réponse positive
-				0 // l'effet sur la seconde jauge en cas de réponse positive
+				0, // l'effet sur la seconde jauge en cas de réponse positive
+				0 // l'effet sur la troisième jauge en cas de réponse positive
 			}
 		};
 		this.next = new CardParams [] [] {
