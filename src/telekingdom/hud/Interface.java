@@ -49,7 +49,9 @@ public class Interface {
 		if(!player.isDead()) {
 			player.update(container, game, delta);
 			player.getActiveCard().update(container, game, delta);
-
+			for (Jauge j : jauges) {
+				j.update(container, game, delta);
+			}
 		}
 	}
 
