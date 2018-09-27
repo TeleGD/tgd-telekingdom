@@ -32,6 +32,8 @@ public class Jauge {
 
 	/* Valeur de la jauge */
 	private int valeur;
+	private double valeurAffichee;
+	private double vitesseJauge;
 
 	/* Image (format Slick) de la jauge (vide et pleine pour en gérer le remplissage) */
 	private Image emptySprite;
@@ -48,8 +50,10 @@ public class Jauge {
 		this.endMessageFull = endMessageFull;
 
 		this.world = w;
+		this.vitesseJauge = 0.01;
 
 		this.valeur = 50;
+		this.valeurAffichee = valeur;
 
 		try {
 			emptySprite = new Image("images"+File.separator+name+"_empty.png");
@@ -73,13 +77,21 @@ public class Jauge {
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 
+		if (valeurAffichee + vitesseJauge * delta < valeur) {
+			valeurAffichee += vitesseJauge * delta;
+		} else if (valeurAffichee - vitesseJauge * delta > valeur) {
+			valeurAffichee -= vitesseJauge * delta;
+		} else {
+			valeurAffichee = valeur;
+		}
+
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		//on draw l'image vide
 		context.drawImage(emptySprite, x, y, x+width, y+height, 0, 0, emptySprite.getWidth()-1, emptySprite.getHeight()-1);
 		//puis on draw la partie de l'image pleine qui correspond a la valeur de la jauge
-		context.drawImage(fullSprite, x, y+Math.abs((float)valeur-100)/100*height, x+width, y+height, 0, Math.abs((float)valeur-100)/100*(emptySprite.getHeight()-1), emptySprite.getWidth()-1, emptySprite.getHeight()-1);
+		context.drawImage(fullSprite, x, y+Math.abs((float) valeurAffichee-100)/100*height, x+width, y+height, 0, Math.abs((float) valeurAffichee-100)/100*(emptySprite.getHeight()-1), emptySprite.getWidth()-1, emptySprite.getHeight()-1);
 
 		//puis on draw le nom de la jauge
 		context.setFont(World.FontJauges);
@@ -117,7 +129,7 @@ public class Jauge {
 		if(valeur>100) valeur = 100;
 		else if(valeur<0) valeur = 0;
 	}
-	
+
 	public void init() {
 		this.valeur = 50;
 	}
