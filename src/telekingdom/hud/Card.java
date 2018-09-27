@@ -1,7 +1,5 @@
 package telekingdom.hud;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -43,6 +41,8 @@ public class Card {
 	private int[] effet;
 
 	private Request request;
+	
+	private Color answerBackground = new Color(200,200,200,150);
 
 	public Card (World world, CardTemplate cardTemplate) {
 		this.cardTemplate = cardTemplate;
@@ -115,17 +115,17 @@ public class Card {
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
 		request.render(container, game, context);
 		if (!animGetIn && !animGo && !animGetOut) {
-			context.setColor(Color.lightGray);
+			context.setColor(answerBackground);
 			if (state==-1) {
-				context.fillRect(x, y, w.Font.getWidth(this.cardTemplate.getResponse(0)) + 8, w.Font.getHeight(this.cardTemplate.getResponse(0)) + 8);
+				context.fillRect(x, y, World.Font.getWidth(this.cardTemplate.getResponse(0)) + 8, World.Font.getHeight(this.cardTemplate.getResponse(0)) + 8);
 				context.setColor(Color.black);
 				context.setFont(World.Font);
 				context.drawString(this.cardTemplate.getResponse (0), x+4, y+4);
 			} else if (state==1) {
-				context.fillRect(x+length-w.Font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, w.Font.getWidth(this.cardTemplate.getResponse(1)) + 8, w.Font.getHeight(this.cardTemplate.getResponse(1)) +8);
+				context.fillRect(x+length-World.Font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, World.Font.getWidth(this.cardTemplate.getResponse(1)) + 8, World.Font.getHeight(this.cardTemplate.getResponse(1)) +8);
 				context.setColor(Color.black);
 				context.setFont(World.Font);
-				context.drawString(this.cardTemplate.getResponse (1), x+length-w.Font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
+				context.drawString(this.cardTemplate.getResponse (1), x+length-World.Font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
 			}
 		}
 	}

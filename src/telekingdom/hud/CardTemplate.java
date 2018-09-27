@@ -101,6 +101,15 @@ public class CardTemplate {
 	static public CardTemplate getCardTemplate (int ID) {
 		return CardTemplate.instances.get (ID >= 0 && ID < CardTemplate.instances.size () ? ID : 0);
 	}
+	
+	static public int getID (CardTemplate card) {
+		for (int i = 0 ; i<instances.size() ; i++) {
+			if (instances.get(i).equals(card)) {
+				return i;
+			}
+		}
+		return -1;
+	}
 
 	private Character character;
 	private String request;

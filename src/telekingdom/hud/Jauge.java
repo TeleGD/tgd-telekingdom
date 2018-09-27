@@ -118,6 +118,10 @@ public class Jauge {
 		else if(valeur<0) valeur = 0;
 	}
 	
+	public int getValeur() {
+		return valeur;
+	}
+	
 	public void init() {
 		this.valeur = 50;
 	}

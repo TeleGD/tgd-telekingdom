@@ -65,7 +65,11 @@ public class Player{
 	public Card getActiveCard() {
 		return activeCard;
 	}
-
+	
+	public ArrayList<Card> getDeck() {
+		return deck;
+	}
+	
 	public Boolean isDead() {
 		return dead;
 	}
