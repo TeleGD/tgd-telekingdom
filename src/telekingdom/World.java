@@ -127,5 +127,8 @@ public class World extends BasicGameState {
 	public Player getPlayer() {
 		return player;
 	}
-
+	
+	public void saveGame() {
+		Save save = new Save(this);
+	}
 }
