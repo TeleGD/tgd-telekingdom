@@ -16,9 +16,10 @@ import org.newdawn.slick.opengl.EmptyImageData;
 
 public class Character {
 
-	static private List <Character> instances = new ArrayList <Character> ();
+	static private List <Character> instances;
 
 	static {
+		Character.instances = new ArrayList <Character> ();
 		try {
 			BufferedReader streamFilter = new BufferedReader (new InputStreamReader (System.class.getResourceAsStream ("/data" + File.separator + "characters.json")));
 			String json = "";
@@ -50,14 +51,18 @@ public class Character {
 		}
 	}
 
-	static public Character getCharacter (int ID) {
-		return Character.instances.get (ID >= 0 && ID < Character.instances.size () ? ID : 0);
+	static public Character getCharacter (int index) {
+		return Character.instances.get (index >= 0 && index < Character.instances.size () ? index : 0);
+	}
+
+	static public int getIndex (Character character) {
+		return Character.instances.indexOf (character);
 	}
 
 	private String name;
 	private Image image;
 
-	public Character () {
+	private Character () {
 		Character.instances.add (this);
 		this.name = "Inconnu";
 		this.image = new Image (new EmptyImageData (0, 0));

@@ -12,8 +12,6 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import app.AppPage;
 
-import telekingdom.World;
-
 public class Welcome extends AppPage {
 
 	private Image logo;

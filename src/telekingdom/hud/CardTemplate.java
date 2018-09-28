@@ -1,8 +1,9 @@
 package telekingdom.hud;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -14,19 +15,30 @@ import org.json.JSONObject;
 
 public class CardTemplate {
 
-	static private List <CardTemplate> instances = new ArrayList <CardTemplate> ();
+	static private List <CardTemplate> instances;
 
 	static {
+		CardTemplate.instances = new ArrayList <CardTemplate> ();
+		CardTemplate.load ("/data/cardTemplates.json");
+		// CardTemplate.normalize ();
+		// CardTemplate.save ("/data/cardTemplates2.json");
+		if (CardTemplate.instances.size () == 0) {
+			new CardTemplate ();
+		}
+	}
+
+	static private void load (String filename) {
 		try {
-			BufferedReader streamFilter = new BufferedReader (new InputStreamReader (System.class.getResourceAsStream ("/data" + File.separator + "cardTemplates.json")));
+			BufferedReader reader = new BufferedReader (new FileReader (System.class.getResource (filename).getPath ()));
 			String json = "";
 			String line;
-			while ((line = streamFilter.readLine ()) != null) {
+			while ((line = reader.readLine ()) != null) {
 				json += line + "\n";
 			}
-			streamFilter.close ();
+			reader.close ();
 			try {
 				JSONArray array = new JSONArray (json);
+				int size = CardTemplate.instances.size ();
 				for (int i = 0, li = array.length (); i < li; i++) {
 					CardTemplate cardTemplate = new CardTemplate ();
 					try {
@@ -47,7 +59,7 @@ public class CardTemplate {
 						} catch (JSONException error) {}
 						try {
 							JSONArray effect = object.getJSONArray ("effect");
-							for (int j = 0, lj = effect.length (); j < lj && j < 3; j++) {
+							for (int j = 0, lj = effect.length (); j < lj && j < 2; j++) {
 								try {
 									JSONArray option = effect.getJSONArray (j);
 									for (int k = 0, lk = option.length (); k < lk && k < 3; k++) {
@@ -63,19 +75,19 @@ public class CardTemplate {
 				for (int i = 0, li = array.length (); i < li; i++) {
 					try {
 						JSONArray next = array.getJSONObject (i).getJSONArray ("next");
-						CardTemplate cardTemplate = CardTemplate.getCardTemplate (i);
+						CardTemplate cardTemplate = CardTemplate.getCardTemplate (i + size);
 						for (int j = 0, lj = next.length (); j < lj && j < 2; j++) {
 							try {
 								JSONArray option = next.getJSONArray (j);
 								CardParams [] cardParams = new CardParams [option.length ()];
 								for (int k = 0, lk = option.length (); k < lk; k++) {
-									CardTemplate nextCardTemplate = CardTemplate.getCardTemplate (0);
+									CardTemplate nextCardTemplate = CardTemplate.getCardTemplate (0 /* IDEA: + size ? */);
 									int zone = 0;
 									int quantity = 1;
 									try {
 										JSONArray params = option.getJSONArray (k);
 										try {
-											nextCardTemplate = CardTemplate.getCardTemplate (params.getInt (0));
+											nextCardTemplate = CardTemplate.getCardTemplate (params.getInt (0) + size);
 										} catch (JSONException error) {}
 										try {
 											zone = params.getInt (1);
@@ -93,22 +105,99 @@ public class CardTemplate {
 				}
 			} catch (JSONException error) {}
 		} catch (IOException error) {}
-		if (CardTemplate.instances.size () == 0) {
-			new CardTemplate ();
-		}
 	}
 
-	static public CardTemplate getCardTemplate (int ID) {
-		return CardTemplate.instances.get (ID >= 0 && ID < CardTemplate.instances.size () ? ID : 0);
+	static private void save (String filename) {
+		try {
+			JSONArray array = new JSONArray ();
+			for (CardTemplate cardTemplate: CardTemplate.instances) {
+				JSONObject object = new JSONObject ();
+				try {
+					object.put ("character", Character.getIndex (cardTemplate.character));
+				} catch (JSONException error) {}
+				try {
+					object.put ("request", cardTemplate.request);
+				} catch (JSONException error) {}
+				JSONArray response = new JSONArray ();
+				for (int i = 0; i < 2; i++) {
+					response.put (cardTemplate.response [i]);
+				}
+				try {
+					object.put ("response", response);
+				} catch (JSONException error) {}
+				JSONArray effect = new JSONArray ();
+				for (int i = 0; i < 2; i++) {
+					JSONArray option = new JSONArray ();
+					for (int j = 0; j < 3; j++) {
+						option.put (cardTemplate.effect [i] [j]);
+					}
+					effect.put (option);
+				}
+				try {
+					object.put ("effect", effect);
+				} catch (JSONException error) {}
+				JSONArray next = new JSONArray ();
+				for (int i = 0; i < 2; i++) {
+					JSONArray option = new JSONArray ();
+					for (int j = 0, l = cardTemplate.next [i].length; j < l; j++) {
+						JSONArray params = new JSONArray ();
+						params.put (CardTemplate.getIndex (cardTemplate.next [i] [j].getCardTemplate ()));
+						params.put (cardTemplate.next [i] [j].getZone ());
+						params.put (cardTemplate.next [i] [j].getQuantity ());
+						option.put (params);
+					}
+					next.put (option);
+				}
+				try {
+					object.put ("next", next);
+				} catch (JSONException error) {}
+				array.put (object);
+			}
+			String json = "\n";
+			try {
+				json = array.toString (2).replaceAll ("  ", "\t") + "\n";
+			} catch (JSONException error) {}
+			BufferedWriter writer = new BufferedWriter (new FileWriter (System.class.getResource (filename).getPath ()));
+			writer.write (json);
+			writer.close ();
+		} catch (IOException error) {}
 	}
-	
-	static public int getID (CardTemplate card) {
-		for (int i = 0 ; i<instances.size() ; i++) {
-			if (instances.get(i).equals(card)) {
-				return i;
+
+	static private void normalize () {
+		List <CardTemplate> instances = new ArrayList <CardTemplate> ();
+		boolean [] isVisited = new boolean [CardTemplate.instances.size ()];
+		for (int i = 0, l = CardTemplate.instances.size (); i < l; i++) {
+			if (!isVisited [i]) {
+				List <CardTemplate> stack = new ArrayList <CardTemplate> ();
+				int size;
+				isVisited [i] = true;
+				stack.add (CardTemplate.instances.get (i));
+				while ((size = stack.size ()) != 0) {
+					CardTemplate currentCardTemplate = stack.remove (size - 1);
+					instances.add (currentCardTemplate);
+					for (int j = 1; j >= 0; j--) {
+						CardParams cardParams [] = currentCardTemplate.next [j];
+						for (int k = cardParams.length - 1; k >= 0; k--) {
+							CardTemplate nextCardTemplate = cardParams [k].getCardTemplate ();
+							int nextIndex = CardTemplate.getIndex (nextCardTemplate);
+							if (!isVisited [nextIndex]) {
+								isVisited [nextIndex] = true;
+								stack.add (nextCardTemplate);
+							}
+						}
+					}
+				}
 			}
 		}
-		return -1;
+		CardTemplate.instances = instances;
+	}
+
+	static public CardTemplate getCardTemplate (int index) {
+		return CardTemplate.instances.get (index >= 0 && index < CardTemplate.instances.size () ? index : 0);
+	}
+
+	static public int getIndex (CardTemplate cardTemplate) {
+		return CardTemplate.instances.indexOf (cardTemplate);
 	}
 
 	private Character character;
@@ -117,7 +206,7 @@ public class CardTemplate {
 	private int [] [] effect;
 	private CardParams [] [] next;
 
-	public CardTemplate () {
+	private CardTemplate () {
 		CardTemplate.instances.add (this);
 		this.character = Character.getCharacter (0); // le personnage effectuant la requête
 		this.request = "Hmm..."; // la requête en question

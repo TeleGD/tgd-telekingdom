@@ -9,11 +9,11 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import app.AppMenu;
 import app.elements.MenuItem;
+
 import telekingdom.World;
 
 public class MainMenu extends AppMenu {
 
-	
 	public MainMenu (int ID) {
 		super (ID);
 	}
@@ -40,7 +40,7 @@ public class MainMenu extends AppMenu {
 			},
 			new MenuItem ("Editeur de cartes") {
 				public void itemSelected () {
-					
+
 				}
 			},
 			new MenuItem ("Quitter") {
@@ -49,6 +49,7 @@ public class MainMenu extends AppMenu {
 				}
 			}
 		}));
-		this.setHint ("By TeleGame Design");
+		this.setHint ("BY TELEGAME DESIGN");
 	}
+
 }

@@ -41,7 +41,7 @@ public class World extends BasicGameState {
 
 	private Interface interf;
 	private Player player;
-	
+
 	private boolean justLoaded = false;
 
 	public World (int ID) {
@@ -70,7 +70,7 @@ public class World extends BasicGameState {
 		container.getInput ().clearKeyPressedRecord ();
 		if (this.state == 0) {
 			/* Exécuté une unique fois au lancement du jeu */
-			if (!justLoaded) { 
+			if (!justLoaded) {
 				player.init();
 			} else {
 				player.getActiveCard().setPiocheeTrue();
@@ -134,11 +134,11 @@ public class World extends BasicGameState {
 	public Player getPlayer() {
 		return player;
 	}
-	
+
 	public void saveGame() {
 		new Save(this);
 	}
-	
+
 	public void loadGame() {
 		justLoaded=true;
 		new Load(this);
@@ -147,5 +147,5 @@ public class World extends BasicGameState {
 	public boolean isJustLoaded() {
 		return justLoaded;
 	}
-	
+
 }

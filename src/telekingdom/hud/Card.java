@@ -61,14 +61,6 @@ public class Card {
 
 		x = world.getWidth()/2 - length/2;
 		y = -length;
-		System.out.println (this.cardTemplate.getCharacter ().getName ());
-		System.out.println (this.cardTemplate.getRequest ());
-		System.out.println (this.cardTemplate.getResponse (0));
-		System.out.println (this.cardTemplate.getResponse (1));
-		System.out.println (this.cardTemplate.getEffect (0) [0]);
-		System.out.println (this.cardTemplate.getEffect (0) [1]);
-		System.out.println (this.cardTemplate.getEffect (1) [0]);
-		System.out.println (this.cardTemplate.getEffect (1) [1]);
 
 		this.request = new Request(this.cardTemplate.getRequest(),world);
 
