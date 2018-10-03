@@ -1,11 +1,11 @@
 [
 	{
 		"name": "Reflet",
-		"image": "mirror.png"
+		"image": "/images/characters/mirror.png"
 	},
 	{
 		"name": "1As",
-		"image": "lesunsa.jpg"
+		"image": "/images/characters/lesunsa.jpg"
 	},
 	{
 		"name": "Elève"

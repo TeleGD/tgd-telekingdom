@@ -113,7 +113,7 @@ public class Player{
 
 		//Initialisation du deck :
 		deck = new ArrayList<Card>();	// Création du deck des cartes
-		activeCard = new Card (world, CardTemplate.getCardTemplate (0));
+		activeCard = new Card (world, CardTemplate.getItem (0));
 //		deck.add(activeCard);	// Ajout de la première carte
 
 		if (!world.isJustLoaded()) {

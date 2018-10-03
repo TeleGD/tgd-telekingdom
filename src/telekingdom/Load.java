@@ -43,11 +43,11 @@ public class Load {
 			streamFilter.close ();
 			try {
 				JSONObject json = new JSONObject (load);
-				this.activeCard = new Card(this.world,CardTemplate.getCardTemplate (json.getInt("activeCard")));
+				this.activeCard = new Card(this.world,CardTemplate.getItem(json.getInt("activeCard")));
 
 				for (int i = 0, l=json.getJSONArray("deck").length(); i<l; i++) {
 					try {
-						deck.add(new Card(this.world,CardTemplate.getCardTemplate(json.getJSONArray("deck").getInt(i))));
+						deck.add(new Card(this.world,CardTemplate.getItem(json.getJSONArray("deck").getInt(i))));
 					} catch (JSONException e) {}
 				}
 

@@ -103,7 +103,7 @@ public class Card {
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
-		Image image = this.cardTemplate.getCharacter ().getImage ();
+		Image image = this.cardTemplate.getItem ().getImage ();
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth()-1, image.getHeight()-1);
 		request.render(container, game, context);
 		if (!animGetIn && !animGo && !animGetOut) {
