@@ -6,6 +6,8 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.StateBasedGame;
 
 import telekingdom.World;
@@ -43,6 +45,8 @@ public class Card {
 	private Request request;
 	
 	private Color answerBackground = new Color(200,200,200,150);
+	
+	private Sound turn;
 
 	public Card (World world, CardTemplate cardTemplate) {
 		this.cardTemplate = cardTemplate;
@@ -63,6 +67,12 @@ public class Card {
 		y = -length;
 
 		this.request = new Request(this.cardTemplate.getRequest(),world);
+		
+		try {
+			turn = new Sound("res/musics/turn_page.ogg");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 
 		//test
 		//setPiocheeTrue();
@@ -183,11 +193,13 @@ public class Card {
 	public void confirmLeft() {
 		effet = cardTemplate.getEffect(0);
 		initGetOut(y,(int) (w.getHeight()*1.2));
+		turn.play();
 	}
 
 	public void confirmRight() {
 		effet = cardTemplate.getEffect(1);
 		initGetOut(y,(int) (w.getHeight()*1.2));
+		turn.play();
 	}
 
 	public void initGetIn(int dep, int fin, int max) {
