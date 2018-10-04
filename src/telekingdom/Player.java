@@ -33,9 +33,9 @@ public class Player{
 		jauges = new ArrayList<Jauge>();	// L'ArrayList des jauges, sera passé à l'interface pour l'affichage
 
 		/*Création et ajout des différentes jauges */
-		jauges.add(new Jauge("Argent", "Trop d'argent", "Plus d'argent", world,this));
-		jauges.add(new Jauge("Reputation", "Trop de réputation", "Plus de réputation", world,this));
-		jauges.add(new Jauge("Effectif", "Trop d'élèves", "Les élèves se sont enfuis, dommage !", world, this));
+		jauges.add(new Jauge("Argent", "Trop d'argent", "Plus d'argent", "applause", "huee", world,this));
+		jauges.add(new Jauge("Reputation", "Trop de réputation", "Plus de réputation", "applause", "huee", world,this));
+		jauges.add(new Jauge("Effectif", "Trop d'élèves", "Les élèves se sont enfuis, dommage !", "ouais", "huee", world, this));
 
 		//on place directement les jauges centrees et separees de 25px
 		int n = jauges.size();

@@ -6,6 +6,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.StateBasedGame;
 
 import telekingdom.Player;
@@ -42,12 +43,20 @@ public class Jauge {
 	/* Messages de défaite selon la valeur de la jauge */
 	private String endMessageEmpty;
 	private String endMessageFull;
+	
+	/* Sons additionnels sur l'écran de défaite */
+	private String nameSoundFull;
+	private String nameSoundEmpty;
+	private Sound endSoundFull;
+	private Sound endSoundEmpty;
 
-	public Jauge(String name, String endMessageFull, String endMessageEmpty, World w, Player player) {
+	public Jauge(String name, String endMessageFull, String endMessageEmpty, String nameSoundFull, String nameSoundEmpty, World w, Player player) {
 
 		this.name = name;
 		this.endMessageEmpty = endMessageEmpty;
 		this.endMessageFull = endMessageFull;
+		this.nameSoundFull = nameSoundFull;
+		this.nameSoundEmpty = nameSoundEmpty;
 
 		this.world = w;
 		this.vitesseJauge = 0.01;
@@ -58,6 +67,8 @@ public class Jauge {
 		try {
 			emptySprite = new Image("images"+File.separator+name+"_empty.png");
 			fullSprite = new Image("images"+File.separator+name+".png");
+			endSoundFull = new Sound("res/musics"+File.separator+nameSoundFull+".ogg");
+			endSoundEmpty = new Sound("res/musics/"+File.separator+nameSoundEmpty+".ogg");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -116,8 +127,13 @@ public class Jauge {
 	}
 
 	public String getEndingMessage() {
-		if(valeur == 0) return endMessageEmpty;
-		else return endMessageFull;
+		if (valeur == 0) {
+			endSoundEmpty.play();
+			return endMessageEmpty;
+		} else {
+			endSoundFull.play();
+			return endMessageFull;
+		}
 	}
 
 	public Boolean isEmptyOrFull() {
