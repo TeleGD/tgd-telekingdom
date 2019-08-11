@@ -1,8 +1,12 @@
 package telekingdom.hud;
 
+import java.io.File;
+
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.state.StateBasedGame;
 
 import app.AppLoader;
@@ -42,7 +46,11 @@ public class Jauge {
 	private String endMessageEmpty;
 	private String endMessageFull;
 
-	public Jauge(String name, String endMessageFull, String endMessageEmpty, World w, Player player) {
+	/* Sons additionnels sur l'écran de défaite */
+	private Sound endSoundFull;
+	private Sound endSoundEmpty;
+
+	public Jauge(String name, String endMessageFull, String endMessageEmpty, String nameSoundFull, String nameSoundEmpty, World w, Player player) {
 
 		this.name = name;
 		this.endMessageEmpty = endMessageEmpty;
@@ -56,6 +64,13 @@ public class Jauge {
 
 		this.emptySprite = AppLoader.loadPicture ("/images/" + name + "_empty.png");
 		this.fullSprite = AppLoader.loadPicture ("/images/" + name + ".png");
+
+		try {
+			this.endSoundFull = new Sound("res/musics"+File.separator+nameSoundFull+".ogg");
+			this.endSoundEmpty = new Sound("res/musics/"+File.separator+nameSoundEmpty+".ogg");
+		} catch (SlickException e) {
+			e.printStackTrace();
+		}
 
 		this.setSize();
 	}
@@ -111,8 +126,13 @@ public class Jauge {
 	}
 
 	public String getEndingMessage() {
-		if(valeur == 0) return endMessageEmpty;
-		else return endMessageFull;
+		if (valeur == 0) {
+			endSoundEmpty.play();
+			return endMessageEmpty;
+		} else {
+			endSoundFull.play();
+			return endMessageFull;
+		}
 	}
 
 	public Boolean isEmptyOrFull() {
