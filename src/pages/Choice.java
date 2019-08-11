@@ -12,9 +12,9 @@ import app.elements.MenuItem;
 
 import telekingdom.World;
 
-public class MainMenu extends AppMenu {
+public class Choice extends AppMenu {
 
-	public MainMenu (int ID) {
+	public Choice (int ID) {
 		super (ID);
 	}
 
@@ -27,15 +27,15 @@ public class MainMenu extends AppMenu {
 		this.setMenu (Arrays.asList (new MenuItem [] {
 			new MenuItem ("Nouvelle partie") {
 				public void itemSelected () {
-					((World) game.getState (3)).setState (0);
-					game.enterState (3, new FadeOutTransition (), new FadeInTransition ());
+					((World) game.getState (4)).setState (0);
+					game.enterState (4, new FadeOutTransition (), new FadeInTransition ());
 				}
 			},
 			new MenuItem ("Charger partie") {
 				public void itemSelected () {
-					((World) game.getState (3)).loadGame();
-					((World) game.getState (3)).setState (0);
-					game.enterState (3, new FadeOutTransition (), new FadeInTransition ());
+					((World) game.getState (4)).loadGame();
+					((World) game.getState (4)).setState (0);
+					game.enterState (4, new FadeOutTransition (), new FadeInTransition ());
 				}
 			},
 			new MenuItem ("Editeur de cartes") {

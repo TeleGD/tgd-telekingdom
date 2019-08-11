@@ -1,12 +1,11 @@
 package telekingdom.hud;
 
-import java.io.File;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
+import app.AppLoader;
 
 import telekingdom.Player;
 import telekingdom.World;
@@ -55,12 +54,8 @@ public class Jauge {
 		this.valeur = 50;
 		this.valeurAffichee = valeur;
 
-		try {
-			emptySprite = new Image("images"+File.separator+name+"_empty.png");
-			fullSprite = new Image("images"+File.separator+name+".png");
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+		this.emptySprite = AppLoader.loadPicture ("/images/" + name + "_empty.png");
+		this.fullSprite = AppLoader.loadPicture ("/images/" + name + ".png");
 
 		this.setSize();
 	}
@@ -89,13 +84,13 @@ public class Jauge {
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		//on draw l'image vide
-		context.drawImage(emptySprite, x, y, x+width, y+height, 0, 0, emptySprite.getWidth()-1, emptySprite.getHeight()-1);
+		context.drawImage(emptySprite, x, y, x+width, y+height, 0, 0, emptySprite.getWidth(), emptySprite.getHeight());
 		//puis on draw la partie de l'image pleine qui correspond a la valeur de la jauge
-		context.drawImage(fullSprite, x, y+Math.abs((float) valeurAffichee-100)/100*height, x+width, y+height, 0, Math.abs((float) valeurAffichee-100)/100*(emptySprite.getHeight()-1), emptySprite.getWidth()-1, emptySprite.getHeight()-1);
+		context.drawImage(fullSprite, x, y+Math.abs((float) valeurAffichee-100)/100*height, x+width, y+height, 0, Math.abs((float) valeurAffichee-100)/100*(emptySprite.getHeight()), emptySprite.getWidth(), emptySprite.getHeight());
 
 		//puis on draw le nom de la jauge
-		context.setFont(World.FontJauges);
-		context.drawString(name, x+width/2-World.FontJauges.getWidth(name)/2, y+height+2/1280f*world.getWidth());
+		context.setFont(World.fontJauges);
+		context.drawString(name, x+width/2-World.fontJauges.getWidth(name)/2, y+height+2/1280f*world.getWidth());
 	}
 
 

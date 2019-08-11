@@ -13,21 +13,22 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import app.utils.FontUtils;
+import app.AppLoader;
+
 import telekingdom.hud.Interface;
 
 public class World extends BasicGameState {
 
-	public static final Font FontJauges = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 16, true);
-	public static final Font Font = FontUtils.loadFont("Kalinga", java.awt.Font.BOLD, 12, true);
-	public final static String GAME_FOLDER_NAME="telekingdom";
-	public final static String DIRECTORY_MUSICS="musics"+File.separator;
+	public static Font fontJauges;
+	public static Font font;
 
 	private static Music music;
 
 	static {
+		World.fontJauges = AppLoader.loadFont ("/fonts/vt323.ttf", java.awt.Font.BOLD, 16);
+		World.font = AppLoader.loadFont ("/fonts/vt323.ttf", java.awt.Font.BOLD, 12);
 		try {
-			music = new Music(DIRECTORY_MUSICS+"main_theme.ogg");
+			World.music = new Music("musics" + File.separator + "main_theme.ogg");
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
@@ -100,8 +101,8 @@ public class World extends BasicGameState {
 		/* Méthode exécutée environ 60 fois par seconde */
 		Input input = container.getInput ();
 		if (input.isKeyPressed (Input.KEY_ESCAPE)) {
-			this.setState (1);
-			game.enterState (1, new FadeOutTransition (), new FadeInTransition ());
+			this.setState (2);
+			game.enterState (2, new FadeOutTransition (), new FadeInTransition ());
 		}
 
 		interf.update(container, game, delta);

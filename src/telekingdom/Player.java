@@ -48,9 +48,9 @@ public class Player{
 		for (Jauge j : jauges) {
 			if (j.isEmptyOrFull()) { // Si le roi est mort
 				dead = true;
-				((Defeat) game.getState (2)).setSubtitle (j.getEndingMessage());
+				((Defeat) game.getState (3)).setSubtitle (j.getEndingMessage());
 				world.setState (3);
-				game.enterState (2, new FadeOutTransition (), new FadeInTransition ());
+				game.enterState (3, new FadeOutTransition (), new FadeInTransition ());
 			}
 		}
 	}

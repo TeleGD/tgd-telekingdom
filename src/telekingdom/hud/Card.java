@@ -41,7 +41,7 @@ public class Card {
 	private int[] effet;
 
 	private Request request;
-	
+
 	private Color answerBackground = new Color(200,200,200,150);
 
 	public Card (World world, CardTemplate cardTemplate) {
@@ -109,15 +109,15 @@ public class Card {
 		if (!animGetIn && !animGo && !animGetOut) {
 			context.setColor(answerBackground);
 			if (state==-1) {
-				context.fillRect(x, y, World.Font.getWidth(this.cardTemplate.getResponse(0)) + 8, World.Font.getHeight(this.cardTemplate.getResponse(0)) + 8);
+				context.fillRect(x, y, World.font.getWidth(this.cardTemplate.getResponse(0)) + 8, World.font.getHeight(this.cardTemplate.getResponse(0)) + 8);
 				context.setColor(Color.black);
-				context.setFont(World.Font);
+				context.setFont(World.font);
 				context.drawString(this.cardTemplate.getResponse (0), x+4, y+4);
 			} else if (state==1) {
-				context.fillRect(x+length-World.Font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, World.Font.getWidth(this.cardTemplate.getResponse(1)) + 8, World.Font.getHeight(this.cardTemplate.getResponse(1)) +8);
+				context.fillRect(x+length-World.font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, World.font.getWidth(this.cardTemplate.getResponse(1)) + 8, World.font.getHeight(this.cardTemplate.getResponse(1)) +8);
 				context.setColor(Color.black);
-				context.setFont(World.Font);
-				context.drawString(this.cardTemplate.getResponse (1), x+length-World.Font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
+				context.setFont(World.font);
+				context.drawString(this.cardTemplate.getResponse (1), x+length-World.font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
 			}
 		}
 	}

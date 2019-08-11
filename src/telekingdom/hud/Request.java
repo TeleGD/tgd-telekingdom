@@ -33,7 +33,7 @@ public class Request {
 			int length = 1;
 			for (int i = 0, j = 1, l = words.length; j < l; j++) {
 				String word = words [i] + " " + words [j];
-				if (World.Font.getWidth (word) < width) {
+				if (World.font.getWidth (word) < width) {
 					words [i] = word;
 					words [j] = null;
 				} else {
@@ -41,7 +41,7 @@ public class Request {
 					length++;
 				}
 			}
-			float line = (float) World.Font.getHeight (description) * Request.LINE_HEIGHT;
+			float line = (float) World.font.getHeight (description) * Request.LINE_HEIGHT;
 			float x = Request.BOX_X * horizontalZoom + width / 2f;
 			float y = Request.BOX_Y * verticalZoom + (height - line * ((float) length - 1f + 1f / Request.LINE_HEIGHT)) / 2f;
 			this.length = length;
@@ -51,7 +51,7 @@ public class Request {
 			for (int i = 0, j = 0, l = words.length; j < l; j++) {
 				if (words [j] != null) {
 					this.lines [i] = words [j];
-					this.x [i] = (int) (x - (float) World.Font.getWidth (this.lines [i]) / 2f);
+					this.x [i] = (int) (x - (float) World.font.getWidth (this.lines [i]) / 2f);
 					this.y [i] = (int) (y + line * (float) i);
 					i++;
 				}
@@ -61,7 +61,7 @@ public class Request {
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		context.setColor (Color.black);
-		context.setFont (World.Font);
+		context.setFont (World.font);
 		for (int i = 0, l = this.length; i < l; i++) {
 			context.drawString (this.lines [i], this.x [i], this.y [i]);
 		}
