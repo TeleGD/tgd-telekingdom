@@ -1,0 +1,8 @@
+- Alexis Dieu (@AlexisDieu)
+- Amos George (@AmosGeorge)
+- Clément Crouzet (@CrouzetC)
+- David Forlen (@DavidForlen)
+- Frédéric Venier (@FredericVenier et @VFrederic)
+- Nathan Barloy (@nathanBarloy)
+- Tristan Le Godais (@TrisTOON)
+- Xavier Indice (@XavierIndice)
