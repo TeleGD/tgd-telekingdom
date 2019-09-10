@@ -1,5 +1,6 @@
 package telekingdom;
 
+import java.applet.Applet;
 import java.io.File;
 
 import org.newdawn.slick.Font;
@@ -20,13 +21,17 @@ import telekingdom.hud.Interface;
 public class World extends BasicGameState {
 
 	public static Font fontJauges;
+	// public static Font specialElite;
 	public static Font font;
 
 	private static Music music;
 
 	static {
-		World.fontJauges = AppLoader.loadFont ("/fonts/vt323.ttf", java.awt.Font.BOLD, 16);
-		World.font = AppLoader.loadFont ("/fonts/vt323.ttf", java.awt.Font.BOLD, 12);
+		// World.fontJauges = AppLoader.loadFont ("/fonts/vt323.ttf", java.awt.Font.BOLD, 16);
+		// World.font = AppLoader.loadFont ("/fonts/vt323.ttf", java.awt.Font.BOLD, 12);
+
+		World.fontJauges = AppLoader.loadFont("/fonts/SpecialElite.ttf", java.awt.Font.BOLD, 16);
+		World.font = AppLoader.loadFont("/fonts/SpecialElite.ttf", java.awt.Font.BOLD, 12);
 		try {
 			World.music = new Music("musics" + File.separator + "main-theme.ogg");
 		} catch (SlickException e) {
