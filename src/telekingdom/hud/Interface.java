@@ -60,7 +60,7 @@ public class Interface {
 
 		//on draw la box en haut de l'ecran
 		context.setColor(boxColor);
-		context.fillRect(world.getWidth()/3, 0, world.getWidth()/3, 110/720f*world.getHeight());
+		//context.fillRect(world.getWidth()/3, 0, world.getWidth()/3, 110/720f*world.getHeight());
 
 		//on draw les jauges et leurs noms dans la box
 		context.setColor(textColor);
