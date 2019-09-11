@@ -62,4 +62,22 @@
 		"response": ["Ctrl + Z", "Ctrl + Y"],
 		"effect": [[-15, 0, 15], [10 , 0 , 0]]
 	}
+	{
+		"character": 0,//HANGER
+		"request": "Vous voyez un groupe d'eleves manger dans une salle de classe.",
+		"response": ["Vous menacez par mail de fermer l'école à 18h", "Vous faites comme si vous n'aviez rien vu, en vrai, ça vous arrive aussi"],
+		"effect": [[0, 0, -10], [0 , -10 , 5]]
+	}
+	{
+		"character": 0,//HANGER
+		"request": "L'inté vous appelle : un élève s'est coupé le pied dans la fontaine lors du rallye.",
+		"response": ["Vous appelez les urgences et vous occupez de l'élève", "Vous leurs dites de se débrouiller"],
+		"effect": [[-5, 5, 0], [0 , -5 , -1]]
+	}
+	{
+		"character": 0,//HANGER
+		"request": "Vous devez faire votre discours de rentrée.",
+		"response": ["Vous prenez le double du temps prévu", "Vous respectez le timing(pour une fois)"],
+		"effect": [[0, 0, -5], [0 , 5 , 0]]
+	}
 ]
