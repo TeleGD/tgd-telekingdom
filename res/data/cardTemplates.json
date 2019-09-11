@@ -61,6 +61,24 @@
 		"request": "Vous proposez 50 euros à chaque élève de l'école durant une conférence.",
 		"response": ["Ctrl + Z", "Ctrl + Y"],
 		"effect": [[-15, 0, 15], [10 , 0 , 0]]
+	},
+	{
+		"character": 5,
+		"request": "Le corps enseignant et les élèves se plaignent du bruit dégueulasse du matériel audio dans les amphis, et vous demandent de faire quelque chose",
+		"response": ["De toute façon personne ne va en amphi...","Shut up and take my money"],
+		"effect": [[0,0,-25],[-15,2,-2]]
+	},
+	{
+		"character": 5,
+		"request": "Les professeurs se plaignent du nombre de place vide en amphi, ils se rassemblent à la porte de votre bureau.",
+		"response" : ["Promettre d'inviter Bille Gates au prochain barbek de comité amicale des sympathisant du corps enseignant","S'enfermer dans son bureau et attendre 17h pour partir tranquillement"],
+		"effect": [[-47,48,10],[0,-10,-20]]
+	},
+	{
+		"character": 0,
+		"request": "Suite à un accident bête en amphi, plusieurs élèves perdent l'usage de leurs auditions. Un inspecteur académique est dépéché sur les lieux pour vérifier les conditions d'enseignement dans votre école. Il va falloir ruser.",
+		"response": ["Lui proposer une 'petite interview privée' avec une 1A pas trop farouche","Claquer tout le budget rénovation dans un resto"],
+		"effect" : [[30, -10, -1], [-30, 20, 20]]
 	}
 	{
 		"character": 0,//HANGER

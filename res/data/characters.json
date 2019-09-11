@@ -1,28 +1,46 @@
 [
 	{
+		"id": 0,
 		"name": "Reflet",
-		"image": "/images/characters/mirror.png"
+		"image": "/images/characters/unknown_card.png"
+		
 	},
 	{
+		"id": 1,
 		"name": "1As",
-		"image": "/images/characters/lesunsa.jpg"
+		"image": "/images/characters/lesunsav2.png"
 	},
 	{
-		"name": "Elève"
+		"id": 2,
+		"name": "Elève",
+		"image": "/images/characters/unknown_card.png"
 	},
 	{
-		"name": "Téléphone"
+		"id": 3,
+		"name": "Téléphone",
+		"image": "/images/characters/telephone.png"
 	},
 	{
-		"name": "Démarcheur"
+		"id": 4,
+		"name": "Démarcheur",
+		"image": "/images/characters/unknown_card.png"
 	},
 	{
-		"name": "Amphi"
+		"id": 5,
+		"name": "Amphi",
+		"image": "/images/characters/amphi.png"
 	},
 	{
-		"name": "Avion"
+		"id": 6,
+		"name": "Avion",
+		"image": "/images/characters/avion.png"
 	},
 	{
-		"name": "professeur"
+		"id": 7,
+		"name": "Professeur",
+		"image": "/images/characters/prof.png"
+	},
+	{
+	
 	}
 ]
