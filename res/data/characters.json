@@ -3,7 +3,6 @@
 		"id": 0,
 		"name": "Reflet",
 		"image": "/images/characters/unknown_card.png"
-		
 	},
 	{
 		"id": 1,
@@ -39,6 +38,11 @@
 		"id": 7,
 		"name": "Professeur",
 		"image": "/images/characters/prof.png"
+	},
+	{
+		"id": 8,
+		"name": "M. Routier",
+		"image": "/images/characters/unknown_card.png"
 	},
 	{
 	

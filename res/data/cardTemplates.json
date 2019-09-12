@@ -57,6 +57,18 @@
 		"effect": [[5, -5, 0], [-15, 5, 0]]
 	},
 	{
+		"character": 2,
+		"request": "Une canne du babyfoot s’est décrochée.",
+		"response": ["La faire réparer", "Leur dire de jouer avec les cannes restantes"],
+		"effect": [[-10, 5, 10], [0, -5, -5]]
+	},
+	{
+		"character": 8,
+		"request": "Des élèves ont écrit “Nestor is a b****” sur le toit . Que faire ?",
+		"response": ["Sécuriser l'accès au toit", "Inviter les responsables à se présenter pour discuter des modalités utilisées pour accéder au toit et contribuer à les sécuriser"],
+		"effect": [[-10, 10, 0], [0, 10, -20]]
+	},
+	{
 		"character": 0,
 		"request": "Vous proposez 50 euros à chaque élève de l'école durant une conférence.",
 		"response": ["Ctrl + Z", "Ctrl + Y"],
