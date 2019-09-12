@@ -1,7 +1,11 @@
 package app;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,14 +15,25 @@ import org.newdawn.slick.util.ResourceLoader;
 
 public class AppLoader {
 
+	static private String home;
+
+	static {
+		String home = System.getProperty ("user.home") + File.separator + ".tgd";
+		File homeFile = new File (home);
+		homeFile.mkdirs ();
+		AppLoader.home = home;
+	}
+
 	private static Map <String, Map <Integer, Map <Integer, AppFont>>> fontList;
 	private static Map <String, AppPicture> pictureList;
 	private static Map <String, AppAudio> audioList;
+	private static Map <String, AppText> textList;
 
 	static {
 		AppLoader.fontList = new HashMap <String, Map <Integer, Map <Integer, AppFont>>> ();
 		AppLoader.pictureList = new HashMap <String, AppPicture> ();
 		AppLoader.audioList = new HashMap <String, AppAudio> ();
+		AppLoader.textList = new HashMap <String, AppText> ();
 		SoundStore.get ().init ();
 	}
 
@@ -105,6 +120,57 @@ public class AppLoader {
 			AppLoader.audioList.put (filename, resource);
 		}
 		return resource;
+	}
+
+	public static String loadData (String filename) {
+		AppText resource = AppLoader.textList.get (filename);
+		if (resource == null) {
+			InputStream stream = AppLoader.openStream (filename);
+			if (stream != null) {
+				try {
+					resource = new AppText (filename, stream);
+				} catch (Exception error) {}
+				AppLoader.closeStream (stream);
+			}
+			if (resource == null) {
+				resource = new AppText (filename);
+			}
+			AppLoader.textList.put (filename, resource);
+		}
+		return resource.toString ();
+	}
+
+	public static String restoreData (String filename) {
+		String data = null;
+		if (filename == null) {
+			return data;
+		}
+		filename = filename.replaceAll ("/+", "/").replace ("/", File.separator);
+		try {
+			BufferedReader reader = new BufferedReader (new FileReader (home + File.separator + filename));
+			data = "";
+			String line;
+			while ((line = reader.readLine ()) != null) {
+				data += line + "\n";
+			}
+			reader.close ();
+		} catch (Exception error) {}
+		return data;
+	}
+
+	public static void saveData (String filename, String data) {
+		if (filename == null) {
+			return;
+		}
+		filename = filename.replaceAll ("/+", "/").replace ("/", File.separator);
+		try {
+			if (data.length () != 0 && !data.endsWith ("\n")) {
+				data += "\n";
+			}
+			BufferedWriter writer = new BufferedWriter (new FileWriter (home + File.separator + filename));
+			writer.write (data);
+			writer.close ();
+		} catch (Exception error) {}
 	}
 
 }

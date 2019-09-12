@@ -1,6 +1,5 @@
 package telekingdom;
 
-import java.applet.Applet;
 import java.io.File;
 
 import org.newdawn.slick.Font;

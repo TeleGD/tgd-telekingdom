@@ -1,10 +1,11 @@
 package telekingdom;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.*;
+
+import app.AppLoader;
 
 import telekingdom.hud.Card;
 import telekingdom.hud.CardTemplate;
@@ -51,16 +52,9 @@ public class Save {
 
 		try {
 			save = writeJson();
+			AppLoader.saveData("telekingdom/save.json", save.toString(2).replaceAll("  ", "\t") + "\n");
+			System.out.println(save.toString());
 		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-
-		System.out.println(save.toString());
-		try{
-			FileWriter writer = new FileWriter(System.class.getResource("/data/save.json").getPath());
-			writer.write(save.toString(2).replaceAll ("  ", "\t")+"\n");
-			writer.close();
-		} catch (IOException | JSONException e) {
 			e.printStackTrace();
 		}
 	}
