@@ -57,16 +57,22 @@
 		"effect": [[5, -5, 0], [-15, 5, 0]]
 	},
 	{
-		"character": 2,
+		"character": 11,
 		"request": "Une canne du babyfoot s’est décrochée.",
 		"response": ["La faire réparer", "Leur dire de jouer avec les cannes restantes"],
 		"effect": [[-10, 5, 10], [0, -5, -5]]
 	},
 	{
-		"character": 8,
+		"character": 10,
 		"request": "Des élèves ont écrit “Nestor is a b****” sur le toit . Que faire ?",
 		"response": ["Sécuriser l'accès au toit", "Inviter les responsables à se présenter pour discuter des modalités utilisées pour accéder au toit et contribuer à les sécuriser"],
 		"effect": [[-10, 10, 0], [0, 10, -20]]
+	},
+	{
+		"character": 9,
+		"request": "Un nid de frelon a été découvert dans l’aile ouest.",
+		"response": ["Appeler les pompiers", "Demander aux élèves de fermer les fenêtres pendant les cours"],
+		"effect": [[00000, 00000, 00000000000000000000000000000000000], [00000, 00000, 00000000000000000000000000]]
 	},
 	{
 		"character": 0,

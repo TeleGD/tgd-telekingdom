@@ -45,6 +45,21 @@
 		"image": "/images/characters/unknown_card.png"
 	},
 	{
+		"id": 9,
+		"name": "Frelons",
+		"image": "/images/characters/frelon.png"
+	},
+	{
+		"id": 10,
+		"name": "Vandale",
+		"image": "/images/characters/tag.png"
+	},
+	{
+		"id": 11,
+		"name": "Fans de babyfoot",
+		"image": "/images/characters/babyfoot.png"
+	},
+	{
 	
 	}
 ]
