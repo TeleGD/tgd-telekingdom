@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.AppLoader;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -49,11 +50,9 @@ public class Character {
 								character.name = object.getString ("name");
 							} catch (JSONException error) {}
 							try {
-								try {
-									String src = System.class.getResource (object.getString ("image")).getPath ();
-									character.image = new Image (src);
-									character.src = src;
-								} catch (SlickException exception) {}
+								String src = object.getString ("image");
+								character.image = AppLoader.loadPicture(src);
+								character.src = src;
 							} catch (JSONException error) {}
 						} catch (JSONException error) {}
 					}
