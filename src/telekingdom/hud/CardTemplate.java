@@ -1,8 +1,6 @@
 package telekingdom.hud;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,6 +10,8 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import app.AppLoader;
 
 public class CardTemplate {
 
@@ -28,91 +28,81 @@ public class CardTemplate {
 	}
 
 	static private void load (String filename) {
-		if (filename != null && filename.startsWith ("/")) {
-			try {
-				BufferedReader reader = new BufferedReader (new FileReader (System.class.getResource (filename).getPath ()));
-				String json = "";
-				String line;
-				while ((line = reader.readLine ()) != null) {
-					json += line + "\n";
-				}
-				reader.close ();
+		String json = AppLoader.loadData (filename);
+		try {
+			JSONArray array = new JSONArray (json);
+			int size = CardTemplate.instances.size ();
+			for (int i = 0, li = array.length (); i < li; i++) {
+				CardTemplate cardTemplate = new CardTemplate ();
 				try {
-					JSONArray array = new JSONArray (json);
-					int size = CardTemplate.instances.size ();
-					for (int i = 0, li = array.length (); i < li; i++) {
-						CardTemplate cardTemplate = new CardTemplate ();
-						try {
-							JSONObject object = array.getJSONObject (i);
+					JSONObject object = array.getJSONObject (i);
+					try {
+						Character character = Character.getItem (object.getInt ("character"));
+						if (character != null) {
+							cardTemplate.character = character;
+						}
+					} catch (JSONException error) {}
+					try {
+						cardTemplate.request = object.getString ("request");
+					} catch (JSONException error) {}
+					try {
+						JSONArray response = object.getJSONArray ("response");
+						for (int j = 0, lj = response.length (); j < lj && j < 2; j++) {
 							try {
-								Character character = Character.getItem (object.getInt ("character"));
-								if (character != null) {
-									cardTemplate.character = character;
-								}
+								cardTemplate.response [j] = response.getString (j);
 							} catch (JSONException error) {}
+						}
+					} catch (JSONException error) {}
+					try {
+						JSONArray effect = object.getJSONArray ("effect");
+						for (int j = 0, lj = effect.length (); j < lj && j < 2; j++) {
 							try {
-								cardTemplate.request = object.getString ("request");
-							} catch (JSONException error) {}
-							try {
-								JSONArray response = object.getJSONArray ("response");
-								for (int j = 0, lj = response.length (); j < lj && j < 2; j++) {
+								JSONArray option = effect.getJSONArray (j);
+								for (int k = 0, lk = option.length (); k < lk && k < 3; k++) {
 									try {
-										cardTemplate.response [j] = response.getString (j);
+										cardTemplate.effect [j] [k] = option.getInt (k);
 									} catch (JSONException error) {}
 								}
 							} catch (JSONException error) {}
-							try {
-								JSONArray effect = object.getJSONArray ("effect");
-								for (int j = 0, lj = effect.length (); j < lj && j < 2; j++) {
-									try {
-										JSONArray option = effect.getJSONArray (j);
-										for (int k = 0, lk = option.length (); k < lk && k < 3; k++) {
-											try {
-												cardTemplate.effect [j] [k] = option.getInt (k);
-											} catch (JSONException error) {}
-										}
-									} catch (JSONException error) {}
-								}
-							} catch (JSONException error) {}
-						} catch (JSONException error) {}
-					}
-					for (int i = 0, li = array.length (); i < li; i++) {
+						}
+					} catch (JSONException error) {}
+				} catch (JSONException error) {}
+			}
+			for (int i = 0, li = array.length (); i < li; i++) {
+				try {
+					JSONArray next = array.getJSONObject (i).getJSONArray ("next");
+					CardTemplate cardTemplate = CardTemplate.getItem (i + size);
+					for (int j = 0, lj = next.length (); j < lj && j < 2; j++) {
 						try {
-							JSONArray next = array.getJSONObject (i).getJSONArray ("next");
-							CardTemplate cardTemplate = CardTemplate.getItem (i + size);
-							for (int j = 0, lj = next.length (); j < lj && j < 2; j++) {
+							JSONArray option = next.getJSONArray (j);
+							CardParams [] cardParams = new CardParams [option.length ()];
+							for (int k = 0, lk = option.length (); k < lk; k++) {
+								CardTemplate nextCardTemplate = CardTemplate.getItem (size);
+								int zone = 0;
+								int quantity = 1;
 								try {
-									JSONArray option = next.getJSONArray (j);
-									CardParams [] cardParams = new CardParams [option.length ()];
-									for (int k = 0, lk = option.length (); k < lk; k++) {
-										CardTemplate nextCardTemplate = CardTemplate.getItem (size);
-										int zone = 0;
-										int quantity = 1;
-										try {
-											JSONArray params = option.getJSONArray (k);
-											try {
-												int index = params.getInt (0);
-												if (index >= 0 || index < li) {
-													nextCardTemplate = CardTemplate.getItem (index + size);
-												};
-											} catch (JSONException error) {}
-											try {
-												zone = params.getInt (1);
-											} catch (JSONException error) {}
-											try {
-												quantity = params.getInt (2);
-											} catch (JSONException error) {}
-										} catch (JSONException error) {}
-										cardParams [k] = new CardParams (nextCardTemplate, zone, quantity);
-									}
-									cardTemplate.next [j] = cardParams;
+									JSONArray params = option.getJSONArray (k);
+									try {
+										int index = params.getInt (0);
+										if (index >= 0 || index < li) {
+											nextCardTemplate = CardTemplate.getItem (index + size);
+										};
+									} catch (JSONException error) {}
+									try {
+										zone = params.getInt (1);
+									} catch (JSONException error) {}
+									try {
+										quantity = params.getInt (2);
+									} catch (JSONException error) {}
 								} catch (JSONException error) {}
+								cardParams [k] = new CardParams (nextCardTemplate, zone, quantity);
 							}
+							cardTemplate.next [j] = cardParams;
 						} catch (JSONException error) {}
 					}
 				} catch (JSONException error) {}
-			} catch (IOException error) {}
-		}
+			}
+		} catch (JSONException error) {}
 	}
 
 	static private void save (String filename) {

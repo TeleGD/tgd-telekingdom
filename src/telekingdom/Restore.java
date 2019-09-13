@@ -1,6 +1,5 @@
 package telekingdom;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ import telekingdom.hud.Card;
 import telekingdom.hud.CardTemplate;
 import telekingdom.hud.Jauge;
 
-public class Load {
+public class Restore {
 
 	private World world;
 	private Player player;
@@ -21,7 +20,7 @@ public class Load {
 	private ArrayList<Card> deck;
 	private Card activeCard;
 
-	public Load(World world) {
+	public Restore(World world) {
 
 		this.world = world;
 		this.player = this.world.getPlayer();
@@ -32,7 +31,7 @@ public class Load {
 		this.deck = this.player.getDeck();
 		this.activeCard = this.player.getActiveCard();
 
-		String load = AppLoader.loadData ("telekingdom/save.json");
+		String load = AppLoader.restoreData("/telekingdom/save.json");
 		try {
 			JSONObject json = new JSONObject (load);
 			this.activeCard = new Card(this.world,CardTemplate.getItem(json.getInt("activeCard")));

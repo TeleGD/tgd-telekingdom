@@ -52,8 +52,7 @@ public class Save {
 
 		try {
 			save = writeJson();
-			AppLoader.saveData("telekingdom/save.json", save.toString(2).replaceAll("  ", "\t") + "\n");
-			System.out.println(save.toString());
+			AppLoader.saveData("/telekingdom/save.json", save.toString(2).replaceAll("^  ", "\t") + "\n");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

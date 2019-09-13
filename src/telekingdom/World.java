@@ -146,7 +146,7 @@ public class World extends BasicGameState {
 
 	public void loadGame() {
 		justLoaded=true;
-		new Load(this);
+		new Restore(this);
 	}
 
 	public boolean isJustLoaded() {
