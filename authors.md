@@ -1,10 +1,14 @@
+- Alexandre Larose
 - Alexis Dieu (@AlexisDieu)
 - Amos George (@AmosGeorge)
 - Clément Crouzet (@CrouzetC)
 - David Forlen (@DavidForlen)
+- Enzo Chiotti
 - Erwan Kessler (@hube12)
+- Florent Delvert
 - Frédéric Venier (@FredericVenier et @VFrederic)
 - Louise Bulone (@Gragalit)
 - Nathan Barloy (@nathanBarloy)
 - Tristan Le Godais (@TrisTOON)
+- Victor Thevenon (@victorthevenon)
 - Xavier Indice (@XavierIndice)
