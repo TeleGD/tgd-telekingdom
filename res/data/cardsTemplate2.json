@@ -1,6 +1,7 @@
 [
 	{
 		"id": 0,
+		"character": "Reflet",
 		"request": "Le dépouillement des votes touche presque à sa fin. Rien n'est encore gagné pour vous qui détournez avec inquiétude votre regard du tableau où s'allongent interminablement deux rangées de traits verticaux que plus personne ne parvient à comptabiliser. A la recherche d'un soutien psychologique, vous posez finalement vos yeux sur la fenêtre où se reflète Nestor, candidat à la direction de TeleKingdom. C'est bien votre image que vous contemplez, mais celle-ci vous donne l'impression indescriptible de vous remettre en question : êtes-vous prêt à diriger cette école ?",
 		"response": [
 			"De l'air, vite !",
@@ -21,9 +22,10 @@
 	},
 	{
 		"id": 1,
-		"request": "[Groupe de 1A] \"On s’est fait voler notre goûter par des pharmas à la sortie de l'école et viennent se plaindre devant vous. Vous pouvez nous aider ?\"",
+		"character": "Groupe de 1A",
+		"request": "Des 1A jurent s'être fait voler leur goûter par des pharmas à la sortie de l'école et viennent se plaindre devant vous. Ils demandent votre aide pour obtenir réparation. Les aidez-vous ?",
 		"response": [
-			"La bonne blague !",
+			"\"La bonne blague !\"",
 			"Les envoyer aux objets trouvés"
 		],
 		"effect": [
@@ -41,9 +43,10 @@
 	},
 	{
 		"id": 2,
-		"request": "[Elève lambda (essouflé)] \"Le projecteur vient de prendre feu en cours de gestion en amphi nord, on fait quoi ?\"",
+		"character": "Élève lambda (essoufflé)",
+		"request": "Un élève essoufflé vous indique que le projecteur de l'amphi nord est en feu pendant le cours de gestion. Que voulez-vous faire ?",
 		"response": [
-			"Oh ! on comptait les changer",
+			"\"Oh ! on comptait les changer.\"",
 			"Appeler les pompiers"
 		],
 		"effect": [
@@ -61,7 +64,8 @@
 	},
 	{
 		"id": 3,
-		"request": "\"Pendant votre sommeil votre téléphone portable sonne. Apparement un élève serait coincé dans l'école après 23h. Que voulez-vous faire ?\"",
+		"character": "Téléphone",
+		"request": "Pendant votre sommeil votre téléphone portable sonne. Apparement un élève serait coincé dans l'école après 23h. Que voulez-vous faire ?",
 		"response": [
 			"Vous rendormir",
 			"Aller lui ouvrir"
@@ -81,10 +85,11 @@
 	},
 	{
 		"id": 4,
-		"request": "[Un démarcheur] \"Je vous propose d'aménager une salle entière en un studio avec des capteurs. Acceptez vous ?\"",
+		"character": "Un démarcheur",
+		"request": "Un démarcheur vous propose d'aménager une salle entière en un studio avec des capteurs. Acceptez vous ?",
 		"response": [
-			"Pourquoi faire ?",
-			"Toujours à la pointe de la technologie !"
+			"\"Pourquoi faire ?\"",
+			"\"Toujours à la pointe de la technologie !\""
 		],
 		"effect": [
 			[
@@ -101,6 +106,7 @@
 	},
 	{
 		"id": 5,
+		"character": "Amphi",
 		"request": "Vous allez commencer votre conférence en amphi. Que voulez-vous faire ?",
 		"response": [
 			"Mettre du rock",
@@ -121,7 +127,8 @@
 	},
 	{
 		"id": 6,
-		"request": "[Votre ami de L.A. (veille de soutenance)] \"Salut, je fais le Super Apéro du Lundi dans mon jardin, il y a un Airbus dans 5 min, tu viens ?\"",
+		"character": "Votre ami de L.A. (veille de soutenance)",
+		"request": "Lundi soir, veille des soutenances que vous faites passer, votre ami de L.A. vous invite à un apéro surprise. Un airbus part dans 5min de l'aéroport. Que faites-vous ?",
 		"response": [
 			"Rester à Nancy",
 			"S'y rendre !"
@@ -141,7 +148,8 @@
 	},
 	{
 		"id": 7,
-		"request": "A l'aéroport vous remarquez un hotspot wifi eduroam. Que faites-vous ?",
+		"character": "Avion",
+		"request": "À l'aéroport vous remarquez un hotspot wifi eduroam. Que faites-vous ?",
 		"response": [
 			"Aller dans votre avion",
 			"S'empresser de se connecter"
@@ -161,7 +169,8 @@
 	},
 	{
 		"id": 8,
-		"request": "[Le professeur de (P)rogramme (F)ormel (S)ans (I)ntérêt] \"Je peux avoir une augmentation ?\"",
+		"character": "Le professeur de (P)rogramme (F)ormel (S)ans (I)ntérêt",
+		"request": "Le professeur de (P)rogramme (F)ormel (S)ans (I)ntérêt vous demande une augmentation.",
 		"response": [
 			"Refuser",
 			"Accepter"
@@ -181,6 +190,7 @@
 	},
 	{
 		"id": 9,
+		"character": "",
 		"request": "Vous proposez 50 euros à chaque élève de l'école durant une conférence.",
 		"response": [
 			"Ctrl + Z",
@@ -201,10 +211,11 @@
 	},
 	{
 		"id": 10,
-		"request": "Carte réservée",
+		"character": "/* PERSONNAGE RÉSERVÉ */",
+		"request": "/* CARTE RÉSERVÉE, pas touche */",
 		"response": [
-			"",
-			""
+			"?",
+			"?"
 		],
 		"effect": [
 			[
@@ -221,10 +232,11 @@
 	},
 	{
 		"id": 11,
-		"request": "[Prof de PFSI] \"Je n’ai pas entendu la sonnerie, je souhaite reporter le TP noté de 4 mois.\"",
+		"character": "Prof de PFSI",
+		"request": "\"Je n’ai pas entendu la sonnerie, je souhaite reporter le TP noté de 4 mois.\"",
 		"response": [
-			"Mais attendez, il n’y a jamais eu de sonnerie…",
-			"OK mais vous n’avez pas peur de finir le programme en avance cette année ?"
+			"\"Mais attendez, il n’y a jamais eu de sonnerie…\"",
+			"\"OK mais vous n’avez pas peur de finir le programme en avance cette année ?\""
 		],
 		"effect": [
 			[
@@ -241,10 +253,11 @@
 	},
 	{
 		"id": 12,
-		"request": "[Le club Intégration (IntégreL’XEn3/2)] \"On souhaite passer le WEI sur le toit de l’école, vous en dites quoi ?\"",
+		"character": "Le club Intégration (IntégreL’XEn3/2)",
+		"request": "\"On souhaite passer le WEI sur le toit de l’école, vous en dites quoi ?\"",
 		"response": [
-			"Voici les clefs, bon week-end !",
-			"Faites cela, et ce sera le dernier week-end d’intégration de l’école !"
+			"\"Voici les clefs, bon week-end !\"",
+			"\"Faites cela, et ce sera le dernier week-end d’intégration de l’école !\""
 		],
 		"effect": [
 			[
@@ -261,10 +274,11 @@
 	},
 	{
 		"id": 13,
-		"request": "[Le prof de SIC] \"J’en ai ma claque !(?) Les 1A maltraitent encore le petit Mathieu Laborde durant les cours de jardinage : « Ils ont encore fait planter Mat Lab !»\"",
+		"character": "Le prof de SIC",
+		"request": "\"J’en ai ma claque !(?) Les 1A maltraitent encore le petit Mathieu Laborde durant les cours de jardinage : « Ils ont encore fait planter Mat Lab !»\"",
 		"response": [
-			"Il n’a qu’à obtenir son diplôme ! Cela fait 10 ans que vous m’en parlez.",
-			"Inadmissible, je vais devoir sévir."
+			"\"Il n’a qu’à obtenir son diplôme ! Cela fait 10 ans que vous m’en parlez.\"",
+			"\"Inadmissible, je vais devoir sévir.\""
 		],
 		"effect": [
 			[
@@ -281,6 +295,7 @@
 	},
 	{
 		"id": 14,
+		"character": "",
 		"request": "Deux entreprises ont retenu votre attention pour devenir parrain de la promo 2021, laquelle choisissez-vous ?",
 		"response": [
 			"E-fluid",
@@ -301,10 +316,11 @@
 	},
 	{
 		"id": 15,
+		"character": "",
 		"request": "La prof de management vous présente son projet de séminaire 1A, s’ensuit l’épineuse question de lui accorder ou non le budget réclamé.",
 		"response": [
-			"Quelle merveilleuse initiative ! J’approuve !",
-			"Nous n’avons pas les moyens de financer ce genre de projet."
+			"\"Quelle merveilleuse initiative ! J’approuve !\"",
+			"\"Nous n’avons pas les moyens de financer ce genre de projet.\""
 		],
 		"effect": [
 			[
@@ -321,6 +337,7 @@
 	},
 	{
 		"id": 16,
+		"character": "",
 		"request": "Vous arrivez devant les Mines …",
 		"response": [
 			"Passer de ce côté…",
@@ -333,14 +350,15 @@
 				-10
 			],
 			[
-				10,
+				-10,
 				0,
-				-10
+				10
 			]
 		]
 	},
 	{
 		"id": 17,
+		"character": "",
 		"request": "Très bien mais il n’y avait qu’un seul chemin de toute manière, désormais un lac vous empêche d’avancer…",
 		"response": [
 			"Alors il faut grimper…",
@@ -361,10 +379,11 @@
 	},
 	{
 		"id": 18,
+		"character": "",
 		"request": "A ce moment vous vous trouviez devant une école primaire et un officier exige de voir vos papiers…",
 		"response": [
-			"Vous n’auriez pas vu un ours ?",
-			"Je suis Nestor, directeur de Telekingdom, vous n’avez pas le droit !"
+			"\"Vous n’auriez pas vu un ours ?\"",
+			"\"Je suis Nestor, directeur de TeleKingdom, vous n’avez pas le droit !\""
 		],
 		"effect": [
 			[
@@ -381,9 +400,10 @@
 	},
 	{
 		"id": 19,
-		"request": "[Prof d’English] \"Les résultats du TOEIC sont tombés …\"",
+		"character": "Prof d’English",
+		"request": "\"Les résultats du TOEIC sont tombés …\"",
 		"response": [
-			"Faire jouer vos connaissances et les trafiquez. #MyTailorIsRich",
+			"Faire jouer vos connaissances et les trafiquer. #MyTailorIsRich",
 			"Les communiquer aux élèves. #50EurosLa2emeTentative"
 		],
 		"effect": [
@@ -401,7 +421,8 @@
 	},
 	{
 		"id": 20,
-		"request": "[Le club Intégration (IntégreL’XEn3/2)] \"Vous voulez acheter des tickets d’Intombola (Inté + Tombola) ?\"",
+		"character": "Le club Intégration (IntégreL’XEn3/2)",
+		"request": "\"Vous voulez acheter des tickets d’Intombola (Inté + Tombola) ?\"",
 		"response": [
 			"En prendre",
 			"Refuser"
@@ -421,10 +442,11 @@
 	},
 	{
 		"id": 21,
-		"request": "[Représentant du BREI] \"On souhaite organiser les épreuves sportives du tournoi L-INP dans votre splendide amphi nord (on a pas pensé à réserver les terrains prévus à cet effet).\"",
+		"character": "Représentant du BREI",
+		"request": "\"On souhaite organiser les épreuves sportives du tournoi L-INP dans votre splendide amphi nord (on a pas pensé à réserver les terrains prévus à cet effet).\"",
 		"response": [
-			"Pourquoi pas, ça leur fera les mollets",
-			"Hors de question"
+			"\"Pourquoi pas, ça leur fera les mollets !\"",
+			"\"Hors de question !\""
 		],
 		"effect": [
 			[
@@ -441,9 +463,10 @@
 	},
 	{
 		"id": 22,
-		"request": "[Un membre du BDS] \"Il nous faut de nouveaux équipements : « trois fois rien ! »\"",
+		"character": "Un membre du BDS",
+		"request": "\"Il nous faut de nouveaux équipements : « trois fois rien ! »\"",
 		"response": [
-			"\tA) Oui, oui, oui",
+			"Oui, oui, oui",
 			"Non, non, non"
 		],
 		"effect": [
@@ -461,78 +484,196 @@
 	},
 	{
 		"id": 23,
+		"character": "",
 		"request": "Un membre du bar met le feu à la cafétéria.",
 		"response": [
-			"Financer les réparations [",
+			"Financer les réparations",
 			"Virer l’élève"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 24,
+		"character": "",
 		"request": "Le personnel qui s’occupe du nettoyage des locaux s’est battu avec les membres du club Jeux de société car ils refusaient de lever leurs pieds pour laisser passer le balai.",
 		"response": [
 			"Dissoudre le club",
 			"Licencier le personnel pour faute grave"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 25,
+		"character": "",
 		"request": "Une partie de loup garou tourne mal et un élève se transforme pour de vrai.",
 		"response": [
-			"Ce n’est qu’un jeu…",
-			"Qu’on mette le chasseur sur le coup"
+			"\"Ce n’est qu’un jeu…\"",
+			"\"Qu’on mette le chasseur sur le coup !\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 26,
+		"character": "",
 		"request": "L’install party fait de la concurrence aux machines de l’école. En effet, plus de la moitié des étudiants ne se servent que de leur ordinateur personnel.",
 		"response": [
 			"Dissoudre le club et interdire l’utilisation de LINUX en dehors des machines de l’école.",
 			"Revendre le matériel inutilisé"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 27,
+		"character": "",
 		"request": "Partiel de PFSI : À la suite de l’absence de sonnerie, le partiel de PFSI est reporté et aura lieu pendant le stage de fin d’études.",
 		"response": [
-			"",
-			""
+			"?",
+			"?"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 28,
+		"character": "",
 		"request": "1er CM de l’année :",
 		"response": [
 			"Vous faire passer pour un élève",
 			"Faire un discours"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 29,
+		"character": "",
 		"request": "Les concours approchent et vous devez envoyer des élèves pour présenter l’école aux taupins.",
 		"response": [
 			"Envoyer les R1",
 			"Envoyer les majorants"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 30,
+		"character": "Fans de babyfoot",
 		"request": "Une canne du babyfoot s’est décrochée.",
 		"response": [
 			"La faire réparer",
 			"Demander de jouer avec les cannes restantes"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 31,
+		"character": "",
 		"request": "Alisée fête ses 25 ans et vous envoie une invitation à son brunch.",
 		"response": [
-			"Mdr g pa lu",
-			"Faites péter les petits fours !"
+			"\"Mdr g pa lu\"",
+			"\"Faites péter les petits fours !\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 32,
+		"character": "Vandale",
 		"request": "Des élèves ont écrit \"Nestor is a b****\" sur le toit . Que faire ?",
 		"response": [
 			"Sécuriser l'accès au toit",
@@ -553,6 +694,7 @@
 	},
 	{
 		"id": 33,
+		"character": "",
 		"request": "Les élèves se plaignent de la difficulté du dernier sujet de Hell.",
 		"response": [
 			"Adapter la difficulté des sujets",
@@ -573,6 +715,7 @@
 	},
 	{
 		"id": 34,
+		"character": "",
 		"request": "3 élèves ont mystérieusement disparus après avoir suivi votre conseil.",
 		"response": [
 			"Trafiquer les registres",
@@ -593,6 +736,7 @@
 	},
 	{
 		"id": 35,
+		"character": "",
 		"request": "Vous découvrez que la prof de Management se livre à un trafic de rhum arrangé. Quelle décision allez-vous prendre ?",
 		"response": [
 			"Partager les recettes",
@@ -613,6 +757,7 @@
 	},
 	{
 		"id": 36,
+		"character": "",
 		"request": "Un élève vraisemblement perdu, se trouve en amphi durant le CM de Malaxage Neuronal.",
 		"response": [
 			"Le reconduire à la cafétéria",
@@ -633,18 +778,32 @@
 	},
 	{
 		"id": 37,
+		"character": "Frelons",
 		"request": "Un nid de frelon a été découvert dans l’aile ouest.",
 		"response": [
 			"Appeler les pompiers",
 			"Demander aux élèves de fermer les fenêtres pendant les cours"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 38,
+		"character": "",
 		"request": "Les profs se mettent à faire l'appel à tous les CM et la plupart des élèves sont déjà à 20 absences.",
 		"response": [
 			"Mettre immédiatement fin à cette boucherie",
-			"Bien fait pour eux, c'est notifié dans le livret de l'élève non ?"
+			"\"Bien fait pour eux, c'est notifié dans le livret de l'élève non ?\""
 		],
 		"effect": [
 			[
@@ -661,39 +820,92 @@
 	},
 	{
 		"id": 39,
+		"character": "",
 		"request": "Les amphis sont vides. Plus personne n’y vient et il vous semble que lors du dernier CM de Preuves, Corrections et Débuggage, même le prof n’y était pas.",
 		"response": [
 			"Entrer dans l’amphi pour faire l'appel d'une personne.",
-			"Et pourquoi pas un MOOC ?  A) [0, 10,-10] B) [10,-10, -10]"
+			"\"Et pourquoi pas un MOOC ?\""
+		],
+		"effect": [
+			[
+				0,
+				10,
+				-10
+			],
+			[
+				10,
+				-10,
+				-10
+			]
 		]
 	},
 	{
 		"id": 40,
+		"character": "",
 		"request": "Suite à un dégâts des eaux la salle de réunion est indisponible pour les conseils de classe.",
 		"response": [
 			"Réparer les dégâts. ou bien : utiliser les chaises roulantes comme flotteurs?",
-			"Conseil à Phi !!"
+			"\"Conseil à Phi !!\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 41,
+		"character": "",
 		"request": "Le Bureau Des Arnaques multiplie les pôles fantômes. Que faire ?",
 		"response": [
 			"Laisser le BDEscrocs gérer. Après tout c'est qu’un club.",
 			"Supprimer les pôles inutiles"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 42,
+		"character": "",
 		"request": "Le club TGD est en train de coder un jeu troll vous concernant.",
 		"response": [
 			"Les laisser faire. De toute façon, personne joue à leurs jeux.",
 			"Supprimer immédiatement le budget pizza. Ça tuera le club."
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 43,
-		"request": "[Professeur de Technologies Obsolètes et Pronominales] \"Je viens de finir mon cours le plus important de l’année, mais le vidéoprojecteur ne fonctionnait pas : le cours ne sera pas su.\"",
+		"character": "Professeur de Technologies Obsolètes et Pronominales",
+		"request": "\"Je viens de finir mon cours le plus important de l’année, mais le vidéoprojecteur ne fonctionnait pas : le cours ne sera pas su.\"",
 		"response": [
 			"Imprimer les 30 pages de cours pour chaque étudiant",
 			"Reprogrammer le cours"
@@ -713,7 +925,8 @@
 	},
 	{
 		"id": 44,
-		"request": "[Porte-parole du personnel d’entretien] \"Récemment, nous avons remarqué que les étudiants buvaient de plus en plus de café en amphi.\"",
+		"character": "Porte-parole du personnel d’entretien",
+		"request": "\"Récemment, nous avons remarqué que les étudiants buvaient de plus en plus de café en amphi.\"",
 		"response": [
 			"Poster un vigile à l’entrée des amphis",
 			"Enlever les machines à café"
@@ -733,7 +946,8 @@
 	},
 	{
 		"id": 45,
-		"request": "Les vigiles que vous avez posté à l’entrée des amphis y mangent, n’ayant pas de pause.",
+		"character": "",
+		"request": ": Les vigiles que vous avez posté à l’entrée des amphis y mangent, n’ayant pas de pause.",
 		"response": [
 			"Les virer, et remettre les machines à café",
 			"Leur fournir des repas « sans miette »"
@@ -753,7 +967,8 @@
 	},
 	{
 		"id": 46,
-		"request": "Nous voulons aussi des repas.",
+		"character": "",
+		"request": ": Nous voulons aussi des repas.",
 		"response": [
 			"Virer les vigiles et remettre les machines café",
 			"Leur en donner"
@@ -773,7 +988,8 @@
 	},
 	{
 		"id": 47,
-		"request": "[SPARTE] \"Il est inconcevable de fournir des repas à certains, s’en en proposer à tous. Le personnel ARTE (RATE ?) veut aussi des repas.\"",
+		"character": "",
+		"request": ": [SPARTE] \"Il est inconcevable de fournir des repas à certains, s’en en proposer à tous. Le personnel ARTE (RATE ?) veut aussi des repas.\"",
 		"response": [
 			"Construire une cafète, pour tout le monde",
 			"Arrêter la distribution des repas et remettre la machine à café"
@@ -793,7 +1009,8 @@
 	},
 	{
 		"id": 48,
-		"request": "[Chef du projet cafète] \"Votre nouvelle cafète est prête et superbe. Mais vous saviez qu’il en existait déjà une.\"",
+		"character": "",
+		"request": ": [Chef du projet cafète] \"Votre nouvelle cafète est prête et superbe. Mais vous saviez qu’il en existait déjà une.\"",
 		"response": [
 			"Fermer la vôtre, vous n’êtes pas un bon cuisinier",
 			"Fermer celle des élèves, elle ne vous rapportait rien"
@@ -813,10 +1030,11 @@
 	},
 	{
 		"id": 49,
-		"request": "[SPARTE] \"Les enseignant se plaignent de l’absence de la machine à café.\"",
+		"character": "",
+		"request": ": [SPARTE] \"Les enseignant se plaignent de l’absence de la machine à café.\"",
 		"response": [
 			"Remettre la machine à café",
-			"Qu’ils s’achètent des thermos"
+			"\"Qu’ils s’achètent des thermos…\" [0, -20, 0] ou"
 		],
 		"effect": [
 			[
@@ -833,6 +1051,7 @@
 	},
 	{
 		"id": 50,
+		"character": "",
 		"request": "Il y a une épidémie de gastro, les toilettes sont prises d’assaut.",
 		"response": [
 			"Commander des toilettes de chantier",
@@ -853,7 +1072,8 @@
 	},
 	{
 		"id": 51,
-		"request": "Les toilettes sont arrivées, avec deux semaines de retard.",
+		"character": "",
+		"request": ": Les toilettes sont arrivées, avec deux semaines de retard.",
 		"response": [
 			"Les revendre sur le marché noir",
 			"Les donner à ? pour qu’ils en fassent des toilettes connectées"
@@ -873,10 +1093,11 @@
 	},
 	{
 		"id": 52,
-		"request": "[Responsable de relations avec l’extérieur (RRE)] \"Le groupe France Télévisions vous propose de participer à « Question pour un champion » spécial Grandes Ecoles, sous la bannière des Mines.\"",
+		"character": "Responsable de relations avec l’extérieur (RRE)",
+		"request": "\"Le groupe France Télévisions vous propose de participer à « Question pour un champion » spécial Grandes Ecoles, sous la bannière des Mines.\"",
 		"response": [
-			"Nous, c’est TELEKINGDOM, pas les Mines",
-			"Je peux participer ?"
+			"\"Nous, c’est TELEKINGDOM, pas les Mines !\"",
+			"\"Je peux participer ?\""
 		],
 		"effect": [
 			[
@@ -893,7 +1114,8 @@
 	},
 	{
 		"id": 53,
-		"request": "Seuls les étudiants ont le droit de participer.",
+		"character": "",
+		"request": ": Seuls les étudiants ont le droit de participer.",
 		"response": [
 			"Envoyer les doubles diplômes en école de commerce",
 			"Envoyer les majorants de la TEC"
@@ -913,9 +1135,10 @@
 	},
 	{
 		"id": 54,
-		"request": "[Professeur de TEC] \"Je tiens à vous préciser que les étudiants sélectionnés ne sont pas prêt.\"",
+		"character": "",
+		"request": ": [Professeur de TEC] \"Je tiens à vous préciser que les étudiants sélectionnés ne sont pas prêt.\"",
 		"response": [
-			"Ceux des autres écoles non plus",
+			"\"Ceux des autres écoles non plus !\"",
 			"Les faire participer à un séminaire de culture G"
 		],
 		"effect": [
@@ -933,6 +1156,7 @@
 	},
 	{
 		"id": 55,
+		"character": "",
 		"request": "Au vu des derniers résultats aux concours :",
 		"response": [
 			"Demander à passer dans la banque des Grandes Mines",
@@ -953,10 +1177,11 @@
 	},
 	{
 		"id": 56,
-		"request": "[Etudiant quelconque] \"Malgré mes notes médiocres, j’ai une détermination de fer, je peux passer en appro Information Systems and Salt ?\"",
+		"character": "Etudiant quelconque",
+		"request": "\"Malgré mes notes médiocres, j’ai une détermination de fer, je peux passer en appro Information Systems and Salt ?\"",
 		"response": [
-			"Vous ne passerez pas",
-			"Fuyez pauvre fou"
+			"\"Vous ne passerez pas !\"",
+			"\"Fuyez pauvre fou !\""
 		],
 		"effect": [
 			[
@@ -973,9 +1198,10 @@
 	},
 	{
 		"id": 57,
-		"request": "[Politicien] \"En vu des prochaines élections municipales, j’aimerai organiser un meeting pour que vos étudiants se sentent impliqués dans la vie politique\"",
+		"character": "Politicien",
+		"request": "\"En vu des prochaines élections municipales, j’aimerai organiser un meeting pour que vos étudiants se sentent impliqués dans la vie politique\"",
 		"response": [
-			"Pourquoi pas, il fait passer l’Hyper Loop à côté de chez moi",
+			"\"Pourquoi pas, il fait passer l’Hyper Loop à côté de chez moi.\"",
 			"Inviter les autres candidats à faire de même"
 		],
 		"effect": [
@@ -993,10 +1219,11 @@
 	},
 	{
 		"id": 58,
-		"request": "Nous nous entendons bien, vous ne trouvez pas ? Je vous propose un partenariat : le logo TKM en petit sur son affiche de campagne contre ma tête à chaque fois qu’apparaît le logo TKM.",
+		"character": "",
+		"request": "ou B) : Nous nous entendons bien, vous ne trouvez pas ? Je vous propose un partenariat : le logo TKM en petit sur son affiche de campagne contre ma tête à chaque fois qu’apparaît le logo TKM.",
 		"response": [
-			"J’aime les partenariats",
-			"Je ne suis pas un homme sandwich"
+			"\"J’aime les partenariats !\"",
+			"\"Je ne suis pas un homme sandwich.\""
 		],
 		"effect": [
 			[
@@ -1013,10 +1240,11 @@
 	},
 	{
 		"id": 59,
-		"request": "J’aimerai aller encore un peu plus loin dans notre relation partenaire, que diriez-vous de T-shirt vert avec ma tête imprimer dessus à tous les élèves.",
+		"character": "",
+		"request": ": J’aimerai aller encore un peu plus loin dans notre relation partenaire, que diriez-vous de T-shirt vert avec ma tête imprimer dessus à tous les élèves.",
 		"response": [
-			"OK, il est plutôt photogénique",
-			"Non, j’aime pas trop le vert"
+			"\"OK, il est plutôt photogénique.\"",
+			"\"Non, j’aime pas trop le vert.\""
 		],
 		"effect": [
 			[
@@ -1033,7 +1261,8 @@
 	},
 	{
 		"id": 60,
-		"request": "[Syndicat du Personnel Administratif, Recherche, Technique et Enseignant (SPARTE)] \"Il fait 15°C le 15 décembre, le chauffage fonctionne, personne ne peut travailler dans ces conditions.\"",
+		"character": "Syndicat du Personnel Administratif, Recherche, Technique et Enseignant (SPARTE)",
+		"request": "\"Il fait 15°C le 15 décembre, le chauffage fonctionne, personne ne peut travailler dans ces conditions.\"",
 		"response": [
 			"Ouvrir les fenêtres et appeler Trump",
 			"Renvoyer tous les élèves chez eux"
@@ -1053,10 +1282,11 @@
 	},
 	{
 		"id": 61,
-		"request": "[Professeur Maboul] \"Il est venu le temps des …\"",
+		"character": "Professeur Maboul",
+		"request": "\"Il est venu le temps des…\"",
 		"response": [
-			"Cathédrales",
-			"Femmes à poil"
+			"\"… Cathédrales !\"",
+			"\"… Femmes à poil !\""
 		],
 		"effect": [
 			[
@@ -1073,14 +1303,28 @@
 	},
 	{
 		"id": 62,
-		"request": "Vous gagnez dix bananes et avancez en berlingot. A vous. Je prête un arbre …",
+		"character": "",
+		"request": "Vous gagnez dix bananes et avancez en berlingot. A vous. \"Je prête un arbre…\"",
 		"response": [
-			"… et je mange une écurie [aléa]",
-			"Kamoulox [aléa]"
+			"\"… et je mange une écurie\"",
+			"\"Kamoulox\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 63,
+		"character": "",
 		"request": "Le 4 mai :",
 		"response": [
 			"With you",
@@ -1101,10 +1345,11 @@
 	},
 	{
 		"id": 64,
-		"request": "[Président du club Fiestas Pour Tous] \"Nous voudrions fêter le nouvel an à TéléKingdom, vous pouvez nous passez les clés ?\"",
+		"character": "Président du club Fiestas Pour Tous",
+		"request": "\"Nous voudrions fêter le nouvel an à TeleKingdom, vous pouvez nous passez les clés ?\"",
 		"response": [
-			"Ok, mais pas (trop) d’alcool",
-			"Peut-être pour le nouvel an chinois"
+			"\"Ok, mais pas (trop) d’alcool !\"",
+			"\"Peut-être pour le nouvel an chinois ?\""
 		],
 		"effect": [
 			[
@@ -1121,10 +1366,11 @@
 	},
 	{
 		"id": 65,
-		"request": "Le nouvel an chinois approchant.",
+		"character": "",
+		"request": ": Le nouvel an chinois approchant.",
 		"response": [
 			"Appeler les assurances",
-			"Le nouvel an maya, c’est quand ?"
+			"\"Le nouvel an maya, c’est quand ?\""
 		],
 		"effect": [
 			[
@@ -1141,10 +1387,11 @@
 	},
 	{
 		"id": 66,
-		"request": "[Technicien] \"Des étudiants ont modifié le mot de passe de votre PC.\" Vous essayez :",
+		"character": "Technicien",
+		"request": "\"Des étudiants ont modifié le mot de passe de votre PC.\" Vous essayez :",
 		"response": [
-			"Comment est votre blanquette ?",
-			"42"
+			"\"Comment est votre blanquette ?\"",
+			"\"42 !\""
 		],
 		"effect": [
 			[
@@ -1161,6 +1408,7 @@
 	},
 	{
 		"id": 67,
+		"character": "",
 		"request": "Une ampoule à griller dans une salle.",
 		"response": [
 			"La remplacer",
@@ -1181,10 +1429,11 @@
 	},
 	{
 		"id": 68,
+		"character": "",
 		"request": "Une autre ampoule à griller, dans les toilettes.",
 		"response": [
 			"La remplacer",
-			"Pour une fois qu’ils peuvent utiliser leur portable"
+			"\"Pour une fois qu’ils peuvent utiliser leur portable…\""
 		],
 		"effect": [
 			[
@@ -1201,7 +1450,8 @@
 	},
 	{
 		"id": 69,
-		"request": "Le personnel d’entretien vient s’en plaindre au bout de quelques jours.",
+		"character": "",
+		"request": ": Le personnel d’entretien vient s’en plaindre au bout de quelques jours.",
 		"response": [
 			"Remplacer l’ampoule",
 			"Remplacer l’ampoule"
@@ -1221,7 +1471,8 @@
 	},
 	{
 		"id": 70,
-		"request": "[Professeur de PFSI] \"Je sais que c’est la troisième fois de la journée que l’on vous réclame une sonnerie toute les heures, mais c’est d’une importance capitale.\"",
+		"character": "Professeur de PFSI",
+		"request": "\"Je sais que c’est la troisième fois de la journée que l’on vous réclame une sonnerie toute les heures, mais c’est d’une importance capitale.\"",
 		"response": [
 			"En mettre une toute les 5 minutes",
 			"Mettre du Jul"
@@ -1241,7 +1492,8 @@
 	},
 	{
 		"id": 71,
-		"request": "[Président du pôle lecture] \"Le nouvellement créé pôle lecture du BDA vous demande une bibliothèque.\"",
+		"character": "Président du pôle lecture",
+		"request": "\"Le nouvellement créé pôle lecture du BDA vous demande une bibliothèque.\"",
 		"response": [
 			"Dissoudre le pôle aussi vite qu’il a été créé",
 			"Leur offrir le nouveau livre de Nabilla"
@@ -1261,7 +1513,8 @@
 	},
 	{
 		"id": 72,
-		"request": "[Président du pôle Ciné] \"Pour la sortie en salle de Fast and Furious pi², certains étudiants et moi-même voudrions être excusés de cours pour assister à l’avant-première.\"",
+		"character": "Président du pôle Ciné",
+		"request": "\"Pour la sortie en salle de Fast and Furious pi², certains étudiants et moi-même voudrions être excusés de cours pour assister à l’avant-première.\"",
 		"response": [
 			"Organiser une sortie ciné avec toute l’école",
 			"Programmer un partiel, pour être seul en salle"
@@ -1281,18 +1534,32 @@
 	},
 	{
 		"id": 73,
-		"request": "[Président du Conseil d’Etudiants (PCE)] \"Certains étudiants veulent remplacer l’ultimate en sport obligatoire par du Quidditch moldu.\"",
+		"character": "Président du Conseil d’Etudiants (PCE)",
+		"request": "\"Certains étudiants veulent remplacer l’ultimate en sport obligatoire par du Quidditch moldu.\"",
 		"response": [
-			"10 points pour Griffondor [10, 10, 10]",
-			"Ok, mais"
+			"\"10 points pour Griffondor !\"",
+			"\"Ok, mais\""
+		],
+		"effect": [
+			[
+				10,
+				10,
+				10
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 74,
-		"request": "[Président du pôle dance] \"Pour célébrer la création du nouveau pôle, nous voudrions du parquet en salle de travail.\"",
+		"character": "Président du pôle dance",
+		"request": "\"Pour célébrer la création du nouveau pôle, nous voudrions du parquet en salle de travail.\"",
 		"response": [
-			"Ce sera plus convivial",
-			"Peut-être un jacuzzi avec ?"
+			"\"Ce sera plus convivial.\"",
+			"\"Peut-être un jacuzzi avec ?\""
 		],
 		"effect": [
 			[
@@ -1309,7 +1576,8 @@
 	},
 	{
 		"id": 75,
-		"request": "[PCE] \"Les volleyeurs et basketteurs veulent aussi profiter de l’installation.\"",
+		"character": "PCE",
+		"request": "\"Les volleyeurs et basketteurs veulent aussi profiter de l’installation.\"",
 		"response": [
 			"Installer des paniers et un filet",
 			"Tout démonter"
@@ -1329,7 +1597,8 @@
 	},
 	{
 		"id": 76,
-		"request": "[Votre conscience] \"D’après la forme des taches au fond de votre tasse de café, l’hiver sera rude.\"",
+		"character": "Votre conscience",
+		"request": "\"D’après la forme des taches au fond de votre tasse de café, l’hiver sera rude.\"",
 		"response": [
 			"Augmenter le chauffage",
 			"Demander aux étudiants de prévoir des affaires chaudes"
@@ -1349,9 +1618,10 @@
 	},
 	{
 		"id": 77,
-		"request": "[Technicien ?] \"Il a trop neigé cette année, le toit de l’amphi nord a cédé.\"",
+		"character": "Technicien 0",
+		"request": "Il a trop neigé cette année, le toit de l’amphi nord a cédé.",
 		"response": [
-			"Il reste l’amphi sud",
+			"\"Il reste l’amphi sud !\"",
 			"Le faire réparer"
 		],
 		"effect": [
@@ -1369,9 +1639,10 @@
 	},
 	{
 		"id": 78,
-		"request": "[Technicien ?] \"Le toit de l’amphi sud vient aussi de s’écrouler.\"",
+		"character": "",
+		"request": ": [Technicien 0] \"Le toit de l’amphi sud vient aussi de s’écrouler.\"",
 		"response": [
-			"Il n’y avait plus personne en amphi, c’est pas grave",
+			"\"Il n’y avait plus personne en amphi, c’est pas grave.\"",
 			"Les faire réparer"
 		],
 		"effect": [
@@ -1389,7 +1660,8 @@
 	},
 	{
 		"id": 79,
-		"request": "[Technicien ?] \"Le toit de votre bureau s’est effondré également.\"",
+		"character": "",
+		"request": ": [Technicien 0] \"Le toit de votre bureau s’est effondré également.\"",
 		"response": [
 			"Réquisitionner l’accueil",
 			"Tout faire réparer"
@@ -1409,7 +1681,8 @@
 	},
 	{
 		"id": 80,
-		"request": "[Technicien ?] \"Le toit de votre bureau s’est effondré également.\"",
+		"character": "",
+		"request": ": [Technicien 0] \"Le toit de votre bureau s’est effondré également.\"",
 		"response": [
 			"Réquisitionner l’accueil",
 			"Le faire réparer"
@@ -1429,9 +1702,10 @@
 	},
 	{
 		"id": 81,
-		"request": "[Technicien ?] \"Le toit de l’amphi sud vient aussi de s’écrouler.\"",
+		"character": "",
+		"request": ": [Technicien 0] \"Le toit de l’amphi sud vient aussi de s’écrouler.\"",
 		"response": [
-			"On a un amphi nord tout neuf",
+			"\"On a un amphi nord tout neuf !\"",
 			"Le faire réparer"
 		],
 		"effect": [
@@ -1449,7 +1723,8 @@
 	},
 	{
 		"id": 82,
-		"request": "[Technicien ?] \"Le toit de votre bureau s’est effondré également.\"",
+		"character": "",
+		"request": ": [Technicien 0] \"Le toit de votre bureau s’est effondré également.\"",
 		"response": [
 			"Réquisitionner l’accueil",
 			"Le faire réparer"
@@ -1469,7 +1744,8 @@
 	},
 	{
 		"id": 83,
-		"request": "[Technicien ?] \"Le toit de votre bureau s’est effondré également.\"",
+		"character": "",
+		"request": ": [Technicien 0] \"Le toit de votre bureau s’est effondré également.\"",
 		"response": [
 			"Réquisitionner l’accueil",
 			"Le faire réparer"
@@ -1489,6 +1765,7 @@
 	},
 	{
 		"id": 84,
+		"character": "",
 		"request": "L’appartement connecté est mieux que votre bureau.",
 		"response": [
 			"Le réquisitionner",
@@ -1509,7 +1786,8 @@
 	},
 	{
 		"id": 85,
-		"request": "Il y a du bruit qui vient du couloir.",
+		"character": "",
+		"request": ": Il y a du bruit qui vient du couloir.",
 		"response": [
 			"Fermer le club musique",
 			"Revenir dans son bureau à l’étage"
@@ -1529,7 +1807,8 @@
 	},
 	{
 		"id": 86,
-		"request": "Finalement, c’était Studio.",
+		"character": "",
+		"request": ": Finalement, c’était Studio.",
 		"response": [
 			"Fermer Studio",
 			"Fermer la porte"
@@ -1549,7 +1828,8 @@
 	},
 	{
 		"id": 87,
-		"request": "[Correspondant UL] \"Il vous est conseillé de signer un partenariat avec une autre école de l’UL.\"",
+		"character": "Correspondant UL",
+		"request": "\"Il vous est conseillé de signer un partenariat avec une autre école de l’UL.\"",
 		"response": [
 			"Avec la fac de Lettres",
 			"Avec les STAPS"
@@ -1569,34 +1849,233 @@
 	},
 	{
 		"id": 88,
-		"request": "Il semblerait que le partenariat avec la fac de Lettres fonctionne plutôt bien. Cependant, la dépendance du BDA envers le BDE ne permet pas à l’échange d’être optimum.",
+		"character": "",
+		"request": ": Il semblerait que le partenariat avec la fac de Lettres fonctionne plutôt bien. Cependant, la dépendance du BDA envers le BDE ne permet pas à l’échange d’être optimum.",
 		"response": [
 			"Donner son indépendance au BDA",
-			"Sciences >> Arts"
+			"\"Sciences >> Arts\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 89,
-		"request": "[Président du BDA] \"Cela fait maintenant quelques jours que nous sommes indépendants, notre dette n’est que de quelques milliers d’euros, vous pourriez la combler ?\"",
+		"character": "",
+		"request": ": [Président du BDA] \"Cela fait maintenant quelques jours que nous sommes indépendants, notre dette n’est que de quelques milliers d’euros, vous pourriez la combler ?\"",
 		"response": [
 			"Rattacher le BDA au BDE",
 			"Leur donner la montre que vous avez au poignet, cela suffira"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 90,
-		"request": "Il semblerait que le partenariat avec les STAPS fonctionne plutôt bien. Cependant, la cohésion n’a été développée qu’autour du bar, et cela se ressent sur les résultats.",
+		"character": "",
+		"request": ": Il semblerait que le partenariat avec les STAPS fonctionne plutôt bien. Cependant, la cohésion n’a été développée qu’autour du bar, et cela se ressent sur les résultats.",
 		"response": [
-			"Convivialité, c’est une valeur importante",
+			"\"Convivialité, c’est une valeur importante !\"",
 			"Maintenir l’accord jusqu’au 24H de Stan"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
 		]
 	},
 	{
 		"id": 91,
-		"request": "",
+		"character": "",
+		"request": ":",
 		"response": [
-			"",
-			""
+			"?",
+			"?"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
+		]
+	},
+	{
+		"id": 92,
+		"character": "",
+		"request": "Le corps enseignant et les élèves se plaignent du bruit dégueulasse du matériel audio dans les amphis, et vous demandent de faire quelque chose.",
+		"response": [
+			"\"De toute façon personne ne va en amphi…\"",
+			"\"Shut up and take my money\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				-25
+			],
+			[
+				-15,
+				5,
+				-5
+			]
+		]
+	},
+	{
+		"id": 93,
+		"character": "",
+		"request": "Les professeurs se plaignent du nombre de place vide en amphi ; ils se rassemblent à la porte de votre bureau.",
+		"response": [
+			"Promettre d'inviter Bille Gates au prochain barbek de comité amicale des sympathisant du corps enseignant",
+			"S'enfermer dans son bureau et attendre 17h pour partir tranquillement"
+		],
+		"effect": [
+			[
+				-20,
+				10,
+				10
+			],
+			[
+				0,
+				-10,
+				-20
+			]
+		]
+	},
+	{
+		"id": 94,
+		"character": "",
+		"request": "Suite à un accident bête en amphi, plusieurs élèves perdent l'usage de leur audition. Un inspecteur académique est dépêché sur les lieux pour vérifier les conditions d'enseignement dans votre école. Il va falloir ruser.",
+		"response": [
+			"Lui proposer une \"petite interview privée\" avec une 1A pas trop farouche",
+			"Claquer tout le budget rénovation dans un resto"
+		],
+		"effect": [
+			[
+				30,
+				-10,
+				-5
+			],
+			[
+				-30,
+				20,
+				20
+			]
+		]
+	},
+	{
+		"id": 95,
+		"character": "",
+		"request": "Vous voyez un groupe d'élèves manger dans une salle de classe.",
+		"response": [
+			"Menacez par mail de fermer l'école à 18h",
+			"Faire comme si vous n'aviez rien vu, en vrai, ça vous arrive aussi"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				-10
+			],
+			[
+				0,
+				-10,
+				5
+			]
+		]
+	},
+	{
+		"id": 96,
+		"character": "",
+		"request": "L'inté vous appelle : un élève s'est coupé le pied dans la fontaine lors du rallye.",
+		"response": [
+			"Appeler les urgences et vous occupez de l'élève",
+			"Leurs dire de se débrouiller"
+		],
+		"effect": [
+			[
+				-5,
+				5,
+				0
+			],
+			[
+				0,
+				-5,
+				-5
+			]
+		]
+	},
+	{
+		"id": 97,
+		"character": "",
+		"request": "Vous devez faire votre discours de rentrée.",
+		"response": [
+			"Prendre le double du temps prévu",
+			"Respecter le timing (pour une fois)"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				-5
+			],
+			[
+				0,
+				5,
+				0
+			]
+		]
+	},
+	{
+		"id": 98,
+		"character": "",
+		"request": "Deux membres de TGD en plein développement se mettent à détruire la médiathèque de l'aile Ouest à coups de masse. Ils vous jurent qu'ils s'étaient crus dans la matrice.",
+		"response": [
+			"Achever le travail pour plus d'ouverture sur le hall",
+			"\"Drôlement réaliste votre simulation !\""
+		],
+		"effect": [
+			[
+				-10,
+				0,
+				5
+			],
+			[
+				0,
+				15,
+				0
+			]
 		]
 	}
 ]
