@@ -56,7 +56,7 @@ public class Interface {
 		Color previousColor = context.getColor(); //on retient l'ancienne couleur
 
 		//on draw le fond
-		context.drawImage(background, 0, 0, world.getWidth(), world.getHeight(), 0, 0, background.getWidth()-1, background.getHeight()-1);
+		context.drawImage(background, 0, 0, world.getWidth(), world.getHeight(), 0, 0, background.getWidth(), background.getHeight());
 
 		//on draw la box en haut de l'ecran
 		context.setColor(boxColor);

@@ -22,7 +22,7 @@
 	{
 		"id": 4,
 		"name": "Démarcheur",
-		"image": "/images/characters/demarcheur.png"
+		"image": "/images/characters/salesman.png"
 	},
 	{
 		"id": 5,
@@ -127,12 +127,12 @@
 	{
 		"id": 25,
 		"name": "SPARTE (Syndicat du Personnel Administratif, Recherche, Technique et Enseignant)",
-		"image": "/images/characters/tag.png"
+		"image": "/images/characters/unknown.png"
 	},
 	{
 		"id": 26,
 		"name": "Frelons",
-		"image": "/images/characters/frelon.png"
+		"image": "/images/characters/hornets.png"
 	},
 	{
 		"id": 27,

@@ -113,9 +113,9 @@ public class Card {
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
+		request.render(container, game, context);
 		Image image = this.cardTemplate.getItem ().getImage ();
 		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth(), image.getHeight());
-		request.render(container, game, context);
 		if (!animGetIn && !animGo && !animGetOut) {
 			context.setColor(answerBackground);
 			if (state==-1) {
