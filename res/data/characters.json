@@ -2,18 +2,17 @@
 	{
 		"id": 0,
 		"name": "Reflet",
-		"image": "/images/characters/unknown_card.png"
-		
+		"image": "/images/characters/mirror.png"
 	},
 	{
 		"id": 1,
-		"name": "1As",
-		"image": "/images/characters/lesunsav2.png"
+		"name": "Groupe de 1As",
+		"image": "/images/characters/first-year.png"
 	},
 	{
 		"id": 2,
-		"name": "Elève",
-		"image": "/images/characters/unknown_card.png"
+		"name": "Élève lambda",
+		"image": "/images/characters/unknown.png"
 	},
 	{
 		"id": 3,
@@ -23,24 +22,206 @@
 	{
 		"id": 4,
 		"name": "Démarcheur",
-		"image": "/images/characters/unknown_card.png"
+		"image": "/images/characters/unknown.png"
 	},
 	{
 		"id": 5,
 		"name": "Amphi",
-		"image": "/images/characters/amphi.png"
+		"image": "/images/characters/amphitheater.png"
 	},
 	{
 		"id": 6,
-		"name": "Avion",
-		"image": "/images/characters/avion.png"
+		"name": "Votre ami de L.A.",
+		"image": "/images/characters/plane.png"
 	},
 	{
 		"id": 7,
-		"name": "Professeur",
-		"image": "/images/characters/prof.png"
+		"name": "Avion",
+		"image": "/images/characters/plane.png"
 	},
 	{
-	
+		"id": 8,
+		"name": "Prof de PFSI (Programmes Formels Sans Intérêt)",
+		"image": "/images/characters/pfsi.png"
+	},
+	{
+		"id": 9,
+		"name": "/* PERSONNAGE RÉSERVÉ */",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 10,
+		"name": "L'Intégration (IntégreL’XEn3/2)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 11,
+		"name": "Prof de SIC (Signalement Intermédiaire des Conneries)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 12,
+		"name": "RRE (Responsable des Relations avec l’Extérieur)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 13,
+		"name": "Prof de management",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 14,
+		"name": "Prof d’English",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 15,
+		"name": "Représentant du BREI (Bureau Responsable des Expériences Interdites)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 16,
+		"name": "Membre du BDS (Bureau Des Sociopathes)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 17,
+		"name": "Sergio",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 18,
+		"name": "Porte-parole du personnel d’entretien",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 19,
+		"name": "Club Jeux de la Plèbe",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 20,
+		"name": "Makin'TK",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 21,
+		"name": "Correspondant Houillères TeleKingdom",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 22,
+		"name": "Fans de babyfoot",
+		"image": "/images/characters/babyfoot.png"
+	},
+	{
+		"id": 23,
+		"name": "BRISE (Bureau des Retraités Ingénieurs et des Séniles Étudiants)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 24,
+		"name": "Vandale",
+		"image": "/images/characters/tag.png"
+	},
+	{
+		"id": 25,
+		"name": "SPARTE (Syndicat du Personnel Administratif, Recherche, Technique et Enseignant)",
+		"image": "/images/characters/tag.png"
+	},
+	{
+		"id": 26,
+		"name": "Frelons",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 27,
+		"name": "M. Routier (Respo Info)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 28,
+		"name": "Stephen Boitisse (Technicien)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 29,
+		"name": "Direction des Travaux Forcés",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 30,
+		"name": "Professeur de Technologies Obsolètes et Pronominales",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 31,
+		"name": "Gardien en chef",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 32,
+		"name": "Vigiles",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 33,
+		"name": "Chef du projet cafète",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 34,
+		"name": "Professeur de TEC (Triste Enseignement Cyclique)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 35,
+		"name": "Politicien",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 36,
+		"name": "Professeur Maboul",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 37,
+		"name": "Président du club Fiestas Pour Tous",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 38,
+		"name": "Président du pôle Lectura",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 39,
+		"name": "Président du pôle Kino",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 40,
+		"name": "Président du Conseil des Étudiants (PCE) / BDEscrocs",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 41,
+		"name": "Président du pôle Dance",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 42,
+		"name": "Correspondant ULK (Union des ?) / RRE (Responsable de relations avec l’extérieur)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 43,
+		"name": "Président du BDA (Bureau Des Arnaques)",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 44,
+		"name": "Lucamos",
+		"image": "/images/characters/unknown.png"
 	}
 ]

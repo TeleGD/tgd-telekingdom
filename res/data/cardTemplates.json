@@ -45,19 +45,37 @@
 		"next": [[], [[7]]]
 	},
 	{
-		"character": 6,
+		"character": 7,
 		"request": "A l'aéroport vous remarquez un hotspot wifi eduroam. Que faites-vous ?",
 		"response": ["Aller dans votre avion", "S'empresser de se connecter"],
 		"effect": [[0, 0, -5], [0, 0, 5]]
 	},
 	{
-		"character": 7,
+		"character": 8,
 		"request": "Le professeur de (P)rogramme (F)ormel (S)ans (I)ntérêt vous demande une augmentation.",
 		"response": ["Refuser", "Accepter"],
 		"effect": [[5, -5, 0], [-15, 5, 0]]
 	},
 	{
-		"character": 0,
+		"character": 22,
+		"request": "Une canne du babyfoot s’est décrochée.",
+		"response": ["La faire réparer", "Leur dire de jouer avec les cannes restantes"],
+		"effect": [[-10, 5, 10], [0, -5, -5]]
+	},
+	{
+		"character": 24,
+		"request": "Des élèves ont écrit “Nestor is a b****” sur le toit . Que faire ?",
+		"response": ["Sécuriser l'accès au toit", "Inviter les responsables à se présenter pour discuter des modalités utilisées pour accéder au toit et contribuer à les sécuriser"],
+		"effect": [[-10, 10, 0], [0, 10, -20]]
+	},
+	{
+		"character": 26,
+		"request": "Un nid de frelon a été découvert dans l’aile ouest.",
+		"response": ["Appeler les pompiers", "Demander aux élèves de fermer les fenêtres pendant les cours"],
+		"effect": [[0, 0, 0], [0, 0, 0]]
+	},
+	{
+		"character": 5,
 		"request": "Vous proposez 50 euros à chaque élève de l'école durant une conférence.",
 		"response": ["Ctrl + Z", "Ctrl + Y"],
 		"effect": [[-15, 0, 15], [10 , 0 , 0]]
