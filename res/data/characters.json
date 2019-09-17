@@ -22,7 +22,7 @@
 	{
 		"id": 4,
 		"name": "Démarcheur",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/characters/demarcheur.png"
 	},
 	{
 		"id": 5,
@@ -87,7 +87,7 @@
 	{
 		"id": 17,
 		"name": "Sergio",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/characters/sergio.png"
 	},
 	{
 		"id": 18,
@@ -132,12 +132,12 @@
 	{
 		"id": 26,
 		"name": "Frelons",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/characters/frelon.png"
 	},
 	{
 		"id": 27,
 		"name": "M. Routier (Respo Info)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/characters/routier.png"
 	},
 	{
 		"id": 28,
