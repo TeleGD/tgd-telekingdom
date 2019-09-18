@@ -789,10 +789,10 @@
 	{
 		"id": 10,
 		"character": 9,
-		"request": "/* CARTE RÉSERVÉE, pas touche */",
+		"request": "\"Voulez-vous continuer à enquêter ?\"",
 		"response": [
-			"?",
-			"?"
+			"\"Oui !\"",
+			"\"Oui ! (mais à droite)\""
 		],
 		"effect": [
 			[
