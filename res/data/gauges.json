@@ -1,0 +1,41 @@
+[
+	{
+		"name": "Argent",
+		"background": "/images/gauges/money-empty.png",
+		"foreground": "/images/gauges/money-full.png",
+		"empty": {
+			"title": "Mort de faim",
+			"description": "La situation financière de l'école étant au plus mal, les parents d'élèves réclament le remboursement des frais de scolarité de leurs petites têtes blondes. N'ayant pas les moyens de les satisfaire, vous rasez les murs et passez la majeure partie de votre temps cloîtré dans votre bureau à refuser toute visite et tout appel téléphonique. Devant votre refus de coopérer, les parents décident de faire un blocus de l'école et campent devant toutes les entrées. Dix jours plus tard, vous avez congédié tout le monde de l'école et n'êtes toujours pas décidés à laisser quiconque entrer. Cependant, le solde de votre compte PayMyBar est épuisé et vous n'avez plus assez d'argent pour le recharger. La famine vous emporte alors."
+		},
+		"full": {
+			"title": "Mort de riche",
+			"description": "Bingo ! L'argent afflue. Les partenaires n'ont jamais été aussi nombreux et les caisses aussi remplies. Vous transformez le sous sol de TeleKingdom en coffre fort pour vos lingots d'or et il se murmure que l'Émir du Qatar est le prochain parrain de promo. Malheureusement si le rachat de l'école est dans ses plans,vous non. Vous êtes immédiatement remplacé par l'Élan Muské, tellement plus \"bankable\". Désespéré de voir s'envoler l'oeuvre de votre vie, vous rejoignez une dernière fois le parKingdom mais directement depuis votre bureau."
+		}
+	},
+	{
+		"name": "Réputation",
+		"background": "/images/gauges/reputation-empty.png",
+		"foreground": "/images/gauges/reputation-full.png",
+		"empty": {
+			"title": "Mort de folie",
+			"description": "Devant l'impopularité de votre école, vous sombrez dans le désespoir et l'alcool. Vous buvez plus que de raison et décidez de vous lancer dans le MOOC GDP. Après un quart d'heure, vous pensez que l'homme de la vidéo est bel et bien assis en face de vous et commencez à l'insulter et le sommer de s'en aller. Vous en arrivez aux mains… et perdez… On vous retrouvera le lendemain, mort, suspendu la tête en bas par un câble de souris."
+		},
+		"full": {
+			"title": "Mort de joie",
+			"description": "L'école est devenue réputée dans le monde entier. Vous enchaînez les meetings, les shows télévisés et les interviews. New-York, Tokyo, Paris, Los Angeles, votre popularité vous pousse à voyager constamment. Après une soirée bien arrosée vous vous rendez à l'aéroport pour embarquer vers le Canada. Devant votre joie de vivre, le pilote dépressif de l'avion décide de mettre fin à ses jours… dans l'appareil qu'il a piloté durant ses 30 années de carrière.. avec vous à l'intérieur… grâce à une chute de 20 000 mètres."
+		}
+	},
+	{
+		"name": "Effectif",
+		"background": "/images/gauges/workforce-empty.png",
+		"foreground": "/images/gauges/workforce-full.png",
+		"empty": {
+			"title": "Mort de pression",
+			"description": "Vous vous êtes toujours demandés ce qu'il se passerait si le nombre d'élèves présents dans une salle de classe dépassait le seuil maximal de sécurité. Hé bien ce jour est arrivé. Ce fameux seuil a été dépassé… dans toutes les salles de l'école… en même temps. Vous devez faire face à une émeute générale causée par une prof d'English qui a voulu passer la deuxième heure de cours au labo de langues. En arrivant sur place vous êtes emportés par le flot d'élèves qui vous piétinent et vous laissent pour mort dans le hall d'entrée."
+		},
+		"full": {
+			"title": "Mort éclair",
+			"description": "En arrivant à l'école le lundi matin, vous remarquez l'absence de toute forme de vie dans l'établissement. Vous parcourez les couloirs vides les uns après les autres, toquez à toutes les portes mais ne croisez personne. Vous terminez votre inspection par l'amphi Est et devez vous rendre à l'évidence : les élèves ont tous déserté et les profs ont tous démissionné. En ressassant le passé pour vous rappeler à quel moment vous avez échoué, une multiprise branchée dans les escaliers attire votre attention. Les élèves sont donc partis en laissant leurs affaires derrière eux. Vous vous en approchez, vous la saisissez et vous succombez à une décharge électrique causée par la vétusté de l'appareil."
+		}
+	}
+]
