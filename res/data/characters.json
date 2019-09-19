@@ -12,7 +12,7 @@
 	{
 		"id": 2,
 		"name": "Élève lambda",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/characters/lambda-student.png"
 	},
 	{
 		"id": 3,
@@ -92,7 +92,7 @@
 	{
 		"id": 18,
 		"name": "Porte-parole du personnel d’entretien",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/characters/cleaners-representant.png"
 	},
 	{
 		"id": 19,
