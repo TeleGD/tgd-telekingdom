@@ -1,19 +1,16 @@
 package telekingdom.hud;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import app.AppLoader;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.opengl.EmptyImageData;
 
 public class Character {
 
@@ -30,36 +27,24 @@ public class Character {
 	}
 
 	static private void load (String filename) {
-		if (filename != null && filename.startsWith ("/")) {
-			try {
-				BufferedReader reader = new BufferedReader (new FileReader (System.class.getResource (filename).getPath ()));
-				String json = "";
-				String line;
-				while ((line = reader.readLine ()) != null) {
-					json += line + "\n";
-				}
-				reader.close ();
+		String json = AppLoader.loadData (filename);
+		try {
+			JSONArray array = new JSONArray (json);
+			for (int i = 0, li = array.length (); i < li; i++) {
+				Character character = new Character ();
 				try {
-					JSONArray array = new JSONArray (json);
-					for (int i = 0, li = array.length (); i < li; i++) {
-						Character character = new Character ();
-						try {
-							JSONObject object = array.getJSONObject (i);
-							try {
-								character.name = object.getString ("name");
-							} catch (JSONException error) {}
-							try {
-								try {
-									String src = System.class.getResource (object.getString ("image")).getPath ();
-									character.image = new Image (src);
-									character.src = src;
-								} catch (SlickException exception) {}
-							} catch (JSONException error) {}
-						} catch (JSONException error) {}
-					}
+					JSONObject object = array.getJSONObject (i);
+					try {
+						character.name = object.getString ("name");
+					} catch (JSONException error) {}
+					try {
+						String src = object.getString ("image");
+						character.image = AppLoader.loadPicture (src);
+						character.src = src;
+					} catch (JSONException error) {}
 				} catch (JSONException error) {}
-			} catch (IOException error) {}
-		}
+			}
+		} catch (JSONException error) {}
 	}
 
 	static private void save (String filename) {
@@ -119,7 +104,7 @@ public class Character {
 	private Character () {
 		Character.instances.add (this);
 		this.name = "Inconnu"; // le nom
-		this.image = new Image (new EmptyImageData (0, 0)); // l'image
+		this.image = AppLoader.loadPicture (null); // l'image
 		this.src = null; // la source de l'image
 	}
 

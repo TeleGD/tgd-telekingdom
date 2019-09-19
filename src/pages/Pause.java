@@ -31,12 +31,14 @@ public class Pause extends AppMenu {
 					game.enterState (4, new FadeOutTransition (), new FadeInTransition ());
 				}
 			},
-			new MenuItem ("Sauvegarder") {
+			new MenuItem ("Sauvegarder partie") {
 				public void itemSelected () {
-					((World) game.getState(4)).saveGame();
+					((World) game.getState(4)).saveGame ();
+					((World) game.getState (4)).setState (0);
+					game.enterState (1, new FadeOutTransition (), new FadeInTransition ());
 				}
 			},
-			new MenuItem ("Abandon") {
+			new MenuItem ("Abandonner partie") {
 				public void itemSelected () {
 					((World) game.getState (4)).setState (0);
 					game.enterState (1, new FadeOutTransition (), new FadeInTransition ());

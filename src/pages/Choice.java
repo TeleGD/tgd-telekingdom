@@ -31,9 +31,9 @@ public class Choice extends AppMenu {
 					game.enterState (4, new FadeOutTransition (), new FadeInTransition ());
 				}
 			},
-			new MenuItem ("Charger partie") {
+			new MenuItem ("Restaurer partie") {
 				public void itemSelected () {
-					((World) game.getState (4)).loadGame();
+					((World) game.getState (4)).loadGame ();
 					((World) game.getState (4)).setState (0);
 					game.enterState (4, new FadeOutTransition (), new FadeInTransition ());
 				}

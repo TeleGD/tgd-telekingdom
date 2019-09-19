@@ -1,6 +1,5 @@
 package telekingdom;
 
-import java.applet.Applet;
 import java.io.File;
 
 import org.newdawn.slick.Font;
@@ -147,7 +146,7 @@ public class World extends BasicGameState {
 
 	public void loadGame() {
 		justLoaded=true;
-		new Load(this);
+		new Restore(this);
 	}
 
 	public boolean isJustLoaded() {
