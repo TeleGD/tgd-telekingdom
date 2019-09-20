@@ -58,7 +58,7 @@ public class CardTemplate {
 						for (int j = 0, lj = effect.length (); j < lj && j < 2; j++) {
 							try {
 								JSONArray option = effect.getJSONArray (j);
-								for (int k = 0, lk = option.length (); k < lk && k < 3; k++) {
+								for (int k = 0, lk = option.length (); k < lk && k < GaugeTemplate.getLength (); k++) {
 									try {
 										cardTemplate.effect [j] [k] = option.getInt (k);
 									} catch (JSONException error) {}
@@ -127,7 +127,7 @@ public class CardTemplate {
 					JSONArray effect = new JSONArray ();
 					for (int i = 0; i < 2; i++) {
 						JSONArray option = new JSONArray ();
-						for (int j = 0; j < 3; j++) {
+						for (int j = 0; j < GaugeTemplate.getLength (); j++) {
 							option.put (cardTemplate.effect [i] [j]);
 						}
 						effect.put (option);
@@ -219,16 +219,8 @@ public class CardTemplate {
 			"Oui" // la réponse positive à la requête
 		};
 		this.effect = new int [] [] {
-			new int [] {
-				0, // l'effet sur la première jauge en cas de réponse négative
-				0, // l'effet sur la seconde jauge en cas de réponse négative
-				0 // l'effet sur la troisième jauge en cas de réponse négative
-			},
-			new int [] {
-				0, // l'effet sur la première jauge en cas de réponse positive
-				0, // l'effet sur la seconde jauge en cas de réponse positive
-				0 // l'effet sur la troisième jauge en cas de réponse positive
-			}
+			new int [GaugeTemplate.getLength ()], // l'effet sur chacune des jauges en cas de réponse négative
+			new int [GaugeTemplate.getLength ()] // l'effet sur chacune des jauges en cas de réponse positive
 		};
 		this.next = new CardParams [] [] {
 			new CardParams [] {}, // les paramètres des modèles de carte à ajouter à la pioche en cas de réponse négative
@@ -236,7 +228,7 @@ public class CardTemplate {
 		};
 	}
 
-	public Character getItem () {
+	public Character getCharacter () {
 		return this.character;
 	}
 

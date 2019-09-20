@@ -6,11 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.AppLoader;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.newdawn.slick.Image;
+
+import app.AppLoader;
 
 public class Character {
 

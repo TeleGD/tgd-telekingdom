@@ -1,13 +1,24 @@
 package telekingdom.hud;
 
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.state.StateBasedGame;
 
+import app.AppFont;
+import app.AppLoader;
+
 import telekingdom.World;
 
 public class Request {
+
+	private static Font font;
+
+	static {
+		// Request.font = AppLoader.loadFont ("/fonts/vt323.ttf", AppFont.BOLD, 12);
+		Request.font = AppLoader.loadFont("/fonts/SpecialElite.ttf", AppFont.BOLD, 12);
+	}
 
 	private static float WINDOW_WIDTH = 1280f; // la largeur de la fenêtre
 	private static float WINDOW_HEIGHT = 720f; // la hauteur de la fenêtre
@@ -33,7 +44,7 @@ public class Request {
 			int length = 1;
 			for (int i = 0, j = 1, l = words.length; j < l; j++) {
 				String word = words [i] + " " + words [j];
-				if (World.font.getWidth (word) < width) {
+				if (Request.font.getWidth (word) < width) {
 					words [i] = word;
 					words [j] = null;
 				} else {
@@ -41,7 +52,7 @@ public class Request {
 					length++;
 				}
 			}
-			float line = (float) World.font.getHeight (description) * Request.LINE_HEIGHT;
+			float line = (float) Request.font.getHeight (description) * Request.LINE_HEIGHT;
 			float x = Request.BOX_X * horizontalZoom + width / 2f;
 			float y = Request.BOX_Y * verticalZoom + (height - line * ((float) length - 1f + 1f / Request.LINE_HEIGHT)) / 2f;
 			this.length = length;
@@ -51,7 +62,7 @@ public class Request {
 			for (int i = 0, j = 0, l = words.length; j < l; j++) {
 				if (words [j] != null) {
 					this.lines [i] = words [j];
-					this.x [i] = (int) (x - (float) World.font.getWidth (this.lines [i]) / 2f);
+					this.x [i] = (int) (x - (float) Request.font.getWidth (this.lines [i]) / 2f);
 					this.y [i] = (int) (y + line * (float) i);
 					i++;
 				}
@@ -61,7 +72,7 @@ public class Request {
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		context.setColor (Color.black);
-		context.setFont (World.font);
+		context.setFont (Request.font);
 		for (int i = 0, l = this.length; i < l; i++) {
 			context.drawString (this.lines [i], this.x [i], this.y [i]);
 		}
