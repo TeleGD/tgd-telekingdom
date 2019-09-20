@@ -9,8 +9,6 @@ import org.newdawn.slick.state.StateBasedGame;
 import app.AppFont;
 import app.AppLoader;
 
-import telekingdom.World;
-
 public class Request {
 
 	private static Font font;
@@ -33,11 +31,11 @@ public class Request {
 	private int [] x; // l'abscisse de chaque ligne de texte
 	private int [] y; // l'ordonnée de chaque ligne de texte
 
-	public Request (String description, World world) {
+	public Request (GameContainer container, StateBasedGame game, String description) {
 		description = description.replaceAll ("^\\s+|\\s+$", "");
 		if (!description.isEmpty ()) {
-			float horizontalZoom = world.getWidth () / Request.WINDOW_WIDTH;
-			float verticalZoom = world.getHeight () / Request.WINDOW_HEIGHT;
+			float horizontalZoom = container.getWidth () / Request.WINDOW_WIDTH;
+			float verticalZoom = container.getHeight () / Request.WINDOW_HEIGHT;
 			float width = Request.BOX_WIDTH * horizontalZoom;
 			float height = Request.BOX_HEIGHT * verticalZoom;
 			String [] words = description.split ("\\s+");

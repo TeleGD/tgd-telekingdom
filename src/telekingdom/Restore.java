@@ -1,9 +1,9 @@
 package telekingdom;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.json.*;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import app.AppLoader;
 
@@ -13,32 +13,23 @@ import telekingdom.hud.Jauge;
 
 public class Restore {
 
-	private World world;
-	private Player player;
-
 	private List<Jauge> jauges;
-	private ArrayList<Card> deck;
+	private List<Card> deck;
 	private Card activeCard;
 
-	public Restore(World world) {
-
-		this.world = world;
-		this.player = this.world.getPlayer();
-
-		this.player.init();
-
-		this.jauges = this.player.getJauges();
-		this.deck = this.player.getDeck();
-		this.activeCard = this.player.getActiveCard();
+	public Restore(Player player) {
+		this.jauges = player.getJauges();
+		this.deck = player.getDeck();
+		this.activeCard = player.getActiveCard();
 
 		String load = AppLoader.restoreData("/telekingdom/save.json");
 		try {
 			JSONObject json = new JSONObject (load);
-			this.activeCard = new Card(this.world,CardTemplate.getItem(json.getInt("activeCard")));
+			this.activeCard = new Card(CardTemplate.getItem(json.getInt("activeCard")));
 
 			for (int i = 0, l=json.getJSONArray("deck").length(); i<l; i++) {
 				try {
-					deck.add(new Card(this.world,CardTemplate.getItem(json.getJSONArray("deck").getInt(i))));
+					deck.add(new Card(CardTemplate.getItem(json.getJSONArray("deck").getInt(i))));
 				} catch (JSONException e) {}
 			}
 

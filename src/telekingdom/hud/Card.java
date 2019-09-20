@@ -1,23 +1,35 @@
 package telekingdom.hud;
 
-
 import org.newdawn.slick.Color;
+import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
-import org.newdawn.slick.Sound;
+import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.StateBasedGame;
 
-import telekingdom.World;
+import app.AppFont;
+import app.AppLoader;
 
 public class Card {
 
-	private World w;
+	private static Font font;
+	private static Audio sound;
 
-	//template de la carte
+	static {
+		// Card.font = AppLoader.loadFont("/fonts/vt323.ttf", AppFont.BOLD, 12);
+		Card.font = AppLoader.loadFont("/fonts/SpecialElite.ttf", AppFont.BOLD, 12);
+		Card.sound = AppLoader.loadAudio("/sounds/turn-page.ogg");
+	}
+
+	/* Template de la carte */
 	private CardTemplate cardTemplate;
+
+	/* Taille et position sur l'écran */
+	private int size;
+	private int x;
+	private int y;
 
 	private boolean animGo;
 	private boolean animGetOut;
@@ -30,14 +42,8 @@ public class Card {
 	private float tmax;
 	private int decalage;
 
-	//dimensions
-	private int x;
-	private int y;
-	private int length;
-
-	//etat de la carte : 0 au milieu, 1 à droite et -1 à gauche
+	//etat de la carte : 0 au milieu, 1 à droite, -1 à gauche, 2 si confirmé à droite et -2 si confirmé à gauche
 	private int state;
-	private boolean piochee;
 
 	//a recuperer dans la base des cartes
 	private int[] effet;
@@ -46,108 +52,89 @@ public class Card {
 
 	private Color answerBackground = new Color(200,200,200,150);
 
-	private Sound turn;
-
-	public Card (World world, CardTemplate cardTemplate) {
+	public Card (CardTemplate cardTemplate) {
 		this.cardTemplate = cardTemplate;
 
-		w = world;
-
 		state = 0; //on commence carte au milieu
-
-		piochee = false;
 
 		animGo = false;
 		animGetOut = false;
 		animGetIn = false;
+	}
 
-		length = (int) (426/1920f*world.getWidth());
-
-		x = world.getWidth()/2 - length/2;
-		y = -length;
-
-		this.request = new Request(this.cardTemplate.getRequest(),world);
-
-		try {
-			turn = new Sound("res/musics/turn-page.ogg");
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
-
-		//test
-		//setPiocheeTrue();
+	public void init (GameContainer container, StateBasedGame game) {
+		this.size = (int) (426 / 1920f * container.getWidth());
+		this.x = (container.getWidth() - this.size) / 2;
+		this.y = -this.size;
+		this.initGetIn(y, (int) (343 / 720f * container.getHeight()), (int) ((720 - 40) / 720f * container.getHeight()) - size);
+		this.request = new Request(container, game, this.cardTemplate.getRequest());
 	}
 
 	public void update (GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
-		if (piochee) {
-
-			if(animGetIn) {
-				getIn(delta);
+		if(animGetIn) {
+			getIn(container, game, delta);
+		} else {
+			if (animGo) {
+				go(container, game, delta);
 			} else {
-				if (animGo) {
-					go(delta);
+				if (animGetOut) {
+					getOut(container, game, delta);
 				} else {
-					if (animGetOut) {
-						getOut(delta);
-					} else {
-						if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et pas droite
-							if (state==-1) {
-								confirmLeft();
-							} else {
-								shiftLeft();
-							}
+					if (input.isKeyPressed(Input.KEY_LEFT) && !input.isKeyPressed(Input.KEY_RIGHT)) { //si on appuie sur gauche et pas droite
+						if (state==-1) {
+							confirmLeft(container, game);
+						} else {
+							shiftLeft(container, game);
 						}
-						if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et pas gauche
-							if (state==1) {
-								confirmRight();
-							} else {
-								shiftRight();
-							}
+					}
+					if (input.isKeyPressed(Input.KEY_RIGHT) && !input.isKeyPressed(Input.KEY_LEFT)) { //si on appuie sur droite et pas gauche
+						if (state==1) {
+							confirmRight(container, game);
+						} else {
+							shiftRight(container, game);
 						}
 					}
 				}
 			}
-
 		}
 	}
 
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		request.render(container, game, context);
-		Image image = this.cardTemplate.getItem ().getImage ();
-		context.drawImage(image, x, y, x+length, y+length,0,0,image.getWidth(), image.getHeight());
+		Image image = this.cardTemplate.getCharacter ().getImage ();
+		context.drawImage(image, x, y, x + size, y + size, 0, 0, image.getWidth(), image.getHeight());
 		if (!animGetIn && !animGo && !animGetOut) {
 			context.setColor(answerBackground);
 			if (state==-1) {
-				context.fillRect(x, y, World.font.getWidth(this.cardTemplate.getResponse(0)) + 8, World.font.getHeight(this.cardTemplate.getResponse(0)) + 8);
+				context.fillRect(x, y, Card.font.getWidth(this.cardTemplate.getResponse(0)) + 8, Card.font.getHeight(this.cardTemplate.getResponse(0)) + 8);
 				context.setColor(Color.black);
-				context.setFont(World.font);
+				context.setFont(Card.font);
 				context.drawString(this.cardTemplate.getResponse (0), x+4, y+4);
 			} else if (state==1) {
-				context.fillRect(x+length-World.font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, World.font.getWidth(this.cardTemplate.getResponse(1)) + 8, World.font.getHeight(this.cardTemplate.getResponse(1)) +8);
+				context.fillRect(x + size - Card.font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, Card.font.getWidth(this.cardTemplate.getResponse(1)) + 8, Card.font.getHeight(this.cardTemplate.getResponse(1)) +8);
 				context.setColor(Color.black);
-				context.setFont(World.font);
-				context.drawString(this.cardTemplate.getResponse (1), x+length-World.font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
+				context.setFont(Card.font);
+				context.drawString(this.cardTemplate.getResponse (1), x + size - Card.font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
 			}
 		}
 	}
 
-
-	private void shiftRight() { //on décale la carte à droite
+	private void shiftRight(GameContainer container, StateBasedGame game) { //on décale la carte à droite
 		state += 1;
-		decalage = w.getWidth()/8;
+		decalage = container.getWidth()/8;
 		initGo(x,x+decalage);
 	}
 
-	private void shiftLeft() { // on décale la carte à gauche
+	private void shiftLeft(GameContainer container, StateBasedGame game) { // on décale la carte à gauche
 		state -= 1;
-		decalage = w.getWidth()/8;
+		decalage = container.getWidth()/8;
 		initGo(x,x-decalage);
 	}
 
 	//initGo et go : pour les etats -1, 0 et 1
 
-	public void initGo(int dep, int fin) {
+	private void initGo(int dep, int fin) {
 		tmax = 400;
 		speed = 2*(fin-dep)/tmax;
 		acc = -speed/tmax;
@@ -156,7 +143,7 @@ public class Card {
 		goal = fin;
 	}
 
-	public void go(int d) {
+	private void go(GameContainer container, StateBasedGame game, int d) {
 		if (speedPos == (speed>0) && x*(speedPos ? 1 : -1) < goal*(speedPos ? 1 : -1)) {
 			x+=d*speed;
 			speed += d*acc;
@@ -168,7 +155,7 @@ public class Card {
 
 	//initGetOut et getOut :pour confirmer un choix
 
-	public void initGetOut(int dep, int fin) {
+	private void initGetOut(int dep, int fin) {
 		tmax = 500;
 		speed = 2*(fin-dep)/tmax;
 		acc = -speed/tmax;
@@ -177,32 +164,31 @@ public class Card {
 		goal = fin;
 	}
 
-	public void getOut(int d) {
+	private void getOut(GameContainer container, StateBasedGame game, int d) {
 		if (speedPos == (speed>0) && y*(speedPos ? 1 : -1) < goal*(speedPos ? 1 : -1)) {
 			y+=d*speed;
 			speed += d*acc;
 		} else {
 			y=goal;
 			animGetOut = false;
-			w.getPlayer().applyEffects(effet);
-			w.getPlayer().addNextCards();
 		}
-
 	}
 
-	public void confirmLeft() {
+	private void confirmLeft(GameContainer container, StateBasedGame game) {
+		state = -2;
 		effet = cardTemplate.getEffect(0);
-		initGetOut(y,(int) (w.getHeight()*1.2));
-		turn.play();
+		initGetOut(y,(int) (container.getHeight()*1.2));
+		Card.sound.playAsSoundEffect(1, .6f, false);
 	}
 
-	public void confirmRight() {
+	private void confirmRight(GameContainer container, StateBasedGame game) {
+		state = 2;
 		effet = cardTemplate.getEffect(1);
-		initGetOut(y,(int) (w.getHeight()*1.2));
-		turn.play();
+		initGetOut(y,(int) (container.getHeight()*1.2));
+		Card.sound.playAsSoundEffect(1, .6f, false);
 	}
 
-	public void initGetIn(int dep, int fin, int max) {
+	private void initGetIn(int dep, int fin, int max) {
 		tmax = 700;
 		speed = 2*(max-dep)/tmax;
 		acc = -speed/tmax;
@@ -211,7 +197,7 @@ public class Card {
 		goal = fin;
 	}
 
-	public void getIn(int d) {
+	private void getIn(GameContainer container, StateBasedGame game, int d) {
 		if (speed>0 || y>goal) {
 			y+=d*speed;
 			speed += d*acc;
@@ -219,19 +205,18 @@ public class Card {
 			y=goal;
 			animGetIn = false;
 		}
-
-	}
-
-	public void setPiocheeTrue() {
-		piochee = true;
-		initGetIn(y,(int) (343*w.getHeight())/720 , (720-40-length*720/w.getHeight())*w.getHeight()/720);
 	}
 
 	public int getState() {
 		return state;
 	}
 
+	public int[] getEffect() {
+		return effet;
+	}
+
 	public CardTemplate getCardTemplate() {
 		return cardTemplate;
 	}
+
 }

@@ -1,13 +1,9 @@
 package telekingdom;
 
-import java.io.File;
-
-import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Input;
-import org.newdawn.slick.Music;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.openal.Audio;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
@@ -15,39 +11,24 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import app.AppLoader;
 
-import telekingdom.hud.Interface;
+import telekingdom.hud.GaugeTemplate;
+
+import pages.Defeat;
 
 public class World extends BasicGameState {
 
-	public static Font fontJauges;
-	// public static Font specialElite;
-	public static Font font;
-
-	private static Music music;
+	private static Audio music;
+	private static float musicPos;
 
 	static {
-		// World.fontJauges = AppLoader.loadFont ("/fonts/vt323.ttf", java.awt.Font.BOLD, 16);
-		// World.font = AppLoader.loadFont ("/fonts/vt323.ttf", java.awt.Font.BOLD, 12);
-
-		World.fontJauges = AppLoader.loadFont("/fonts/SpecialElite.ttf", java.awt.Font.BOLD, 16);
-		World.font = AppLoader.loadFont("/fonts/SpecialElite.ttf", java.awt.Font.BOLD, 12);
-		try {
-			World.music = new Music("musics" + File.separator + "main-theme.ogg");
-		} catch (SlickException e) {
-			e.printStackTrace();
-		}
+		World.music = AppLoader.loadAudio("/musics/main-theme.ogg");
+		World.musicPos = 0f;
 	}
 
 	private int ID;
 	private int state;
 
-	private int width;
-	private int height;
-
-	private Interface interf;
 	private Player player;
-
-	private boolean justLoaded = false;
 
 	public World (int ID) {
 		this.ID = ID;
@@ -62,11 +43,7 @@ public class World extends BasicGameState {
 	@Override
 	public void init (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée une unique fois au chargement du programme */
-		this.width = container.getWidth ();
-		this.height = container.getHeight ();
-
-		this.player = new Player(this);
-		this.interf = new Interface(this,player);
+		this.player = new Player();
 	}
 
 	@Override
@@ -74,17 +51,9 @@ public class World extends BasicGameState {
 		/* Méthode exécutée à l'apparition de la page */
 		container.getInput ().clearKeyPressedRecord ();
 		if (this.state == 0) {
-			/* Exécuté une unique fois au lancement du jeu */
-			if (!justLoaded) {
-				player.init();
-			} else {
-				player.getActiveCard().setPiocheeTrue();
-			}
-			justLoaded=false;
-			music.loop (1, .3f);
+			this.play (container, game);
 		} else if (this.state == 2) {
-			/* Exécuté lors de la reprise du jeu */
-			music.resume ();
+			this.resume (container, game);
 		}
 	}
 
@@ -92,11 +61,10 @@ public class World extends BasicGameState {
 	public void leave (GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée à la disparition de la page */
 		if (this.state == 1) {
-			/* Exécuté lors de la mise en pause du jeu */
-			music.pause ();
+			this.pause (container, game);
 		} else if (this.state == 3) {
-			/* Exécuté une unique fois à la fin du jeu */
-			music.stop ();
+			this.stop (container, game);
+			this.state = 0; // TODO: remove
 		}
 	}
 
@@ -108,16 +76,46 @@ public class World extends BasicGameState {
 			this.setState (2);
 			game.enterState (2, new FadeOutTransition (), new FadeInTransition ());
 		}
-
-		interf.update(container, game, delta);
-		//interf.addToArgent(-1); //debug
+		player.update(container, game, delta);
+		int death = player.getDeath();
+		if (death != 0) {
+			GaugeTemplate gaugeTemplate = player.getJauges().get(Math.abs(death) - 1).getGaugeTemplate();
+			String title = death < 0 ? gaugeTemplate.getEmptyTitle() : gaugeTemplate.getFullTitle();
+			((Defeat) game.getState (3)).setSubtitle (title);
+			this.setState (3);
+			game.enterState (3, new FadeOutTransition (), new FadeInTransition ());
+		}
+		//player.addToArgent(-1); //debug
 		//player.addToReputation(1); //debug
 	}
 
 	@Override
 	public void render (GameContainer container, StateBasedGame game, Graphics context) {
 		/* Méthode exécutée environ 60 fois par seconde */
-		interf.render(container, game, context);
+		player.render(container, game, context);
+	}
+
+	public void play (GameContainer container, StateBasedGame game) {
+		/* Méthode exécutée une unique fois au début du jeu */
+		this.player.init(container, game);
+		music.playAsMusic(1, .3f, true);
+	}
+
+	public void pause (GameContainer container, StateBasedGame game) {
+		/* Méthode exécutée lors de la mise en pause du jeu */
+		World.musicPos = World.music.getPosition ();
+		World.music.stop ();
+	}
+
+	public void resume (GameContainer container, StateBasedGame game) {
+		/* Méthode exécutée lors de la reprise du jeu */
+		World.music.playAsMusic (1, .3f, true);
+		World.music.setPosition (World.musicPos);
+	}
+
+	public void stop (GameContainer container, StateBasedGame game) {
+		/* Méthode exécutée une unique fois à la fin du jeu */
+		music.stop ();
 	}
 
 	public void setState (int state) {
@@ -128,29 +126,12 @@ public class World extends BasicGameState {
 		return this.state;
 	}
 
-	public int getWidth() {
-		return width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public Player getPlayer() {
-		return player;
-	}
-
 	public void saveGame() {
-		new Save(this);
+		new Save(this.player);
 	}
 
 	public void loadGame() {
-		justLoaded=true;
-		new Restore(this);
-	}
-
-	public boolean isJustLoaded() {
-		return justLoaded;
+		new Restore(this.player);
 	}
 
 }

@@ -40,12 +40,12 @@ public class GaugeTemplate {
 						gaugeTemplate.name = object.getString ("name");
 					} catch (JSONException error) {}
 					try {
-						String src = object.getString ("image");
+						String src = object.getString ("background");
 						gaugeTemplate.backgroundImage = AppLoader.loadPicture (src);
 						gaugeTemplate.backgroundSrc = src;
 					} catch (JSONException error) {}
 					try {
-						String src = object.getString ("image");
+						String src = object.getString ("foreground");
 						gaugeTemplate.foregroundImage = AppLoader.loadPicture (src);
 						gaugeTemplate.foregroundSrc = src;
 					} catch (JSONException error) {}
@@ -188,8 +188,7 @@ public class GaugeTemplate {
 	}
 
 	static public int getLength () {
-		return 3;
-		// return GaugeTemplate.instances.size ();
+		return GaugeTemplate.instances.size ();
 	}
 
 	private String name;
