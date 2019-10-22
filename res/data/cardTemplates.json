@@ -55,8 +55,7 @@
 				],
 				[
 					10,
-					100,
-					5
+					100
 				],
 				[
 					11,
@@ -300,6 +299,78 @@
 				],
 				[
 					101,
+					100
+				],
+				[
+					102,
+					100
+				],
+				[
+					103,
+					100
+				],
+				[
+					104,
+					100
+				],
+				[
+					105,
+					100
+				],
+				[
+					106,
+					100
+				],
+				[
+					107,
+					100
+				],
+				[
+					108,
+					100
+				],
+				[
+					110,
+					100
+				],
+				[
+					112,
+					100
+				],
+				[
+					113,
+					100
+				],
+				[
+					114,
+					100
+				],
+				[
+					115,
+					100
+				],
+				[
+					116,
+					100
+				],
+				[
+					117,
+					100
+				],
+				[
+					120,
+					100
+				],
+				[
+					121,
+					100
+				],
+				[
+					122,
+					100
+				],
+				[
+					123,
 					100
 				]
 			],
@@ -338,8 +409,7 @@
 				],
 				[
 					10,
-					100,
-					5
+					100
 				],
 				[
 					11,
@@ -583,6 +653,78 @@
 				],
 				[
 					101,
+					100
+				],
+				[
+					102,
+					100
+				],
+				[
+					103,
+					100
+				],
+				[
+					104,
+					100
+				],
+				[
+					105,
+					100
+				],
+				[
+					106,
+					100
+				],
+				[
+					107,
+					100
+				],
+				[
+					108,
+					100
+				],
+				[
+					110,
+					100
+				],
+				[
+					112,
+					100
+				],
+				[
+					113,
+					100
+				],
+				[
+					114,
+					100
+				],
+				[
+					115,
+					100
+				],
+				[
+					116,
+					100
+				],
+				[
+					117,
+					100
+				],
+				[
+					120,
+					100
+				],
+				[
+					121,
+					100
+				],
+				[
+					122,
+					100
+				],
+				[
+					123,
 					100
 				]
 			]
@@ -626,7 +768,7 @@
 	{
 		"id": 2,
 		"character": 2,
-		"request": "\"Le projecteur de l'amphi nord est en feu pendant le cours de gestion. Que faisons-nous ?\"",
+		"request": "\"Le projecteur de l'amphi Est est en feu pendant le cours de gestion. Que faisons-nous ?\"",
 		"response": [
 			"\"Oh ! on comptait les changer.\"",
 			"Appeler les pompiers"
@@ -897,7 +1039,7 @@
 		"character": 9,
 		"request": "\"Voulez-vous continuer à enquêter ?\"",
 		"response": [
-			"\"Oui ! (mais sur quoi d'ailleurs ?)\"",
+			"\"Oui ! (mais sur quoi au juste ?)\"",
 			"\"Oui ! (mais à droite)\""
 		],
 		"effect": [
@@ -1105,7 +1247,7 @@
 	{
 		"id": 16,
 		"character": 10,
-		"request": "\"On arrive devant les Mines …\"",
+		"request": "\"On arrive devant les Houillères…\"",
 		"response": [
 			"\"Passer de ce côté…\"",
 			"\"Passer de l'autre côté…\""
@@ -1200,7 +1342,7 @@
 	{
 		"id": 19,
 		"character": 14,
-		"request": "\"Les résultats du TOEIC sont tombés …\"",
+		"request": "\"Les résultats du TOEIC sont tombés…\"",
 		"response": [
 			"Faire jouer vos connaissances et les trafiquer. #MyTailorIsRich",
 			"Les communiquer aux élèves. #50EurosLa2emeTentative"
@@ -1270,7 +1412,7 @@
 	{
 		"id": 21,
 		"character": 15,
-		"request": "\"On souhaite organiser les épreuves sportives du tournoi L-INP dans votre splendide amphi nord (on a pas pensé à réserver les terrains prévus à cet effet).\"",
+		"request": "\"On souhaite organiser les épreuves sportives du tournoi L-INP dans votre splendide amphi Est (on a pas pensé à réserver les terrains prévus à cet effet).\"",
 		"response": [
 			"\"Pourquoi pas, ça leur fera les mollets !\"",
 			"\"Hors de question !\""
@@ -1929,7 +2071,7 @@
 		"character": 28,
 		"request": "\"Les chaises roulantes ne flottent pas.\"",
 		"response": [
-			"Réparer les degats",
+			"Réparer les dégâts",
 			"\"Conseil à Phi !!\""
 		],
 		"effect": [
@@ -2005,6 +2147,9 @@
 				[
 					42,
 					100
+				],
+				[
+					118
 				]
 			],
 			[
@@ -2205,7 +2350,7 @@
 		"request": "\"Les enseignant se plaignent de l'absence de la machine à café.\"",
 		"response": [
 			"Remettre la machine à café",
-			"\"Qu'ils s'achètent des thermos…\" [0, -20, 0] ou"
+			"\"Qu'ils s'achètent des thermos…\""
 		],
 		"effect": [
 			[
@@ -2370,7 +2515,7 @@
 	{
 		"id": 55,
 		"character": 12,
-		"request": "\" Au vu des derniers résultats aux concours :\"",
+		"request": "\"Au vu des derniers résultats aux concours :\"",
 		"response": [
 			"Demander à passer dans la banque des Grandes Houillères",
 			"Créer son propre concours indépendant"
@@ -3096,9 +3241,9 @@
 	{
 		"id": 77,
 		"character": 28,
-		"request": "\"Il a trop neigé cette année, le toit de l'amphi nord a cédé.\"",
+		"request": "\"Il a trop neigé cette année, le toit de l'amphi Est a cédé.\"",
 		"response": [
-			"\"Il reste l'amphi sud !\"",
+			"\"Il reste l'amphi Ouest !\"",
 			"Le faire réparer"
 		],
 		"effect": [
@@ -3129,7 +3274,7 @@
 	{
 		"id": 78,
 		"character": 28,
-		"request": "\"Le toit de l'amphi sud vient aussi de s'écrouler.\"",
+		"request": "\"Le toit de l'amphi Ouest vient aussi de s'écrouler.\"",
 		"response": [
 			"\"Il n'y avait plus personne en amphi, c'est pas grave.\"",
 			"Les faire réparer"
@@ -3204,9 +3349,9 @@
 	{
 		"id": 81,
 		"character": 28,
-		"request": "\"Le toit de l'amphi sud vient aussi de s'écrouler.\"",
+		"request": "\"Le toit de l'amphi Ouest vient aussi de s'écrouler.\"",
 		"response": [
-			"\"On a un amphi nord tout neuf !\"",
+			"\"On a un amphi Est tout neuf !\"",
 			"Le faire réparer"
 		],
 		"effect": [
@@ -3456,7 +3601,7 @@
 		"request": "\"Il semblerait que le partenariat avec les STRAPS fonctionne plutôt bien. Cependant, la cohésion n'a été développée qu'autour du bar, et cela se ressent sur les résultats.\"",
 		"response": [
 			"\"Convivialité, c'est une valeur importante !\"",
-			"Maintenir l'accord jusqu'au 24H de Stan"
+			"Maintenir l'accord jusqu'au 24H de Tsan"
 		],
 		"effect": [
 			[
@@ -3718,7 +3863,7 @@
 	},
 	{
 		"id": 98,
-		"character": 27,
+		"character": 17,
 		"request": "\"Les amphis sont vides. Plus personne n'y vient et il me semble que lors du dernier CM de Preuves, Corrections et Débogage, même le prof n'y était pas.\"",
 		"response": [
 			"Entrer dans l'amphi pour faire l'appel d'une personne.",
@@ -3854,6 +3999,792 @@
 					100
 				]
 			]
+		]
+	},
+	{
+		"id": 102,
+		"character": 17,
+		"request": "\"J'ai « malencontreusement » trouvé un billet gagnant du loto.\"",
+		"response": [
+			"L'accepter",
+			"Le refuser"
+		],
+		"effect": [
+			[
+				85,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					102,
+					100
+				]
+			],
+			[
+				[
+					102,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 103,
+		"character": 40,
+		"request": "\"On a « un peu » abimé la place Tsan lors des 24h, vous pouvez nous aider à rembourser ?\"",
+		"response": [
+			"Les aider",
+			"\"C'est leur problème !\""
+		],
+		"effect": [
+			[
+				-85,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					103,
+					100
+				]
+			],
+			[
+				[
+					103,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 104,
+		"character": 2,
+		"request": "\"J'ai résolu le problème de NP complétude.\"",
+		"response": [
+			"Publier un article",
+			"\"La bonne blague !\""
+		],
+		"effect": [
+			[
+				0,
+				85,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					104,
+					100
+				]
+			],
+			[
+				[
+					104,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 105,
+		"character": 12,
+		"request": "\"On vient de découvrir que vos élèves ne savent pas faire une division euclidienne.\"",
+		"response": [
+			"Étouffer l'affaire",
+			"\"Moi non plus…\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				-85,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					105,
+					100
+				]
+			],
+			[
+				[
+					105,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 106,
+		"character": 12,
+		"request": "\"Le bâtiment des STRAPS a brûlé. Pouvez-vous les accueillir quelques mois ?\"",
+		"response": [
+			"\"Bien sûr !\"",
+			"107. [SPARTE (Syndicat du Personnel Administratif, Recherche, Technique et Enseignant)] \"La possibilité de pouvoir repasser un partiel raté diminue notre image et augmente le niveau de flemme des élèves. Supprimons-les.\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				85
+			],
+			[
+				0,
+				0,
+				-85
+			]
+		],
+		"next": [
+			[
+				[
+					106,
+					100
+				]
+			],
+			[
+				[
+					106,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 108,
+		"character": 40,
+		"request": "\"Pour augmenter notre productivité et notre activité durant les cours, il nous faut une salle de sieste.\"",
+		"response": [
+			"Transformer les salles de langues en dortoir",
+			"Installer un lit dans votre bureau"
+		],
+		"effect": [
+			[
+				-10,
+				10,
+				10
+			],
+			[
+				-5,
+				-5,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					108,
+					100
+				],
+				[
+					109
+				]
+			],
+			[
+				[
+					108,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 109,
+		"character": 17,
+		"request": "\"Les absences ont chuté, mais l'activité en cours aussi.\"",
+		"response": [
+			"Utiliser les matelas pour isoler votre bureau",
+			"Les revendre au marché noir"
+		],
+		"effect": [
+			[
+				-5,
+				-10,
+				0
+			],
+			[
+				10,
+				-10,
+				0
+			]
+		]
+	},
+	{
+		"id": 110,
+		"character": 10,
+		"request": "\"On a prévu une soirée mousse.\"",
+		"response": [
+			"Couper les subventions du club",
+			"Prévoir un maillot"
+		],
+		"effect": [
+			[
+				10,
+				-10,
+				-5
+			],
+			[
+				0,
+				10,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					110,
+					100
+				]
+			],
+			[
+				[
+					110,
+					100
+				],
+				[
+					111
+				]
+			]
+		]
+	},
+	{
+		"id": 111,
+		"character": 17,
+		"request": "\"L'Intégration (IntégreL'XEn3/2) a utilisé les extincteurs pour la soirée mousse.\"",
+		"response": [
+			"En profiter pour faire disparaître les cadavres qui s'empilent dans le placard",
+			"Passer le balai"
+		],
+		"effect": [
+			[
+				0,
+				-10,
+				-10
+			],
+			[
+				0,
+				10,
+				-5
+			]
+		]
+	},
+	{
+		"id": 112,
+		"character": 45,
+		"request": "\"Alors oui ! Je viens vous voir parce que ; non mais attendez ce qu'il faut que je vous explique d'abord, c'est qu'il y a un indien que j'ai rencontré qui… Où j'en étais déjà ? \"",
+		"response": [
+			"\"Euh…\"",
+			"\"Euh…\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				0,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					112,
+					100
+				]
+			],
+			[
+				[
+					112,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 113,
+		"character": 46,
+		"request": "\"Nous nous sommes fait voler nos barrières, ce sont les staffs de TéléKingdom qui n'ont pas bien fait leur boulot… On exige un dédommagement !\"",
+		"response": [
+			"Rembourser les barrières",
+			"Supprimer le local de Mang'Alsace"
+		],
+		"effect": [
+			[
+				-10,
+				0,
+				0
+			],
+			[
+				0,
+				-10,
+				5
+			]
+		],
+		"next": [
+			[
+				[
+					113,
+					100
+				]
+			],
+			[
+				[
+					113,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 114,
+		"character": 46,
+		"request": "\"Vous êtes invités à la prochaine convention Mang'Alsace !\"",
+		"response": [
+			"Inviter les autres membres de SPARTE",
+			"\"Je ne suis pas adepte de Furry.\""
+		],
+		"effect": [
+			[
+				0,
+				10,
+				0
+			],
+			[
+				0,
+				-5,
+				-5
+			]
+		],
+		"next": [
+			[
+				[
+					114,
+					100
+				]
+			],
+			[
+				[
+					114,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 115,
+		"character": 46,
+		"request": "\"La semaine thématique 3A a été placée juste avant la convention, c'est inadmissible !\"",
+		"response": [
+			"Les inviter à en discuter avec la DTF",
+			"Fusionner les deux événements"
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				-20,
+				20,
+				10
+			]
+		],
+		"next": [
+			[
+				[
+					115,
+					100
+				],
+				[
+					34
+				]
+			],
+			[
+				[
+					115,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 116,
+		"character": 46,
+		"request": "\"L'élection du CA a été truquée dans votre établissement !\"",
+		"response": [
+			"\"Ce n'est pas mon problème…\"",
+			"Exiger de refaire l'élection"
+		],
+		"effect": [
+			[
+				0,
+				-5,
+				0
+			],
+			[
+				-5,
+				10,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					116,
+					100
+				]
+			],
+			[
+				[
+					116,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 117,
+		"character": 46,
+		"request": "\"Les élèves mangent en amphi pendant la présentation de la convention.\"",
+		"response": [
+			"Interrompre la présentation et fermer l'école 1 semaine",
+			"Commander des pizzas pour tout le monde"
+		],
+		"effect": [
+			[
+				10,
+				-10,
+				-10
+			],
+			[
+				-10,
+				10,
+				10
+			]
+		],
+		"next": [
+			[
+				[
+					117,
+					100
+				]
+			],
+			[
+				[
+					117,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 118,
+		"character": 17,
+		"request": "\"Le club TGD s'est associé au pôle Lectura pour ce jeu.\"",
+		"response": [
+			"\"Ha Ha Ha ! Laissez-les faire, ils n'ont jamais rien terminé de toute façon.\"",
+			"Dissoudre le pôle."
+		],
+		"effect": [
+			[
+				0,
+				10,
+				5
+			],
+			[
+				0,
+				-10,
+				-5
+			]
+		],
+		"next": [
+			[],
+			[
+				[
+					119
+				]
+			]
+		]
+	},
+	{
+		"id": 119,
+		"character": 17,
+		"request": "\"Je suis allé à leur dernière réunion pour leur demander d'arrêter mais il n'y avait personne…\"",
+		"response": [
+			"Les dissoudre quand même. \"On ne sait jamais.\"",
+			"Laisser courir."
+		],
+		"effect": [
+			[
+				0,
+				-10,
+				0
+			],
+			[
+				0,
+				10,
+				0
+			]
+		]
+	},
+	{
+		"id": 120,
+		"character": 47,
+		"request": "\"Je voudrais vous acheter des élèves pour servir de cobayes aux voyages sur Mars.\"",
+		"response": [
+			"\"Bien sûr !\"",
+			"\"Pas question !\""
+		],
+		"effect": [
+			[
+				50,
+				10,
+				-50
+			],
+			[
+				-50,
+				-10,
+				50
+			]
+		],
+		"next": [
+			[
+				[
+					120,
+					100
+				]
+			],
+			[
+				[
+					120,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 121,
+		"character": 22,
+		"request": "\"Est-ce que vous serez prêts pour nous soutenir dans la création d'un club Babyfoot et nous autoriser à participer au championnat de France des grandes écoles de babyfoot ?\"",
+		"response": [
+			"\"Une bonne nouvelle pour l'école !\"",
+			"\"Désolé, on a plus de chances aux échecs.\""
+		],
+		"effect": [
+			[
+				-10,
+				0,
+				15
+			],
+			[
+				-10,
+				-15,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					121,
+					100
+				]
+			],
+			[
+				[
+					121,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 122,
+		"character": 17,
+		"request": "\"Savez-vous quelle heure est-il, monsieur le Directeur ?\"",
+		"response": [
+			"\"L\"heure du TD d'anglais pour les 1A G5 en N 1.2 et N 1.33 !\"",
+			"\"L'heure du gala !\""
+		],
+		"effect": [
+			[
+				0,
+				-10,
+				-5
+			],
+			[
+				0,
+				15,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					122,
+					100
+				]
+			],
+			[
+				[
+					122,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 123,
+		"character": 19,
+		"request": "\"Le Mao est un jeu qui se joue à trois cartes, qui commence à la droite du donneur et qui commence… maintenant !\"",
+		"response": [
+			"Regarder mes cartes.",
+			"Dissoudre le club pour pratique de jeux dangereux."
+		],
+		"effect": [
+			[
+				0,
+				5,
+				0
+			],
+			[
+				0,
+				-10,
+				-10
+			]
+		],
+		"next": [
+			[
+				[
+					123,
+					100
+				],
+				[
+					124
+				]
+			],
+			[
+				[
+					123,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 124,
+		"character": 19,
+		"request": "\"Pour avoir frotté vos cartes, prenez cette carte.\"",
+		"response": [
+			"\"Euh…\"",
+			"\"J'abandonne.\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				-10,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					125
+				]
+			],
+			[]
+		]
+	},
+	{
+		"id": 125,
+		"character": 19,
+		"request": "\"Pour ne pas avoir dit merci, prenez cette carte.\"",
+		"response": [
+			"\"Euh, merci ?\"",
+			"\"Quoi ? Il y a une règle sur la politesse au Mao ?\""
+		],
+		"effect": [
+			[
+				0,
+				5,
+				0
+			],
+			[
+				0,
+				-5,
+				0
+			]
+		],
+		"next": [
+			[],
+			[
+				[
+					126
+				]
+			]
+		]
+	},
+	{
+		"id": 126,
+		"character": 19,
+		"request": "\"Pour avoir parlé des règles, prenez cette carte.\"",
+		"response": [
+			"\"Quoi ?!\"",
+			"\"Oh, j'abandonne !\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				0
+			],
+			[
+				0,
+				-10,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					125
+				]
+			],
+			[]
 		]
 	}
 ]
