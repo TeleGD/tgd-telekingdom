@@ -51,7 +51,7 @@
 	},
 	{
 		"id": 10,
-		"name": "L'Intégration (IntégreL’XEn3/2)",
+		"name": "L'Intégration (IntégreL'XEn3/2)",
 		"image": "/images/characters/unknown.png"
 	},
 	{
@@ -61,7 +61,7 @@
 	},
 	{
 		"id": 12,
-		"name": "RRE (Responsable des Relations avec l’Extérieur)",
+		"name": "RRE (Responsable des Relations avec l'Extérieur)",
 		"image": "/images/characters/unknown.png"
 	},
 	{
@@ -71,7 +71,7 @@
 	},
 	{
 		"id": 14,
-		"name": "Prof d’English",
+		"name": "Prof d'English",
 		"image": "/images/characters/unknown.png"
 	},
 	{
@@ -91,7 +91,7 @@
 	},
 	{
 		"id": 18,
-		"name": "Porte-parole du personnel d’entretien",
+		"name": "Porte-parole du personnel d'entretien",
 		"image": "/images/characters/cleaners-representant.png"
 	},
 	{
@@ -151,7 +151,7 @@
 	},
 	{
 		"id": 30,
-		"name": "Professeur de Technologies Obsolètes et Pronominales",
+		"name": "Professeur de TOP (Technologies Obsolètes et Pronominales)",
 		"image": "/images/characters/unknown.png"
 	},
 	{
@@ -211,7 +211,7 @@
 	},
 	{
 		"id": 42,
-		"name": "Correspondant ULK (Union des ?) / RRE (Responsable de relations avec l’extérieur)",
+		"name": "Correspondant ULK (Union des ?) / RRE (Responsable des Relations avec l'Extérieur)",
 		"image": "/images/characters/unknown.png"
 	},
 	{
@@ -222,6 +222,21 @@
 	{
 		"id": 44,
 		"name": "Lucamos",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 45,
+		"name": "Professeur Pippin",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 46,
+		"name": "Mang'Alsace",
+		"image": "/images/characters/unknown.png"
+	},
+	{
+		"id": 47,
+		"name": "L'Élan Muské",
 		"image": "/images/characters/unknown.png"
 	}
 ]
