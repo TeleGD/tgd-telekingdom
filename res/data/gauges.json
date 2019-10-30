@@ -11,7 +11,7 @@
 		},
 		"full": {
 			"title": "Mort de riche",
-			"description": "Bingo ! L'argent afflue. Les partenaires n'ont jamais été aussi nombreux et les caisses aussi remplies. Vous transformez le sous sol de TeleKingdom en coffre fort pour vos lingots d'or et il se murmure que l'Émir du Qatar est le prochain parrain de promo. Malheureusement si le rachat de l'école est dans ses plans,vous non. Vous êtes immédiatement remplacé par l'Élan Muské, tellement plus \"bankable\". Désespéré de voir s'envoler l'oeuvre de votre vie, vous rejoignez une dernière fois le parKingdom mais directement depuis votre bureau.",
+			"description": "Bingo ! L'argent afflue. Les partenaires n'ont jamais été aussi nombreux et les caisses aussi remplies. Vous transformez le sous-sol de TeleKingdom en coffre fort pour vos lingots d'or et il se murmure que l'Émir du Qatar est le prochain parrain de promo. Malheureusement si le rachat de l'école est dans ses plans,vous non. Vous êtes immédiatement remplacé par l'Élan Muské, tellement plus \"bankable\". Désespéré de voir s'envoler l'oeuvre de votre vie, vous rejoignez une dernière fois le parKingdom mais directement depuis votre bureau.",
 			"sound": "/sounds/gauges/jackpot.ogg"
 		}
 	},
@@ -27,7 +27,7 @@
 		},
 		"full": {
 			"title": "Mort de joie",
-			"description": "L'école est devenue réputée dans le monde entier. Vous enchaînez les meetings, les shows télévisés et les interviews. New-York, Tokyo, Paris, Los Angeles, votre popularité vous pousse à voyager constamment. Après une soirée bien arrosée vous vous rendez à l'aéroport pour embarquer vers le Canada. Devant votre joie de vivre, le pilote dépressif de l'avion décide de mettre fin à ses jours… dans l'appareil qu'il a piloté durant ses 30 années de carrière.. avec vous à l'intérieur… grâce à une chute de 20 000 mètres.",
+			"description": "L'école est devenue réputée dans le monde entier. Vous enchaînez les meetings, les shows télévisés et les interviews. New-York, Tokyo, Paris, Los Angeles, votre popularité vous pousse à voyager constamment. Après une soirée bien arrosée vous vous rendez à l'aéroport pour embarquer vers le Canada. Devant votre joie de vivre, le pilote dépressif de l'avion décide de mettre fin à ses jours… dans l'appareil qu'il a piloté durant ses 30 années de carrière… avec vous à l'intérieur… grâce à une chute de 20 000 mètres.",
 			"sound": "/sounds/gauges/applause.ogg"
 		}
 	},
