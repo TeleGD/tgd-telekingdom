@@ -1,4 +1,4 @@
-package telekingdom;
+package games.telekingdom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +11,18 @@ import org.newdawn.slick.state.StateBasedGame;
 
 import app.AppLoader;
 
-import telekingdom.hud.Card;
-import telekingdom.hud.CardParams;
-import telekingdom.hud.CardTemplate;
-import telekingdom.hud.Jauge;
-import telekingdom.hud.GaugeTemplate;
+import games.telekingdom.hud.Card;
+import games.telekingdom.hud.CardParams;
+import games.telekingdom.hud.CardTemplate;
+import games.telekingdom.hud.Jauge;
+import games.telekingdom.hud.GaugeTemplate;
 
 public class Player {
 
 	private static Image background;
 
 	static {
-		Player.background = AppLoader.loadPicture ("/images/tk_background.png");
+		Player.background = AppLoader.loadPicture ("/images/telekingdom/tk_background.png");
 	}
 
 	private List<Jauge> jauges;

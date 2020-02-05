@@ -1,4 +1,4 @@
-package telekingdom.hud;
+package games.telekingdom.hud;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
@@ -15,7 +15,7 @@ public class Request {
 
 	static {
 		// Request.font = AppLoader.loadFont ("/fonts/vt323.ttf", AppFont.BOLD, 12);
-		Request.font = AppLoader.loadFont("/fonts/SpecialElite.ttf", AppFont.BOLD, 12);
+		Request.font = AppLoader.loadFont("/fonts/telekingdom/SpecialElite.ttf", AppFont.BOLD, 12);
 	}
 
 	private static float WINDOW_WIDTH = 1280f; // la largeur de la fenêtre

@@ -1,4 +1,4 @@
-package telekingdom.hud;
+package games.telekingdom.hud;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -19,9 +19,9 @@ public class Character {
 
 	static {
 		Character.instances = new ArrayList <Character> ();
-		Character.load ("/data/characters.json");
+		Character.load ("/data/telekingdom/characters.json");
 		// Character.normalize ();
-		// Character.save ("/data/characters2.json");
+		// Character.save ("/data/telekingdom/characters2.json");
 		if (Character.instances.size () == 0) {
 			new Character ();
 		}

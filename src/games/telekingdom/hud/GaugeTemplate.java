@@ -1,4 +1,4 @@
-package telekingdom.hud;
+package games.telekingdom.hud;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -20,9 +20,9 @@ public class GaugeTemplate {
 
 	static {
 		GaugeTemplate.instances = new ArrayList <GaugeTemplate> ();
-		GaugeTemplate.load ("/data/gauges.json");
+		GaugeTemplate.load ("/data/telekingdom/gauges.json");
 		// GaugeTemplate.normalize ();
-		// GaugeTemplate.save ("/data/gauges2.json");
+		// GaugeTemplate.save ("/data/telekingdom/gauges2.json");
 		if (GaugeTemplate.instances.size () == 0) {
 			new GaugeTemplate ();
 		}

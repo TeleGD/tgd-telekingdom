@@ -10,33 +10,33 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 import app.AppMenu;
 import app.elements.MenuItem;
 
-import telekingdom.World;
+import games.telekingdom.World;
 
 public class Choice extends AppMenu {
 
-	public Choice (int ID) {
-		super (ID);
+	public Choice(int ID) {
+		super(ID);
 	}
 
 	@Override
-	public void init (GameContainer container, StateBasedGame game) {
-		super.initSize (container, game, 600, 400);
-		super.init (container, game);
-		this.setTitle ("TeleKingdom");
-		this.setSubtitle ("Bienvenue dans votre royaume");
-		this.setMenu (Arrays.asList (new MenuItem [] {
-			new MenuItem ("Nouvelle partie") {
-				public void itemSelected () {
-					// ((World) game.getState (4)).saveGame ();
-					((World) game.getState (4)).setState (0);
-					game.enterState (4, new FadeOutTransition (), new FadeInTransition ());
+	public void init(GameContainer container, StateBasedGame game) {
+		super.initSize(container, game, 600, 400);
+		super.init(container, game);
+		this.setTitle("TeleKingdom");
+		this.setSubtitle("Bienvenue dans votre royaume");
+		this.setMenu(Arrays.asList(new MenuItem[] {
+			new MenuItem("Nouvelle partie") {
+				public void itemSelected() {
+					// ((World) game.getState(3)).saveGame();
+					((World) game.getState(3)).setState(0);
+					game.enterState(3, new FadeOutTransition(), new FadeInTransition());
 				}
 			},
-			new MenuItem ("Restaurer partie") {
-				public void itemSelected () {
-					((World) game.getState (4)).loadGame ();
-					((World) game.getState (4)).setState (0);
-					game.enterState (4, new FadeOutTransition (), new FadeInTransition ());
+			new MenuItem("Restaurer partie") {
+				public void itemSelected() {
+					((World) game.getState(3)).loadGame();
+					((World) game.getState(3)).setState(0);
+					game.enterState(3, new FadeOutTransition(), new FadeInTransition());
 				}
 			},
 			new MenuItem ("Editeur de cartes") {
@@ -44,13 +44,13 @@ public class Choice extends AppMenu {
 
 				}
 			},
-			new MenuItem ("Quitter") {
-				public void itemSelected () {
-					container.exit ();
+			new MenuItem("Quitter") {
+				public void itemSelected() {
+					container.exit();
 				}
 			}
 		}));
-		this.setHint ("BY TELEGAME DESIGN");
+		this.setHint("BY TELEGAME DESIGN");
 	}
 
 }

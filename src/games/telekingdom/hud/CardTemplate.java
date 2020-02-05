@@ -1,4 +1,4 @@
-package telekingdom.hud;
+package games.telekingdom.hud;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -19,9 +19,9 @@ public class CardTemplate {
 
 	static {
 		CardTemplate.instances = new ArrayList <CardTemplate> ();
-		CardTemplate.load ("/data/cardTemplates.json");
+		CardTemplate.load ("/data/telekingdom/cardTemplates.json");
 		// CardTemplate.normalize ();
-		// CardTemplate.save ("/data/cardTemplates2.json");
+		// CardTemplate.save ("/data/telekingdom/cardTemplates2.json");
 		if (CardTemplate.instances.size () == 0) {
 			new CardTemplate ();
 		}

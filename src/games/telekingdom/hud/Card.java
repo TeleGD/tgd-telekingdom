@@ -1,4 +1,4 @@
-package telekingdom.hud;
+package games.telekingdom.hud;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
@@ -19,8 +19,8 @@ public class Card {
 
 	static {
 		// Card.font = AppLoader.loadFont("/fonts/vt323.ttf", AppFont.BOLD, 12);
-		Card.font = AppLoader.loadFont("/fonts/SpecialElite.ttf", AppFont.BOLD, 12);
-		Card.sound = AppLoader.loadAudio("/sounds/turn-page.ogg");
+		Card.font = AppLoader.loadFont("/fonts/telekingdom/SpecialElite.ttf", AppFont.BOLD, 12);
+		Card.sound = AppLoader.loadAudio("/sounds/telekingdom/turn-page.ogg");
 	}
 
 	/* Template de la carte */

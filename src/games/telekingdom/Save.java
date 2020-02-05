@@ -1,4 +1,4 @@
-package telekingdom;
+package games.telekingdom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +9,9 @@ import org.json.JSONObject;
 
 import app.AppLoader;
 
-import telekingdom.hud.Card;
-import telekingdom.hud.CardTemplate;
-import telekingdom.hud.Jauge;
+import games.telekingdom.hud.Card;
+import games.telekingdom.hud.CardTemplate;
+import games.telekingdom.hud.Jauge;
 
 public class Save {
 

@@ -2,241 +2,241 @@
 	{
 		"id": 0,
 		"name": "Reflet",
-		"image": "/images/characters/mirror.png"
+		"image": "/images/telekingdom/characters/mirror.png"
 	},
 	{
 		"id": 1,
 		"name": "Groupe de 1As",
-		"image": "/images/characters/first-year.png"
+		"image": "/images/telekingdom/characters/first-year.png"
 	},
 	{
 		"id": 2,
 		"name": "Élève lambda",
-		"image": "/images/characters/lambda-student.png"
+		"image": "/images/telekingdom/characters/lambda-student.png"
 	},
 	{
 		"id": 3,
 		"name": "Téléphone",
-		"image": "/images/characters/telephone.png"
+		"image": "/images/telekingdom/characters/telephone.png"
 	},
 	{
 		"id": 4,
 		"name": "Démarcheur",
-		"image": "/images/characters/salesman.png"
+		"image": "/images/telekingdom/characters/salesman.png"
 	},
 	{
 		"id": 5,
 		"name": "Amphi",
-		"image": "/images/characters/amphitheater.png"
+		"image": "/images/telekingdom/characters/amphitheater.png"
 	},
 	{
 		"id": 6,
 		"name": "Votre ami de L.A.",
-		"image": "/images/characters/plane.png"
+		"image": "/images/telekingdom/characters/plane.png"
 	},
 	{
 		"id": 7,
 		"name": "Avion",
-		"image": "/images/characters/plane.png"
+		"image": "/images/telekingdom/characters/plane.png"
 	},
 	{
 		"id": 8,
 		"name": "Prof de PFSI (Programmes Formels Sans Intérêt)",
-		"image": "/images/characters/pfsi.png"
+		"image": "/images/telekingdom/characters/pfsi.png"
 	},
 	{
 		"id": 9,
 		"name": "CrackiMeme",
-		"image": "/images/characters/crackimeme.png"
+		"image": "/images/telekingdom/characters/crackimeme.png"
 	},
 	{
 		"id": 10,
 		"name": "L'Intégration (IntégreL'XEn3/2)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 11,
 		"name": "Prof de SIC (Signalement Intermédiaire des Conneries)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 12,
 		"name": "RRE (Responsable des Relations avec l'Extérieur)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 13,
 		"name": "Prof de management",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 14,
 		"name": "Prof d'English",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 15,
 		"name": "Représentant du BREI (Bureau Responsable des Expériences Interdites)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 16,
 		"name": "Membre du BDS (Bureau Des Sociopathes)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 17,
 		"name": "Sergio",
-		"image": "/images/characters/sergio.png"
+		"image": "/images/telekingdom/characters/sergio.png"
 	},
 	{
 		"id": 18,
 		"name": "Porte-parole du personnel d'entretien",
-		"image": "/images/characters/cleaners-representant.png"
+		"image": "/images/telekingdom/characters/cleaners-representant.png"
 	},
 	{
 		"id": 19,
 		"name": "Club Jeux de la Plèbe",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 20,
 		"name": "Makin'TK",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 21,
 		"name": "Correspondant Houillères TeleKingdom",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 22,
 		"name": "Fans de babyfoot",
-		"image": "/images/characters/babyfoot.png"
+		"image": "/images/telekingdom/characters/babyfoot.png"
 	},
 	{
 		"id": 23,
 		"name": "BRISE (Bureau des Retraités Ingénieurs et des Séniles Étudiants)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 24,
 		"name": "Vandale",
-		"image": "/images/characters/tag.png"
+		"image": "/images/telekingdom/characters/tag.png"
 	},
 	{
 		"id": 25,
 		"name": "SPARTE (Syndicat du Personnel Administratif, Recherche, Technique et Enseignant)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 26,
 		"name": "Frelons",
-		"image": "/images/characters/hornets.png"
+		"image": "/images/telekingdom/characters/hornets.png"
 	},
 	{
 		"id": 27,
 		"name": "M. Routier (Respo Info)",
-		"image": "/images/characters/routier.png"
+		"image": "/images/telekingdom/characters/routier.png"
 	},
 	{
 		"id": 28,
 		"name": "Stephen Boitisse (Technicien)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 29,
 		"name": "Direction des Travaux Forcés",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 30,
 		"name": "Prof de TOP (Technologies Obsolètes et Pronominales)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 31,
 		"name": "Gardien en chef",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 32,
 		"name": "Vigiles",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 33,
 		"name": "Chef du projet cafète",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 34,
 		"name": "Prof de TEC (Triste Enseignement Cyclique)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 35,
 		"name": "Politicien",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 36,
 		"name": "Professeur Maboul",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 37,
 		"name": "Président du club Fiestas Pour Tous",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 38,
 		"name": "Président du pôle Lectura",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 39,
 		"name": "Président du pôle Kino",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 40,
 		"name": "Président du Conseil des Étudiants (PCE) / BDEscrocs",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 41,
 		"name": "Président du pôle Dance",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 42,
 		"name": "Correspondant ULK (Union des ?) / RRE (Responsable des Relations avec l'Extérieur)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 43,
 		"name": "Président du BDA (Bureau Des Arnaques)",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 44,
 		"name": "Lucamos",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 45,
 		"name": "Professeur Pippin",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 46,
 		"name": "Mang'Alsace",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	},
 	{
 		"id": 47,
 		"name": "L'Élan Muské",
-		"image": "/images/characters/unknown.png"
+		"image": "/images/telekingdom/characters/unknown.png"
 	}
 ]

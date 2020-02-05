@@ -1,4 +1,4 @@
-package telekingdom.hud;
+package games.telekingdom.hud;
 
 import org.newdawn.slick.Font;
 import org.newdawn.slick.GameContainer;
@@ -15,7 +15,7 @@ public class Jauge {
 
 	static {
 		// Jauge.font = AppLoader.loadFont("/fonts/vt323.ttf", AppFont.BOLD, 16);
-		Jauge.font = AppLoader.loadFont("/fonts/special-elite.ttf", AppFont.BOLD, 16);
+		Jauge.font = AppLoader.loadFont("/fonts/telekingdom/special-elite.ttf", AppFont.BOLD, 16);
 	}
 
 	/* Template de la jauge */
