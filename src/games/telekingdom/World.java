@@ -91,7 +91,6 @@ public class World extends BasicGameState {
 
 	public void play(GameContainer container, StateBasedGame game) {
 		/* Méthode exécutée une unique fois au début du jeu */
-		this.player.init(container, game);
 		this.music.playAsMusic(1, .3f, true);
 	}
 
@@ -120,12 +119,16 @@ public class World extends BasicGameState {
 		return this.state;
 	}
 
-	public void saveGame() {
-		new Save(this.player);
+	public void reset(GameContainer container, StateBasedGame game) {
+		this.player.reset(container, game);
 	}
 
-	public void loadGame() {
-		new Restore(this.player);
+	public void restore(GameContainer container, StateBasedGame game) {
+		this.player.restore(container, game);
+	}
+
+	public void save(GameContainer container, StateBasedGame game) {
+		this.player.save(container, game);
 	}
 
 }

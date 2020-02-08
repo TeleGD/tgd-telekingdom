@@ -25,28 +25,21 @@ public class Choice extends AppMenu {
 		this.setTitle("TeleKingdom");
 		this.setSubtitle("Bienvenue dans votre royaume");
 		this.setMenu(Arrays.asList(new MenuItem[] {
+			new MenuItem("Partie en cours") {
+				public void itemSelected() {
+					((World) game.getState(3)).restore(container, game);
+					game.enterState(3, new FadeOutTransition(), new FadeInTransition());
+				}
+			},
 			new MenuItem("Nouvelle partie") {
 				public void itemSelected() {
-					// ((World) game.getState(3)).saveGame();
-					((World) game.getState(3)).setState(0);
+					((World) game.getState(3)).reset(container, game);
 					game.enterState(3, new FadeOutTransition(), new FadeInTransition());
 				}
 			},
-			new MenuItem("Restaurer partie") {
+			new MenuItem("Retour") {
 				public void itemSelected() {
-					((World) game.getState(3)).loadGame();
-					((World) game.getState(3)).setState(0);
-					game.enterState(3, new FadeOutTransition(), new FadeInTransition());
-				}
-			},
-			new MenuItem ("Editeur de cartes") {
-				public void itemSelected () {
-
-				}
-			},
-			new MenuItem("Quitter") {
-				public void itemSelected() {
-					container.exit();
+					game.enterState(0, new FadeOutTransition(), new FadeInTransition());
 				}
 			}
 		}));

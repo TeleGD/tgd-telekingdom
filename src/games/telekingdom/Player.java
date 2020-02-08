@@ -3,6 +3,9 @@ package games.telekingdom;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -17,13 +20,9 @@ import games.telekingdom.hud.CardTemplate;
 import games.telekingdom.hud.Jauge;
 import games.telekingdom.hud.GaugeTemplate;
 
+
 public class Player {
 
-	private static Image background;
-
-	static {
-		Player.background = AppLoader.loadPicture ("/images/telekingdom/tk_background.png");
-	}
 
 	private List<Jauge> jauges;
 	private List<Card> deck;
@@ -31,17 +30,16 @@ public class Player {
 
 	private Color boxColor;
 	private Color textColor;
+	private Image background;
 
-	public Player () {
+	public Player() {
 		this.jauges = new ArrayList<Jauge>();
 		for (int i = 0, li = GaugeTemplate.getLength(); i < li; i++) {
 			Jauge jauge = new Jauge(GaugeTemplate.getItem(i));
 			this.jauges.add(jauge);
 		}
 		this.deck = new ArrayList<Card>();	// Création du deck des cartes
-		this.activeCard = new Card (CardTemplate.getItem (0));
-		boxColor = new Color(72, 56, 56);
-		textColor = new Color(189, 176, 130);
+		this.activeCard = null;
 	}
 
 	public void init(GameContainer container, StateBasedGame game) {
@@ -51,10 +49,15 @@ public class Player {
 			//on place directement les jauges centrees et separees de 25px
 			jauge.setX((container.getWidth() - jauge.getSize() * li) / 2 + (int) (25 / 1280f * container.getWidth()) * (i - (li - 1) / 2) + jauge.getSize() * i);
 		}
+		this.deck.clear();
+		this.activeCard = new Card(CardTemplate.getItem(0));
 		this.activeCard.init(container, game);
+		this.boxColor = new Color(72, 56, 56);
+		this.textColor = new Color(189, 176, 130);
+		this.background = AppLoader.loadPicture("/images/telekingdom/tk_background.png");
 	}
 
-	public void update (GameContainer container, StateBasedGame game, int delta) {
+	public void update(GameContainer container, StateBasedGame game, int delta) {
 		this.activeCard.update(container, game, delta);
 		if (Math.abs(this.activeCard.getState()) == 2) {
 			this.applyEffects(this.activeCard.getEffect());
@@ -65,7 +68,7 @@ public class Player {
 		}
 	}
 
-	public void render (GameContainer container, StateBasedGame game, Graphics context) {
+	public void render(GameContainer container, StateBasedGame game, Graphics context) {
 		Color previousColor = context.getColor(); //on retient l'ancienne couleur
 
 		//on draw le fond
@@ -86,6 +89,63 @@ public class Player {
 
 		//on remet l'ancienne couleur
 		context.setColor(previousColor);
+	}
+
+	public void reset(GameContainer container, StateBasedGame game) {
+		this.init(container, game);
+	}
+
+	public void restore(GameContainer container, StateBasedGame game) {
+		this.init(container, game);
+		String load = AppLoader.restoreData("/telekingdom/player.json");
+		try {
+			JSONObject json = new JSONObject(load);
+			this.activeCard = new Card(CardTemplate.getItem(json.getInt("activeCard")));
+			this.activeCard.init(container, game);
+			for (int i = 0, li = json.getJSONArray("deck").length(); i < li; ++i) {
+				try {
+					this.deck.add(new Card(CardTemplate.getItem(json.getJSONArray("deck").getInt(i))));
+				} catch (JSONException error) {}
+			}
+			for (int i = 0, li = json.getJSONArray("jauges").length(); i < li; ++i) {
+				try {
+					this.jauges.get(i).addValeur(-50);
+					this.jauges.get(i).addValeur(json.getJSONArray("jauges").getInt(i));
+				} catch (JSONException error) {}
+			}
+		} catch (JSONException error) {}
+	}
+
+	public void save(GameContainer container, StateBasedGame game) {
+		List<Integer> deckID = new ArrayList<Integer>();
+		List<Integer> jaugesValue = new ArrayList<Integer>();
+		for (Card card: this.deck) {
+			int i = CardTemplate.getIndex(card.getCardTemplate());
+			if (i == -1) {
+				System.err.println("[SAVE] Carte non trouvée dans la liste des cartes");
+			} else {
+				deckID.add(i);
+			}
+		}
+		int activeCardID = CardTemplate.getIndex(activeCard.getCardTemplate());
+		for (Jauge jauge: this.jauges) {
+			jaugesValue.add(jauge.getValeur());
+		}
+		try {
+			JSONObject save = new JSONObject();
+			save.put("activeCard", activeCardID);
+			JSONArray deckJSON = new JSONArray();
+			for (int i: deckID) {
+				deckJSON.put(i);
+			}
+			save.put("deck",deckJSON);
+			JSONArray jaugesJSON = new JSONArray();
+			for (int i: jaugesValue) {
+				jaugesJSON.put(i);
+			}
+			save.put("jauges", jaugesJSON);
+			AppLoader.saveData("/telekingdom/player.json", save.toString());
+		} catch (JSONException error) {}
 	}
 
 	public void addNextCards(GameContainer container, StateBasedGame game) {
@@ -119,24 +179,12 @@ public class Player {
 		}
 	}
 
-	public void setJauges(List<Jauge> jauges) {
-		this.jauges = jauges;
-	}
-
 	public List<Jauge> getJauges() {
 		return this.jauges;
 	}
 
-	public void setDeck(List<Card> deck) {
-		this.deck = deck;
-	}
-
 	public List<Card> getDeck() {
 		return this.deck;
-	}
-
-	public void setActiveCard(Card activeCard) {
-		this.activeCard = activeCard;
 	}
 
 	public Card getActiveCard() {
@@ -147,7 +195,7 @@ public class Player {
 		for (int i = 0, li = GaugeTemplate.getLength(); i < li; i++) {
 			Jauge jauge = this.jauges.get(i);
 			if (jauge.isEmpty()) { // Si le roi est mort
-				return -(i + 1);
+				return ~i;
 			}
 			if (jauge.isFull()) { // Si le roi est mort
 				return i + 1;

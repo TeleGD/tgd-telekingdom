@@ -11,40 +11,37 @@ import app.AppLoader;
 
 public class Jauge {
 
-	private static Font font;
-
-	static {
-		// Jauge.font = AppLoader.loadFont("/fonts/vt323.ttf", AppFont.BOLD, 16);
-		Jauge.font = AppLoader.loadFont("/fonts/telekingdom/special-elite.ttf", AppFont.BOLD, 16);
-	}
-
 	/* Template de la jauge */
 	private GaugeTemplate gaugeTemplate;
-
-	/* Taille et position sur l'écran */
-	private int size;
-	private int x;
-	private int y;
 
 	/* Valeur de la jauge */
 	private int valeur;
 	private double valeurAffichee;
 	private double vitesseJauge;
 
-	public Jauge (GaugeTemplate gaugeTemplate) {
+	private Font font;
+
+	/* Taille et position sur l'écran */
+	private int size;
+	private int x;
+	private int y;
+
+	public Jauge(GaugeTemplate gaugeTemplate) {
 		this.gaugeTemplate = gaugeTemplate;
-		vitesseJauge = 0.01;
-		valeur = 50;
-		valeurAffichee = valeur;
 	}
 
 	public void init(GameContainer container, StateBasedGame game) {
+		this.vitesseJauge = 0.01;
+		this.valeur = 50;
+		this.valeurAffichee = valeur;
+		// this.font = AppLoader.loadFont("/fonts/vt323.ttf", AppFont.BOLD, 16);
+		this.font = AppLoader.loadFont("/fonts/telekingdom/special-elite.ttf", AppFont.BOLD, 16);
 		this.size = (int) (75 / 1280f * container.getWidth());
 		this.x = 0;
 		this.y = (int) (10 / 1280f * container.getWidth());
 	}
 
-	public void update (GameContainer container, StateBasedGame game, int delta) {
+	public void update(GameContainer container, StateBasedGame game, int delta) {
 		if (valeurAffichee + vitesseJauge * delta < valeur) {
 			valeurAffichee += vitesseJauge * delta;
 		} else if (valeurAffichee - vitesseJauge * delta > valeur) {
@@ -54,7 +51,7 @@ public class Jauge {
 		}
 	}
 
-	public void render (GameContainer container, StateBasedGame game, Graphics context) {
+	public void render(GameContainer container, StateBasedGame game, Graphics context) {
 		//on draw l'image vide
 		Image backgroundImage = this.gaugeTemplate.getBackgroundImage();
 		context.drawImage(backgroundImage, x, y, x + size, y + size, 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight());
@@ -63,8 +60,8 @@ public class Jauge {
 		context.drawImage(foregroundImage, x, y + (int) Math.abs(valeurAffichee - 100) * size / 100, x + size, y + size, 0, (int) Math.abs(valeurAffichee - 100) * foregroundImage.getHeight() / 100, foregroundImage.getWidth(), foregroundImage.getHeight());
 		//puis on draw le nom de la jauge
 		String name = this.gaugeTemplate.getName();
-		context.setFont(Jauge.font);
-		context.drawString(name, x + (size - Jauge.font.getWidth(name)) / 2, y + size + (int) (2 / 1280f * container.getWidth()));
+		context.setFont(this.font);
+		context.drawString(name, x + (size - this.font.getWidth(name)) / 2, y + size + (int) (2 / 1280f * container.getWidth()));
 	}
 
 	public int getSize() {

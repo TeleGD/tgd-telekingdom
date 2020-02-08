@@ -14,26 +14,24 @@ import app.AppLoader;
 
 public class Card {
 
-	private static Font font;
-	private static Audio sound;
-
-	static {
-		// Card.font = AppLoader.loadFont("/fonts/vt323.ttf", AppFont.BOLD, 12);
-		Card.font = AppLoader.loadFont("/fonts/telekingdom/SpecialElite.ttf", AppFont.BOLD, 12);
-		Card.sound = AppLoader.loadAudio("/sounds/telekingdom/turn-page.ogg");
-	}
-
 	/* Template de la carte */
 	private CardTemplate cardTemplate;
+
+	private Request request;
+
+	//etat de la carte : 0 au milieu, 1 à droite, -1 à gauche, 2 si confirmé à droite et -2 si confirmé à gauche
+	private int state;
+	private boolean animGo;
+	private boolean animGetOut;
+	private boolean animGetIn;
+
+	private Font font;
+	private Audio sound;
 
 	/* Taille et position sur l'écran */
 	private int size;
 	private int x;
 	private int y;
-
-	private boolean animGo;
-	private boolean animGetOut;
-	private boolean animGetIn;
 
 	private double speed;
 	private boolean speedPos;
@@ -42,35 +40,31 @@ public class Card {
 	private float tmax;
 	private int decalage;
 
-	//etat de la carte : 0 au milieu, 1 à droite, -1 à gauche, 2 si confirmé à droite et -2 si confirmé à gauche
-	private int state;
-
 	//a recuperer dans la base des cartes
 	private int[] effet;
 
-	private Request request;
-
 	private Color answerBackground = new Color(200,200,200,150);
 
-	public Card (CardTemplate cardTemplate) {
+	public Card(CardTemplate cardTemplate) {
 		this.cardTemplate = cardTemplate;
-
-		state = 0; //on commence carte au milieu
-
-		animGo = false;
-		animGetOut = false;
-		animGetIn = false;
 	}
 
-	public void init (GameContainer container, StateBasedGame game) {
+	public void init(GameContainer container, StateBasedGame game) {
+		this.request = new Request(container, game, this.cardTemplate.getRequest());
+		this.state = 0; //on commence carte au milieu
+		this.animGo = false;
+		this.animGetOut = false;
+		this.animGetIn = false;
+		// this.font = AppLoader.loadFont("/fonts/vt323.ttf", AppFont.BOLD, 12);
+		this.font = AppLoader.loadFont("/fonts/telekingdom/SpecialElite.ttf", AppFont.BOLD, 12);
+		this.sound = AppLoader.loadAudio("/sounds/telekingdom/turn-page.ogg");
 		this.size = (int) (426 / 1920f * container.getWidth());
 		this.x = (container.getWidth() - this.size) / 2;
 		this.y = -this.size;
 		this.initGetIn(y, (int) (343 / 720f * container.getHeight()), (int) ((720 - 40) / 720f * container.getHeight()) - size);
-		this.request = new Request(container, game, this.cardTemplate.getRequest());
 	}
 
-	public void update (GameContainer container, StateBasedGame game, int delta) {
+	public void update(GameContainer container, StateBasedGame game, int delta) {
 		Input input = container.getInput();
 		if(animGetIn) {
 			getIn(container, game, delta);
@@ -100,22 +94,22 @@ public class Card {
 		}
 	}
 
-	public void render (GameContainer container, StateBasedGame game, Graphics context) {
+	public void render(GameContainer container, StateBasedGame game, Graphics context) {
 		request.render(container, game, context);
 		Image image = this.cardTemplate.getCharacter ().getImage ();
 		context.drawImage(image, x, y, x + size, y + size, 0, 0, image.getWidth(), image.getHeight());
 		if (!animGetIn && !animGo && !animGetOut) {
 			context.setColor(answerBackground);
 			if (state==-1) {
-				context.fillRect(x, y, Card.font.getWidth(this.cardTemplate.getResponse(0)) + 8, Card.font.getHeight(this.cardTemplate.getResponse(0)) + 8);
+				context.fillRect(x, y, this.font.getWidth(this.cardTemplate.getResponse(0)) + 8, this.font.getHeight(this.cardTemplate.getResponse(0)) + 8);
 				context.setColor(Color.black);
-				context.setFont(Card.font);
+				context.setFont(this.font);
 				context.drawString(this.cardTemplate.getResponse (0), x+4, y+4);
 			} else if (state==1) {
-				context.fillRect(x + size - Card.font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, Card.font.getWidth(this.cardTemplate.getResponse(1)) + 8, Card.font.getHeight(this.cardTemplate.getResponse(1)) +8);
+				context.fillRect(x + size - this.font.getWidth(this.cardTemplate.getResponse(1)) - 8, y, this.font.getWidth(this.cardTemplate.getResponse(1)) + 8, this.font.getHeight(this.cardTemplate.getResponse(1)) +8);
 				context.setColor(Color.black);
-				context.setFont(Card.font);
-				context.drawString(this.cardTemplate.getResponse (1), x + size - Card.font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
+				context.setFont(this.font);
+				context.drawString(this.cardTemplate.getResponse (1), x + size - this.font.getWidth(this.cardTemplate.getResponse(1))-4, y+4);
 			}
 		}
 	}
@@ -178,14 +172,14 @@ public class Card {
 		state = -2;
 		effet = cardTemplate.getEffect(0);
 		initGetOut(y,(int) (container.getHeight()*1.2));
-		Card.sound.playAsSoundEffect(1, .6f, false);
+		this.sound.playAsSoundEffect(1, .6f, false);
 	}
 
 	private void confirmRight(GameContainer container, StateBasedGame game) {
 		state = 2;
 		effet = cardTemplate.getEffect(1);
 		initGetOut(y,(int) (container.getHeight()*1.2));
-		Card.sound.playAsSoundEffect(1, .6f, false);
+		this.sound.playAsSoundEffect(1, .6f, false);
 	}
 
 	private void initGetIn(int dep, int fin, int max) {
