@@ -3,9 +3,9 @@
 - Amos George (@AmosGeorge)
 - Clément Crouzet (@CrouzetC)
 - David Forlen (@DavidForlen)
-- Enzo Chiotti
+- Enzo Chiotti (@EnzoPGCDChiotti)
 - Erwan Kessler (@hube12)
-- Florent Delvert
+- Florent Delvert (@FlorentPGCDDelvert)
 - Frédéric Venier (@FredericVenier et @VFrederic)
 - Louise Bulone (@Gragalit)
 - Nathan Barloy (@nathanBarloy)
