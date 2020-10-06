@@ -2,7 +2,7 @@
 	{
 		"id": 0,
 		"character": 0,
-		"request": "\"Le dépouillement des votes touche presque à sa fin. Rien n'est encore gagné pour vous qui détournez avec inquiétude votre regard du tableau où s'allongent interminablement deux rangées de traits verticaux que plus personne ne parvient à comptabiliser. A la recherche d'un soutien psychologique, vous posez finalement vos yeux sur la fenêtre où se reflète Nestor, candidat à la direction de TeleKingdom. C'est bien votre image que vous contemplez, mais celle-ci vous donne l'impression indescriptible de vous remettre en question : êtes-vous prêt à diriger cette école ?\"",
+		"request": "\"Le dépouillement des votes touche presque à sa fin. Rien n'est encore gagné pour vous qui détournez avec inquiétude votre regard du tableau où s'allongent interminablement deux rangées de traits verticaux que plus personne ne parvient à comptabiliser. À la recherche d'un soutien psychologique, vous posez finalement vos yeux sur la fenêtre où se reflète Nestor, candidat à la direction de TeleKingdom. C'est bien votre image que vous contemplez, mais celle-ci vous donne l'impression indescriptible de vous remettre en question : êtes-vous prêt à diriger cette école ?\"",
 		"response": [
 			"\"De l'air, vite !\"",
 			"\"L'avenir du monde dépend de nous !\""
@@ -1412,7 +1412,7 @@
 	{
 		"id": 21,
 		"character": 15,
-		"request": "\"On souhaite organiser les épreuves sportives du tournoi L-INP dans votre splendide amphi Est (on a pas pensé à réserver les terrains prévus à cet effet).\"",
+		"request": "\"On souhaite organiser les épreuves sportives du tournoi L-INP dans votre splendide amphi Est (on n'a pas pensé à réserver les terrains prévus à cet effet).\"",
 		"response": [
 			"\"Pourquoi pas, ça leur fera les mollets !\"",
 			"\"Hors de question !\""
@@ -1846,7 +1846,7 @@
 			[
 				0,
 				0,
-				0
+				-10
 			]
 		],
 		"next": [
@@ -2626,7 +2626,7 @@
 	{
 		"id": 58,
 		"character": 35,
-		"request": "\"Nous nous entendons bien, vous ne trouvez pas ? Je vous propose un partenariat : le logo TKM en petit sur mon affiche de campagne contre ma tête à chaque fois qu'apparaît le logo TKM.\"",
+		"request": "\"Nous nous entendons bien, vous ne trouvez pas ? Je vous propose un partenariat : le logo TeleKingdom en petit sur mon affiche de campagne contre ma tête à chaque fois qu'apparaît le logo TeleKingdom.\"",
 		"response": [
 			"\"J'aime les partenariats !\"",
 			"\"Je ne suis pas un homme sandwich.\""
@@ -3036,7 +3036,7 @@
 	{
 		"id": 71,
 		"character": 38,
-		"request": "\"A la suite de notre création et pour assurer la pérénité du pôle, nous voudrions une bibliothèque.\"",
+		"request": "\"À la suite de notre création et pour assurer la pérénité du pôle, nous voudrions une bibliothèque.\"",
 		"response": [
 			"Dissoudre le pôle aussi vite qu'il a été créé",
 			"Leur offrir le nouveau livre de Nabilla"
@@ -4039,7 +4039,7 @@
 	{
 		"id": 103,
 		"character": 40,
-		"request": "\"On a « un peu » abimé la place Tsan lors des 24h, vous pouvez nous aider à rembourser ?\"",
+		"request": "\"On a « un peu » abîmé la place Tsan lors des 24h, vous pouvez nous aider à rembourser ?\"",
 		"response": [
 			"Les aider",
 			"\"C'est leur problème !\""
@@ -4147,7 +4147,7 @@
 		"request": "\"Le bâtiment des STRAPS a brûlé. Pouvez-vous les accueillir quelques mois ?\"",
 		"response": [
 			"\"Bien sûr !\"",
-			"107. [SPARTE (Syndicat du Personnel Administratif, Recherche, Technique et Enseignant)] \"La possibilité de pouvoir repasser un partiel raté diminue notre image et augmente le niveau de flemme des élèves. Supprimons-les.\""
+			"\"Ils avaient un bâtiment ?\""
 		],
 		"effect": [
 			[
@@ -4158,7 +4158,7 @@
 			[
 				0,
 				0,
-				-85
+				0
 			]
 		],
 		"next": [
@@ -4171,6 +4171,41 @@
 			[
 				[
 					106,
+					100
+				]
+			]
+		]
+	},
+	{
+		"id": 107,
+		"character": 25,
+		"request": "\"La possibilité de pouvoir repasser un partiel raté diminue notre image et augmente le niveau de flemme des élèves. Supprimons-les.\"",
+		"response": [
+			"\"Qui ? Les élèves ?\"",
+			"\"C'est combien la note plancher en FLM, déjà ?\""
+		],
+		"effect": [
+			[
+				0,
+				0,
+				-85
+			],
+			[
+				0,
+				0,
+				0
+			]
+		],
+		"next": [
+			[
+				[
+					107,
+					100
+				]
+			],
+			[
+				[
+					107,
 					100
 				]
 			]
@@ -4332,7 +4367,7 @@
 	{
 		"id": 113,
 		"character": 46,
-		"request": "\"Nous nous sommes fait voler nos barrières, ce sont les staffs de TéléKingdom qui n'ont pas bien fait leur boulot… On exige un dédommagement !\"",
+		"request": "\"Nous nous sommes fait voler nos barrières, ce sont les staffs de TeleKingdom qui n'ont pas bien fait leur boulot… On exige un dédommagement !\"",
 		"response": [
 			"Rembourser les barrières",
 			"Supprimer le local de Mang'Alsace"
