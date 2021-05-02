@@ -107,10 +107,10 @@ public class Player {
 					this.deck.add(new Card(CardTemplate.getItem(json.getJSONArray("deck").getInt(i))));
 				} catch (JSONException error) {}
 			}
-			for (int i = 0, li = json.getJSONArray("jauges").length(); i < li; ++i) {
+			for (int i = 0, li = json.getJSONArray("gauges").length(); i < li; ++i) {
 				try {
 					this.jauges.get(i).addValeur(-50);
-					this.jauges.get(i).addValeur(json.getJSONArray("jauges").getInt(i));
+					this.jauges.get(i).addValeur(json.getJSONArray("gauges").getInt(i));
 				} catch (JSONException error) {}
 			}
 		} catch (JSONException error) {}
@@ -143,7 +143,7 @@ public class Player {
 			for (int i: jaugesValue) {
 				jaugesJSON.put(i);
 			}
-			save.put("jauges", jaugesJSON);
+			save.put("gauges", jaugesJSON);
 			AppLoader.saveData("/telekingdom/player.json", save.toString());
 		} catch (JSONException error) {}
 	}

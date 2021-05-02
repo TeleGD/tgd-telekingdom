@@ -1,8 +1,5 @@
 package games.telekingdom.hud;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,9 +17,9 @@ public class GaugeTemplate {
 
 	static {
 		GaugeTemplate.instances = new ArrayList <GaugeTemplate> ();
-		GaugeTemplate.load ("/data/telekingdom/gauges.json");
+		GaugeTemplate.load ("/data/telekingdom/gaugeTemplates.json");
 		// GaugeTemplate.normalize ();
-		// GaugeTemplate.save ("/data/telekingdom/gauges2.json");
+		// GaugeTemplate.save ("/telekingdom/extensions/fork/gaugeTemplates.json");
 		if (GaugeTemplate.instances.size () == 0) {
 			new GaugeTemplate ();
 		}
@@ -83,98 +80,54 @@ public class GaugeTemplate {
 	}
 
 	static private void save (String filename) {
-		if (filename != null && filename.startsWith ("/")) {
+		JSONArray array = new JSONArray ();
+		for (GaugeTemplate gaugeTemplate: GaugeTemplate.instances) {
+			JSONObject object = new JSONObject ();
 			try {
-				JSONArray array = new JSONArray ();
-				String root = System.class.getResource ("/natives").getPath ();
-				for (GaugeTemplate gaugeTemplate: GaugeTemplate.instances) {
-					JSONObject object = new JSONObject ();
-					try {
-						object.put ("name", gaugeTemplate.name);
-					} catch (JSONException error) {}
-					try {
-						String src = gaugeTemplate.backgroundSrc;
-						if (src != null) {
-							int i = 0;
-							int l = root.indexOf ("/", i) + 1;
-							while (l != 0 && root.substring (i, l).equals (src.substring (i, l))) {
-								i = l;
-								l = root.indexOf ("/", i) + 1;
-							}
-							src = "/" + src.substring (i);
-						}
-						object.put ("background", src != null ? src : JSONObject.NULL);
-					} catch (JSONException error) {}
-					try {
-						String src = gaugeTemplate.foregroundSrc;
-						if (src != null) {
-							int i = 0;
-							int l = root.indexOf ("/", i) + 1;
-							while (l != 0 && root.substring (i, l).equals (src.substring (i, l))) {
-								i = l;
-								l = root.indexOf ("/", i) + 1;
-							}
-							src = "/" + src.substring (i);
-						}
-						object.put ("foreground", src != null ? src : JSONObject.NULL);
-					} catch (JSONException error) {}
-					JSONObject empty = new JSONObject ();
-					try {
-						empty.put ("title", gaugeTemplate.emptyTitle);
-					} catch (JSONException error) {}
-					try {
-						empty.put ("description", gaugeTemplate.emptyDescription);
-					} catch (JSONException error) {}
-					try {
-						String src = gaugeTemplate.emptySrc;
-						if (src != null) {
-							int i = 0;
-							int l = root.indexOf ("/", i) + 1;
-							while (l != 0 && root.substring (i, l).equals (src.substring (i, l))) {
-								i = l;
-								l = root.indexOf ("/", i) + 1;
-							}
-							src = "/" + src.substring (i);
-						}
-						object.put ("sound", src != null ? src : JSONObject.NULL);
-					} catch (JSONException error) {}
-					try {
-						object.put ("empty", empty);
-					} catch (JSONException error) {}
-					JSONObject full = new JSONObject ();
-					try {
-						full.put ("title", gaugeTemplate.fullTitle);
-					} catch (JSONException error) {}
-					try {
-						full.put ("description", gaugeTemplate.fullDescription);
-					} catch (JSONException error) {}
-					try {
-						String src = gaugeTemplate.fullSrc;
-						if (src != null) {
-							int i = 0;
-							int l = root.indexOf ("/", i) + 1;
-							while (l != 0 && root.substring (i, l).equals (src.substring (i, l))) {
-								i = l;
-								l = root.indexOf ("/", i) + 1;
-							}
-							src = "/" + src.substring (i);
-						}
-						object.put ("sound", src != null ? src : JSONObject.NULL);
-					} catch (JSONException error) {}
-					try {
-						object.put ("full", full);
-					} catch (JSONException error) {}
-					array.put (object);
-				}
-				String json = "\n";
-				try {
-					json = array.toString (2).replaceAll ("  ", "\t") + "\n";
-				} catch (JSONException error) {}
-				BufferedWriter writer = new BufferedWriter (new FileWriter (System.class.getResource (filename).getPath ()));
-				writer.write (json);
-				writer.close ();
-			} catch (IOException error) {}
+				object.put ("id", array.length ());
+			} catch (JSONException error) {}
+			try {
+				object.put ("name", gaugeTemplate.name);
+			} catch (JSONException error) {}
+			try {
+				object.put ("background", gaugeTemplate.backgroundSrc);
+			} catch (JSONException error) {}
+			try {
+				object.put ("foreground", gaugeTemplate.foregroundSrc);
+			} catch (JSONException error) {}
+			JSONObject empty = new JSONObject ();
+			try {
+				empty.put ("title", gaugeTemplate.emptyTitle);
+			} catch (JSONException error) {}
+			try {
+				empty.put ("description", gaugeTemplate.emptyDescription);
+			} catch (JSONException error) {}
+			try {
+				empty.put ("sound", gaugeTemplate.emptySrc);
+			} catch (JSONException error) {}
+			try {
+				object.put ("empty", empty);
+			} catch (JSONException error) {}
+			JSONObject full = new JSONObject ();
+			try {
+				full.put ("title", gaugeTemplate.fullTitle);
+			} catch (JSONException error) {}
+			try {
+				full.put ("description", gaugeTemplate.fullDescription);
+			} catch (JSONException error) {}
+			try {
+				full.put ("sound", gaugeTemplate.fullSrc);
+			} catch (JSONException error) {}
+			try {
+				object.put ("full", full);
+			} catch (JSONException error) {}
+			array.put (object);
 		}
+		String json = "";
+		try {
+			json = array.toString (2).replaceAll ("  ", "\t") + "\n";
+		} catch (JSONException error) {}
+		AppLoader.saveData (filename, json);
 	}
 
 	static private void normalize () {}

@@ -1,8 +1,5 @@
 package games.telekingdom.hud;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +18,7 @@ public class CardTemplate {
 		CardTemplate.instances = new ArrayList <CardTemplate> ();
 		CardTemplate.load ("/data/telekingdom/cardTemplates.json");
 		// CardTemplate.normalize ();
-		// CardTemplate.save ("/data/telekingdom/cardTemplates2.json");
+		// CardTemplate.save ("/telekingdom/extensions/fork/cardTemplates.json");
 		if (CardTemplate.instances.size () == 0) {
 			new CardTemplate ();
 		}
@@ -106,61 +103,64 @@ public class CardTemplate {
 	}
 
 	static private void save (String filename) {
-		if (filename != null && filename.startsWith ("/")) {
+		JSONArray array = new JSONArray ();
+		for (CardTemplate cardTemplate: CardTemplate.instances) {
+			JSONObject object = new JSONObject ();
 			try {
-				JSONArray array = new JSONArray ();
-				for (CardTemplate cardTemplate: CardTemplate.instances) {
-					JSONObject object = new JSONObject ();
-					try {
-						object.put ("character", Character.getIndex (cardTemplate.character));
-					} catch (JSONException error) {}
-					try {
-						object.put ("request", cardTemplate.request);
-					} catch (JSONException error) {}
-					JSONArray response = new JSONArray ();
-					for (int i = 0; i < 2; i++) {
-						response.put (cardTemplate.response [i]);
-					}
-					try {
-						object.put ("response", response);
-					} catch (JSONException error) {}
-					JSONArray effect = new JSONArray ();
-					for (int i = 0; i < 2; i++) {
-						JSONArray option = new JSONArray ();
-						for (int j = 0; j < GaugeTemplate.getLength (); j++) {
-							option.put (cardTemplate.effect [i] [j]);
-						}
-						effect.put (option);
-					}
-					try {
-						object.put ("effect", effect);
-					} catch (JSONException error) {}
-					JSONArray next = new JSONArray ();
-					for (int i = 0; i < 2; i++) {
-						JSONArray option = new JSONArray ();
-						for (int j = 0, l = cardTemplate.next [i].length; j < l; j++) {
-							JSONArray params = new JSONArray ();
-							params.put (CardTemplate.getIndex (cardTemplate.next [i] [j].getCardTemplate ()));
-							params.put (cardTemplate.next [i] [j].getZone ());
-							params.put (cardTemplate.next [i] [j].getQuantity ());
-							option.put (params);
-						}
-						next.put (option);
-					}
-					try {
-						object.put ("next", next);
-					} catch (JSONException error) {}
-					array.put (object);
+				object.put ("id", array.length ());
+			} catch (JSONException error) {}
+			try {
+				object.put ("character", Character.getIndex (cardTemplate.character));
+			} catch (JSONException error) {}
+			try {
+				object.put ("request", cardTemplate.request);
+			} catch (JSONException error) {}
+			JSONArray response = new JSONArray ();
+			for (int i = 0; i < 2; i++) {
+				response.put (cardTemplate.response [i]);
+			}
+			try {
+				object.put ("response", response);
+			} catch (JSONException error) {}
+			JSONArray effect = new JSONArray ();
+			for (int i = 0; i < 2; i++) {
+				JSONArray option = new JSONArray ();
+				for (int j = 0; j < GaugeTemplate.getLength (); j++) {
+					option.put (cardTemplate.effect [i] [j]);
 				}
-				String json = "\n";
-				try {
-					json = array.toString (2).replaceAll ("  ", "\t") + "\n";
-				} catch (JSONException error) {}
-				BufferedWriter writer = new BufferedWriter (new FileWriter (System.class.getResource (filename).getPath ()));
-				writer.write (json);
-				writer.close ();
-			} catch (IOException error) {}
+				effect.put (option);
+			}
+			try {
+				object.put ("effect", effect);
+			} catch (JSONException error) {}
+			JSONArray next = new JSONArray ();
+			for (int i = 0; i < 2; i++) {
+				JSONArray option = new JSONArray ();
+				for (int j = 0, l = cardTemplate.next [i].length; j < l; j++) {
+					JSONArray params = new JSONArray ();
+					params.put (CardTemplate.getIndex (cardTemplate.next [i] [j].getCardTemplate ()));
+					int zone = cardTemplate.next [i] [j].getZone ();
+					int quantity = cardTemplate.next [i] [j].getQuantity ();
+					if (zone != 0 || quantity != 1) {
+						params.put (zone);
+					}
+					if (quantity != 1) {
+						params.put (quantity);
+					}
+					option.put (params);
+				}
+				next.put (option);
+			}
+			try {
+				object.put ("next", next);
+			} catch (JSONException error) {}
+			array.put (object);
 		}
+		String json = "";
+		try {
+			json = array.toString (2).replaceAll ("  ", "\t") + "\n";
+		} catch (JSONException error) {}
+		AppLoader.saveData (filename, json);
 	}
 
 	static private void normalize () {

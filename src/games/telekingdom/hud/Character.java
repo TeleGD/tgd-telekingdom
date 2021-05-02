@@ -1,8 +1,5 @@
 package games.telekingdom.hud;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +18,7 @@ public class Character {
 		Character.instances = new ArrayList <Character> ();
 		Character.load ("/data/telekingdom/characters.json");
 		// Character.normalize ();
-		// Character.save ("/data/telekingdom/characters2.json");
+		// Character.save ("/telekingdom/extensions/fork/characters.json");
 		if (Character.instances.size () == 0) {
 			new Character ();
 		}
@@ -49,39 +46,25 @@ public class Character {
 	}
 
 	static private void save (String filename) {
-		if (filename != null && filename.startsWith ("/")) {
+		JSONArray array = new JSONArray ();
+		for (Character character: Character.instances) {
+			JSONObject object = new JSONObject ();
 			try {
-				JSONArray array = new JSONArray ();
-				String root = System.class.getResource ("/natives").getPath ();
-				for (Character character: Character.instances) {
-					JSONObject object = new JSONObject ();
-					try {
-						object.put ("name", character.name);
-					} catch (JSONException error) {}
-					try {
-						String src = character.src;
-						if (src != null) {
-							int i = 0;
-							int l = root.indexOf ("/", i) + 1;
-							while (l != 0 && root.substring (i, l).equals (src.substring (i, l))) {
-								i = l;
-								l = root.indexOf ("/", i) + 1;
-							}
-							src = "/" + src.substring (i);
-						}
-						object.put ("image", src != null ? src : JSONObject.NULL);
-					} catch (JSONException error) {}
-					array.put (object);
-				}
-				String json = "\n";
-				try {
-					json = array.toString (2).replaceAll ("  ", "\t") + "\n";
-				} catch (JSONException error) {}
-				BufferedWriter writer = new BufferedWriter (new FileWriter (System.class.getResource (filename).getPath ()));
-				writer.write (json);
-				writer.close ();
-			} catch (IOException error) {}
+				object.put ("id", array.length ());
+			} catch (JSONException error) {}
+			try {
+				object.put ("name", character.name);
+			} catch (JSONException error) {}
+			try {
+				object.put ("image", character.src);
+			} catch (JSONException error) {}
+			array.put (object);
 		}
+		String json = "";
+		try {
+			json = array.toString (2).replaceAll ("  ", "\t") + "\n";
+		} catch (JSONException error) {}
+		AppLoader.saveData (filename, json);
 	}
 
 	static private void normalize () {}
